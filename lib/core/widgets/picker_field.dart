@@ -43,7 +43,7 @@ class PickerField extends StatelessWidget {
                 Expanded(
                   child: Text(
                     value ?? hint ?? '',
-                    style: AppTextStyles.body1.copyWith(color: value == null ? AppColors.gray400 : AppColors.black),
+                    style: AppTextStyles.body1.copyWith(color: value == null ? AppColors.gray400 : AppColors.ink),
                   ),
                 ),
                 Icon(icon, color: AppColors.gray500),

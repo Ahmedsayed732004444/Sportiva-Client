@@ -20,7 +20,7 @@ class OwnerTournamentsTab extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => context.push('/owner/tournaments/new'),
         backgroundColor: AppColors.primary,
-        foregroundColor: AppColors.white,
+        foregroundColor: AppColors.onBrand,
         icon: const Icon(Icons.add),
         label: Text(l10n.createTournament),
       ),

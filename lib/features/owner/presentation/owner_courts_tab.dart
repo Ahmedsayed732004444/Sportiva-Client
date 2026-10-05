@@ -30,7 +30,7 @@ class OwnerCourtsTab extends ConsumerWidget {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => context.push('/owner/courts/new'),
         backgroundColor: AppColors.primary,
-        foregroundColor: AppColors.white,
+        foregroundColor: AppColors.onBrand,
         icon: const Icon(Icons.add),
         label: Text(l10n.addCourt),
       ),
@@ -97,7 +97,7 @@ class _CourtCard extends ConsumerWidget {
                 TextButton(onPressed: () => Navigator.pop(context, false), child: Text(l10n.cancel)),
                 TextButton(
                   onPressed: () => Navigator.pop(context, true),
-                  child: Text(l10n.deleteCourt, style: const TextStyle(color: AppColors.error)),
+                  child: Text(l10n.deleteCourt, style: TextStyle(color: AppColors.error)),
                 ),
               ],
             ),

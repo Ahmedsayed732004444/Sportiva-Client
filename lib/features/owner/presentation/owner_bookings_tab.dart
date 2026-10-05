@@ -38,7 +38,7 @@ class OwnerBookingsTab extends StatelessWidget {
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () => context.push('/owner/bookings/new'),
           backgroundColor: AppColors.primary,
-          foregroundColor: AppColors.white,
+          foregroundColor: AppColors.onBrand,
           icon: const Icon(Icons.add),
           label: Text(l10n.manualBooking),
         ),
@@ -137,7 +137,7 @@ class _OwnerBookingCardState extends ConsumerState<_OwnerBookingCard> {
           TextButton(onPressed: () => Navigator.pop(context, false), child: Text(l10n.cancel)),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
-            child: Text(title, style: const TextStyle(color: AppColors.error)),
+            child: Text(title, style: TextStyle(color: AppColors.error)),
           ),
         ],
       ),
@@ -206,7 +206,7 @@ class _OwnerBookingCardState extends ConsumerState<_OwnerBookingCard> {
             const SizedBox(height: AppSpacing.xs),
             Row(
               children: [
-                const Icon(Icons.person_outline, size: 18, color: AppColors.black600),
+                Icon(Icons.person_outline, size: 18, color: AppColors.black600),
                 const SizedBox(width: 4),
                 Flexible(child: Text(booking.customerName ?? l10n.walkInCustomer, style: AppTextStyles.body1)),
                 const SizedBox(width: AppSpacing.xs),
@@ -216,7 +216,7 @@ class _OwnerBookingCardState extends ConsumerState<_OwnerBookingCard> {
                   IconButton(
                     visualDensity: VisualDensity.compact,
                     tooltip: l10n.callCustomer,
-                    icon: const Icon(Icons.phone, color: AppColors.primary),
+                    icon: Icon(Icons.phone, color: AppColors.primary),
                     onPressed: () => launchUrl(Uri(scheme: 'tel', path: booking.customerPhone)),
                   ),
               ],
@@ -291,12 +291,12 @@ class _WeeklyList extends ConsumerWidget {
           if (booking.canRespond)
             TextButton(
               onPressed: () => run(() => repository.reject(booking.id, null)),
-              child: Text(l10n.rejectAction, style: const TextStyle(color: AppColors.error)),
+              child: Text(l10n.rejectAction, style: TextStyle(color: AppColors.error)),
             ),
           if (booking.canCancel && !booking.canRespond)
             TextButton(
               onPressed: () => run(() => repository.clubCancel(booking.id, null)),
-              child: Text(l10n.cancelRecurring, style: const TextStyle(color: AppColors.error)),
+              child: Text(l10n.cancelRecurring, style: TextStyle(color: AppColors.error)),
             ),
         ],
       ),

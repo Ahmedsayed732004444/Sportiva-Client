@@ -156,7 +156,7 @@ void main() {
             bookingRepositoryProvider.overrideWithValue(bookings),
           ],
           child: MaterialApp(
-            theme: AppTheme.light,
+            theme: AppTheme.build(),
             locale: const Locale('en'),
             supportedLocales: AppLocalizations.supportedLocales,
             localizationsDelegates: const [

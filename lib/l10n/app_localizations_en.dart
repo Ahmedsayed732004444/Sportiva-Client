@@ -2096,4 +2096,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String morePlayers(int count) {
     return '+$count';
   }
+
+  @override
+  String get appearance => 'Appearance';
+
+  @override
+  String get themeSystem => 'Follow the phone';
+
+  @override
+  String get themeLight => 'Light';
+
+  @override
+  String get themeDark => 'Dark';
 }

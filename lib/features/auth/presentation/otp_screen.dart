@@ -115,7 +115,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen> with SubmitMixin {
                 TextSpan(text: '${l10n.codeSentTo} '),
                 TextSpan(
                   text: widget.args.email,
-                  style: const TextStyle(color: AppColors.primaryMid),
+                  style: TextStyle(color: AppColors.primaryMid),
                 ),
                 TextSpan(text: '\n${l10n.enterCodeHint}'),
               ],

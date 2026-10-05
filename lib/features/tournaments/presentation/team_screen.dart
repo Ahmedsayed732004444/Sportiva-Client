@@ -101,7 +101,7 @@ class _BodyState extends ConsumerState<_Body> {
           TextButton(onPressed: () => Navigator.pop(context, false), child: Text(l10n.cancel)),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
-            child: Text(l10n.withdrawTeam, style: const TextStyle(color: AppColors.error)),
+            child: Text(l10n.withdrawTeam, style: TextStyle(color: AppColors.error)),
           ),
         ],
       ),
@@ -140,7 +140,7 @@ class _BodyState extends ConsumerState<_Body> {
         ),
         const SizedBox(height: AppSpacing.s),
         Chip(
-          label: Text(team.status.label(l10n), style: AppTextStyles.caption.copyWith(color: AppColors.white)),
+          label: Text(team.status.label(l10n), style: AppTextStyles.caption.copyWith(color: AppColors.onBrand)),
           backgroundColor: team.status.color,
           side: BorderSide.none,
         ),
@@ -167,7 +167,7 @@ class _BodyState extends ConsumerState<_Body> {
             onTap: () => context.push('/user/${member.player.userId}'),
             trailing: isCaptain && !member.isCaptain && team.status.isActive
                 ? IconButton(
-                    icon: const Icon(Icons.person_remove_outlined, color: AppColors.error),
+                    icon: Icon(Icons.person_remove_outlined, color: AppColors.error),
                     tooltip: l10n.removeMember,
                     onPressed: () =>
                         _run(() => ref.read(tournamentRepositoryProvider).removeMember(team.id, member.player.userId)),

@@ -140,7 +140,7 @@ class _PostDetailsScreenState extends ConsumerState<PostDetailsScreen> with Subm
                         IconButton.filled(
                           onPressed: isSubmitting ? null : _send,
                           style: IconButton.styleFrom(backgroundColor: AppColors.primary),
-                          icon: const Icon(Icons.send_rounded, color: AppColors.white),
+                          icon: const Icon(Icons.send_rounded, color: AppColors.onBrand),
                           tooltip: l10n.send,
                         ),
                       ],

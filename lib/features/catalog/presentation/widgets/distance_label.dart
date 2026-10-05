@@ -23,7 +23,7 @@ class DistanceLabel extends ConsumerWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const Icon(Icons.near_me_outlined, size: 16, color: AppColors.primary),
+        Icon(Icons.near_me_outlined, size: 16, color: AppColors.primary),
         const SizedBox(width: 4),
         Text(context.l10n.distanceAway(kmLabel(km)), style: AppTextStyles.body2.copyWith(color: AppColors.black600)),
       ],

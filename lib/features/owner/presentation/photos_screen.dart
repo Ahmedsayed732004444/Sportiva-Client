@@ -87,7 +87,7 @@ class _PhotosScreenState extends ConsumerState<PhotosScreen> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _busy ? null : _add,
         backgroundColor: AppColors.primary,
-        foregroundColor: AppColors.white,
+        foregroundColor: AppColors.onBrand,
         icon: const Icon(Icons.add_photo_alternate_outlined),
         label: Text(l10n.addPhotos2),
       ),
@@ -115,7 +115,7 @@ class _PhotosScreenState extends ConsumerState<PhotosScreen> {
                     children: [
                       AppNetworkImage(url: image.url),
                       if (image.isCover)
-                        const PositionedDirectional(
+                        PositionedDirectional(
                           top: 6,
                           start: 6,
                           child: Icon(Icons.star_rounded, color: AppColors.primary),
@@ -126,8 +126,8 @@ class _PhotosScreenState extends ConsumerState<PhotosScreen> {
                         child: PopupMenuButton<bool>(
                           icon: const CircleAvatar(
                             radius: 14,
-                            backgroundColor: AppColors.black,
-                            child: Icon(Icons.more_horiz, size: 16, color: AppColors.white),
+                            backgroundColor: AppColors.scrim,
+                            child: Icon(Icons.more_horiz, size: 16, color: AppColors.onBrand),
                           ),
                           onSelected: (delete) => delete
                               ? _run(

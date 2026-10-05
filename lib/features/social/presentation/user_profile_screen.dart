@@ -89,7 +89,7 @@ class UserProfileScreen extends ConsumerWidget {
                 TextButton(onPressed: () => Navigator.pop(context, false), child: Text(l10n.cancel)),
                 TextButton(
                   onPressed: () => Navigator.pop(context, true),
-                  child: Text(l10n.block, style: const TextStyle(color: AppColors.error)),
+                  child: Text(l10n.block, style: TextStyle(color: AppColors.error)),
                 ),
               ],
             ),
@@ -168,7 +168,7 @@ class _HeaderState extends ConsumerState<_Header> {
               DecoratedBox(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: Border.all(color: AppColors.white, width: 4),
+                  border: Border.all(color: AppColors.surface, width: 4),
                 ),
                 child: UserAvatar(name: profile.fullName, url: profile.avatarUrl, radius: 44),
               ),

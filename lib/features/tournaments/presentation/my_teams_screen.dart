@@ -145,7 +145,7 @@ class _Invitations extends ConsumerWidget {
                                   () => ref.read(tournamentRepositoryProvider).declineInvitation(invitation.teamId),
                                   l10n.invitationDeclined,
                                 ),
-                                child: Text(l10n.decline, style: const TextStyle(color: AppColors.error)),
+                                child: Text(l10n.decline, style: TextStyle(color: AppColors.error)),
                               ),
                               FilledButton(
                                 onPressed: () => answer(

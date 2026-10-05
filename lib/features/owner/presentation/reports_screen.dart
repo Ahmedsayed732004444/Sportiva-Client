@@ -93,7 +93,7 @@ class _Body extends StatelessWidget {
             children: [
               Text(label, style: AppTextStyles.caption.copyWith(color: AppColors.black600)),
               const SizedBox(height: 4),
-              Text(value, style: AppTextStyles.header.copyWith(color: color ?? AppColors.black)),
+              Text(value, style: AppTextStyles.header.copyWith(color: color ?? AppColors.ink)),
             ],
           ),
         ),
@@ -153,7 +153,7 @@ class _Body extends StatelessWidget {
             ListTile(
               dense: true,
               contentPadding: EdgeInsets.zero,
-              leading: const Icon(Icons.local_fire_department_outlined, color: AppColors.primary),
+              leading: Icon(Icons.local_fire_department_outlined, color: AppColors.primary),
               title: Text(
                 '${weekdayName(l10n, peak.dayOfWeek)} · ${formatTime(locale, '${peak.hour.toString().padLeft(2, '0')}:00:00')}',
               ),

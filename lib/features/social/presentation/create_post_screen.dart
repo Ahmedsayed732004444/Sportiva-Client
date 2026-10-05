@@ -136,8 +136,8 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> with Submit
                           onTap: () => setState(() => _images = [..._images]..removeAt(index)),
                           child: const CircleAvatar(
                             radius: 11,
-                            backgroundColor: AppColors.black,
-                            child: Icon(Icons.close, size: 14, color: AppColors.white),
+                            backgroundColor: AppColors.scrim,
+                            child: Icon(Icons.close, size: 14, color: AppColors.onBrand),
                           ),
                         ),
                       ),
@@ -149,7 +149,7 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> with Submit
           if (_video != null)
             ListTile(
               contentPadding: EdgeInsets.zero,
-              leading: const Icon(Icons.movie_outlined, color: AppColors.primary),
+              leading: Icon(Icons.movie_outlined, color: AppColors.primary),
               title: Text(l10n.videoPicked, style: AppTextStyles.body1),
               trailing: IconButton(
                 icon: const Icon(Icons.close),

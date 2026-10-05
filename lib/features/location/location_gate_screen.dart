@@ -47,7 +47,7 @@ class _LocationGateScreenState extends ConsumerState<LocationGateScreen> with Su
                 height: 120,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(color: AppColors.primary.withValues(alpha: 0.1), shape: BoxShape.circle),
-                child: const Icon(Icons.location_on_outlined, size: 64, color: AppColors.primary),
+                child: Icon(Icons.location_on_outlined, size: 64, color: AppColors.primary),
               ),
               const SizedBox(height: AppSpacing.l),
               Text(l10n.locationTitle, textAlign: TextAlign.center, style: AppTextStyles.header),

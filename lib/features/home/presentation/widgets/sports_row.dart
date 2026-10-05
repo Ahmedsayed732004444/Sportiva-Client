@@ -48,7 +48,7 @@ class _SportTile extends StatelessWidget {
             const SizedBox(height: AppSpacing.xs),
             Text(
               sport.label(context.l10n),
-              style: AppTextStyles.body2.copyWith(color: AppColors.black, fontWeight: FontWeight.w700),
+              style: AppTextStyles.body2.copyWith(color: AppColors.ink, fontWeight: FontWeight.w700),
             ),
           ],
         ),

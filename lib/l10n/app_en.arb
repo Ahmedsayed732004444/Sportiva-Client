@@ -987,5 +987,9 @@
         "type": "int"
       }
     }
-  }
+  },
+  "appearance": "Appearance",
+  "themeSystem": "Follow the phone",
+  "themeLight": "Light",
+  "themeDark": "Dark"
 }

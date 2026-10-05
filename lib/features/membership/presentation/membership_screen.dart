@@ -239,11 +239,11 @@ class _FormState extends ConsumerState<_Form> with SubmitMixin {
                     for (var i = 0; i < _videos.length; i++)
                       _Thumb(
                         child: const ColoredBox(
-                          color: AppColors.black,
+                          color: AppColors.scrim,
                           child: SizedBox(
                             width: 84,
                             height: 84,
-                            child: Icon(Icons.movie_outlined, color: AppColors.white),
+                            child: Icon(Icons.movie_outlined, color: AppColors.onBrand),
                           ),
                         ),
                         onRemove: () => setState(() => _videos = [..._videos]..removeAt(i)),
@@ -279,8 +279,8 @@ class _Thumb extends StatelessWidget {
             onTap: onRemove,
             child: const CircleAvatar(
               radius: 11,
-              backgroundColor: AppColors.black,
-              child: Icon(Icons.close, size: 14, color: AppColors.white),
+              backgroundColor: AppColors.scrim,
+              child: Icon(Icons.close, size: 14, color: AppColors.onBrand),
             ),
           ),
         ),
@@ -420,7 +420,7 @@ class _StatusState extends ConsumerState<_Status> {
                             ),
                           ),
                         if (media.isVideo && media.isReady)
-                          const Center(child: Icon(Icons.play_circle_fill, color: AppColors.white, size: 32)),
+                          const Center(child: Icon(Icons.play_circle_fill, color: AppColors.onBrand, size: 32)),
                         if (request.status == MembershipStatus.pending)
                           PositionedDirectional(
                             top: 0,
@@ -430,8 +430,8 @@ class _StatusState extends ConsumerState<_Status> {
                                   _run(() => ref.read(membershipRepositoryProvider).deleteMedia(request.id, media.id)),
                               child: const CircleAvatar(
                                 radius: 11,
-                                backgroundColor: AppColors.black,
-                                child: Icon(Icons.close, size: 14, color: AppColors.white),
+                                backgroundColor: AppColors.scrim,
+                                child: Icon(Icons.close, size: 14, color: AppColors.onBrand),
                               ),
                             ),
                           ),

@@ -65,7 +65,7 @@ class PostCard extends ConsumerWidget {
                 TextButton(onPressed: () => Navigator.pop(context, false), child: Text(l10n.cancel)),
                 TextButton(
                   onPressed: () => Navigator.pop(context, true),
-                  child: Text(l10n.deletePost, style: const TextStyle(color: AppColors.error)),
+                  child: Text(l10n.deletePost, style: TextStyle(color: AppColors.error)),
                 ),
               ],
             ),
@@ -159,12 +159,12 @@ class PostCard extends ConsumerWidget {
                 const SizedBox(width: AppSpacing.xs),
                 IconButton(
                   onPressed: detailed ? null : () => context.push('/post/${shown.id}'),
-                  icon: const Icon(Icons.mode_comment_outlined, color: AppColors.black600),
+                  icon: Icon(Icons.mode_comment_outlined, color: AppColors.black600),
                 ),
                 Text('${shown.commentsCount}', style: AppTextStyles.body2),
                 const Spacer(),
                 if (shown.hasVideo) ...[
-                  const Icon(Icons.visibility_outlined, size: 18, color: AppColors.black600),
+                  Icon(Icons.visibility_outlined, size: 18, color: AppColors.black600),
                   const SizedBox(width: 4),
                   Text('${shown.viewsCount}', style: AppTextStyles.body2),
                 ],
@@ -238,7 +238,7 @@ class _MediaState extends State<_Media> {
                     fit: StackFit.expand,
                     children: [
                       AppNetworkImage(url: video.thumbnailUrl, icon: Icons.videocam_outlined),
-                      const Center(child: Icon(Icons.play_circle_fill, color: AppColors.white, size: 56)),
+                      const Center(child: Icon(Icons.play_circle_fill, color: AppColors.onBrand, size: 56)),
                     ],
                   ),
                 ),
@@ -267,12 +267,12 @@ class _MediaState extends State<_Media> {
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                   decoration: BoxDecoration(
-                    color: AppColors.black.withValues(alpha: 0.55),
+                    color: AppColors.scrim.withValues(alpha: 0.55),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
                     '${_page + 1}/${images.length}',
-                    style: AppTextStyles.caption.copyWith(color: AppColors.white),
+                    style: AppTextStyles.caption.copyWith(color: AppColors.onBrand),
                   ),
                 ),
               ),

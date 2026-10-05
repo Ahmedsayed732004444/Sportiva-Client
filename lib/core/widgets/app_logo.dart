@@ -13,8 +13,8 @@ class AppLogo extends StatelessWidget {
     return Container(
       width: size,
       height: size,
-      decoration: const BoxDecoration(color: AppColors.primary, shape: BoxShape.circle),
-      child: Icon(Icons.sports_soccer, color: AppColors.white, size: size * 0.55),
+      decoration: BoxDecoration(color: AppColors.primary, shape: BoxShape.circle),
+      child: Icon(Icons.sports_soccer, color: AppColors.onBrand, size: size * 0.55),
     );
   }
 }

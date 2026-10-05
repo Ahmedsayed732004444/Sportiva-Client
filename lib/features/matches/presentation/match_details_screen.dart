@@ -75,7 +75,7 @@ class _BodyState extends ConsumerState<_Body> with SubmitMixin {
           TextButton(onPressed: () => Navigator.pop(context, false), child: Text(l10n.keepBooking)),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
-            child: Text(l10n.cancelMatch, style: const TextStyle(color: AppColors.error)),
+            child: Text(l10n.cancelMatch, style: TextStyle(color: AppColors.error)),
           ),
         ],
       ),
@@ -261,12 +261,12 @@ class _JoinRequests extends ConsumerWidget {
               children: [
                 IconButton(
                   onPressed: () => answer(() => repository.reject(match.id, request.id)),
-                  icon: const Icon(Icons.close, color: AppColors.error),
+                  icon: Icon(Icons.close, color: AppColors.error),
                   tooltip: l10n.reject,
                 ),
                 IconButton(
                   onPressed: match.spotsLeft > 0 ? () => answer(() => repository.accept(match.id, request.id)) : null,
-                  icon: const Icon(Icons.check, color: AppColors.primary),
+                  icon: Icon(Icons.check, color: AppColors.primary),
                   tooltip: l10n.accept,
                 ),
               ],

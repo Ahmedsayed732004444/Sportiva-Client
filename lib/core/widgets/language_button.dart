@@ -14,7 +14,7 @@ class LanguageButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return TextButton.icon(
       onPressed: ref.read(localeProvider.notifier).toggle,
-      icon: const Icon(Icons.language, color: AppColors.primary, size: 20),
+      icon: Icon(Icons.language, color: AppColors.primary, size: 20),
       label: Text(context.l10n.switchLanguage, style: AppTextStyles.body2.copyWith(color: AppColors.primary)),
     );
   }

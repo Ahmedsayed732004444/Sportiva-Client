@@ -61,7 +61,7 @@ class CourtCard extends StatelessWidget {
                   Row(
                     children: [
                       if (court.distanceText != null) ...[
-                        const Icon(Icons.location_on_outlined, size: 16, color: AppColors.primaryMid),
+                        Icon(Icons.location_on_outlined, size: 16, color: AppColors.primaryMid),
                         const SizedBox(width: 2),
                         Flexible(
                           child: Text(

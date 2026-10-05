@@ -92,7 +92,7 @@ class StaffScreen extends ConsumerWidget {
           ref.invalidate(staffProvider);
         },
         backgroundColor: AppColors.primary,
-        foregroundColor: AppColors.white,
+        foregroundColor: AppColors.onBrand,
         icon: const Icon(Icons.person_add_alt),
         label: Text(l10n.addStaff),
       ),
@@ -146,7 +146,7 @@ class StaffScreen extends ConsumerWidget {
                                 TextButton(
                                   onPressed: () =>
                                       run(() => repository.removeStaff(member.id), done: l10n.staffRemoved),
-                                  child: Text(l10n.removeStaff, style: const TextStyle(color: AppColors.error)),
+                                  child: Text(l10n.removeStaff, style: TextStyle(color: AppColors.error)),
                                 ),
                               ],
                             ),

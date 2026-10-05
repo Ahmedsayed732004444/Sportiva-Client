@@ -265,7 +265,7 @@ class MyRecurringScreen extends ConsumerWidget {
                     if (context.mounted) showApiError(context, e);
                   }
                 },
-                child: Text(l10n.cancelRecurring, style: const TextStyle(color: AppColors.error)),
+                child: Text(l10n.cancelRecurring, style: TextStyle(color: AppColors.error)),
               ),
           ],
         ),

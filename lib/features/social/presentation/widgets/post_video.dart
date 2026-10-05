@@ -95,16 +95,16 @@ class _PostVideoState extends ConsumerState<PostVideo> {
 
     if (_failed) {
       return ColoredBox(
-        color: AppColors.black,
+        color: AppColors.scrim,
         child: Center(
-          child: Text(context.l10n.videoUnavailable, style: const TextStyle(color: AppColors.white)),
+          child: Text(context.l10n.videoUnavailable, style: const TextStyle(color: AppColors.onBrand)),
         ),
       );
     }
     if (controller == null) {
       return const ColoredBox(
-        color: AppColors.black,
-        child: Center(child: CircularProgressIndicator(color: AppColors.white)),
+        color: AppColors.scrim,
+        child: Center(child: CircularProgressIndicator(color: AppColors.onBrand)),
       );
     }
 
@@ -123,7 +123,7 @@ class _PostVideoState extends ConsumerState<PostVideo> {
     return GestureDetector(
       onTap: () => controller.value.isPlaying ? controller.pause() : controller.play(),
       child: ColoredBox(
-        color: AppColors.black,
+        color: AppColors.scrim,
         child: Stack(
           alignment: Alignment.center,
           children: [
@@ -132,7 +132,7 @@ class _PostVideoState extends ConsumerState<PostVideo> {
               valueListenable: controller,
               builder: (_, value, _) => value.isPlaying
                   ? const SizedBox.shrink()
-                  : const Icon(Icons.play_circle_fill, color: AppColors.white, size: 64),
+                  : const Icon(Icons.play_circle_fill, color: AppColors.onBrand, size: 64),
             ),
             Positioned(
               left: 0,
@@ -141,7 +141,7 @@ class _PostVideoState extends ConsumerState<PostVideo> {
               child: VideoProgressIndicator(
                 controller,
                 allowScrubbing: true,
-                colors: const VideoProgressColors(playedColor: AppColors.primary),
+                colors: VideoProgressColors(playedColor: AppColors.primary),
               ),
             ),
           ],

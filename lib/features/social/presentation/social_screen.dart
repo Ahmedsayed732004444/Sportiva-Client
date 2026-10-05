@@ -60,7 +60,7 @@ class SocialScreen extends ConsumerWidget {
         floatingActionButton: FloatingActionButton(
           onPressed: () => context.push('/post/create'),
           backgroundColor: AppColors.primary,
-          foregroundColor: AppColors.white,
+          foregroundColor: AppColors.onBrand,
           tooltip: l10n.newPost,
           child: const Icon(Icons.edit_outlined),
         ),
@@ -107,8 +107,8 @@ class _NewPostsBanner extends ConsumerWidget {
     return Padding(
       padding: const EdgeInsets.only(top: AppSpacing.xs),
       child: ActionChip(
-        avatar: const Icon(Icons.arrow_upward, size: 16, color: AppColors.white),
-        label: Text(context.l10n.showNewPosts, style: AppTextStyles.body2.copyWith(color: AppColors.white)),
+        avatar: const Icon(Icons.arrow_upward, size: 16, color: AppColors.onBrand),
+        label: Text(context.l10n.showNewPosts, style: AppTextStyles.body2.copyWith(color: AppColors.onBrand)),
         backgroundColor: AppColors.primary,
         side: BorderSide.none,
         onPressed: ref.read(feedProvider.notifier).refresh,

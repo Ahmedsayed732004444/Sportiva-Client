@@ -80,7 +80,7 @@ class _DetailsState extends ConsumerState<_Details> with SubmitMixin {
           TextButton(onPressed: () => Navigator.pop(context, false), child: Text(l10n.keepBooking)),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
-            child: Text(l10n.cancelBooking, style: const TextStyle(color: AppColors.error)),
+            child: Text(l10n.cancelBooking, style: TextStyle(color: AppColors.error)),
           ),
         ],
       ),

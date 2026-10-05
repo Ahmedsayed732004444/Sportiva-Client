@@ -24,7 +24,7 @@ Future<void> pumpScreen(WidgetTester tester, Widget screen, {String language = '
     ProviderScope(
       overrides: [sharedPreferencesProvider.overrideWithValue(preferences)],
       child: MaterialApp(
-        theme: AppTheme.light,
+        theme: AppTheme.build(),
         locale: Locale(language),
         supportedLocales: AppLocalizations.supportedLocales,
         localizationsDelegates: const [

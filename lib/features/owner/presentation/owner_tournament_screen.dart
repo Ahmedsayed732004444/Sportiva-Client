@@ -67,7 +67,7 @@ class _OwnerTournamentScreenState extends ConsumerState<OwnerTournamentScreen> {
           TextButton(onPressed: () => Navigator.pop(context, false), child: Text(l10n.cancel)),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
-            child: Text(title, style: const TextStyle(color: AppColors.error)),
+            child: Text(title, style: TextStyle(color: AppColors.error)),
           ),
         ],
       ),
@@ -127,7 +127,7 @@ class _OwnerTournamentScreenState extends ConsumerState<OwnerTournamentScreen> {
                         Chip(
                           label: Text(
                             tournament.status.label(l10n),
-                            style: AppTextStyles.caption.copyWith(color: AppColors.white),
+                            style: AppTextStyles.caption.copyWith(color: AppColors.onBrand),
                           ),
                           backgroundColor: tournament.status.color,
                           side: BorderSide.none,
@@ -223,7 +223,7 @@ class _TeamsTab extends ConsumerWidget {
             TextButton(onPressed: () => Navigator.pop(context, false), child: Text(l10n.cancel)),
             TextButton(
               onPressed: () => Navigator.pop(context, true),
-              child: Text(l10n.rejectTeam, style: const TextStyle(color: AppColors.error)),
+              child: Text(l10n.rejectTeam, style: TextStyle(color: AppColors.error)),
             ),
           ],
         ),
@@ -254,12 +254,12 @@ class _TeamsTab extends ConsumerWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               IconButton(
-                                icon: const Icon(Icons.close, color: AppColors.error),
+                                icon: Icon(Icons.close, color: AppColors.error),
                                 tooltip: l10n.rejectTeam,
                                 onPressed: () => reject(team),
                               ),
                               IconButton(
-                                icon: const Icon(Icons.check, color: AppColors.primary),
+                                icon: Icon(Icons.check, color: AppColors.primary),
                                 tooltip: l10n.approveTeam,
                                 onPressed: () => answer(() => repository.approve(tournamentId, team.id)),
                               ),

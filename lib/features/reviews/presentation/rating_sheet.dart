@@ -146,12 +146,12 @@ class _PlayersListState extends State<_PlayersList> {
                 backgroundColor: AppColors.primary,
                 child: Text(
                   player.fullName.isEmpty ? '?' : player.fullName[0],
-                  style: const TextStyle(color: AppColors.white),
+                  style: const TextStyle(color: AppColors.onBrand),
                 ),
               ),
               title: Text(player.fullName),
               trailing: _done.contains(player.userId)
-                  ? const Icon(Icons.check_circle, color: AppColors.primary)
+                  ? Icon(Icons.check_circle, color: AppColors.primary)
                   : const Icon(Icons.star_border_rounded),
               onTap: _done.contains(player.userId)
                   ? null

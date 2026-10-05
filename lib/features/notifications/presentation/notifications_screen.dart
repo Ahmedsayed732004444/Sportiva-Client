@@ -35,7 +35,7 @@ class NotificationsScreen extends ConsumerWidget {
         emptyMessage: l10n.noNotifications,
         emptyIcon: Icons.notifications_none,
         padding: EdgeInsets.zero,
-        separator: const Divider(height: 1, color: AppColors.gray200),
+        separator: Divider(height: 1, color: AppColors.gray200),
         itemBuilder: (context, notification) => _NotificationTile(notification: notification),
       ),
     );
@@ -58,7 +58,7 @@ class _NotificationTile extends ConsumerWidget {
         color: AppColors.error,
         alignment: AlignmentDirectional.centerStart,
         padding: const EdgeInsets.symmetric(horizontal: AppSpacing.m),
-        child: const Icon(Icons.delete_outline, color: AppColors.white),
+        child: Icon(Icons.delete_outline, color: AppColors.surface),
       ),
       child: InkWell(
         onTap: () {
@@ -67,7 +67,7 @@ class _NotificationTile extends ConsumerWidget {
           if (route != null) context.push(route);
         },
         child: Container(
-          color: notification.isRead ? AppColors.white : AppColors.primaryLight.withValues(alpha: 0.12),
+          color: notification.isRead ? AppColors.surface : AppColors.primaryLight.withValues(alpha: 0.12),
           padding: const EdgeInsets.all(AppSpacing.s),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,7 +100,7 @@ class _NotificationTile extends ConsumerWidget {
                   width: 8,
                   height: 8,
                   margin: const EdgeInsets.only(top: 6),
-                  decoration: const BoxDecoration(color: AppColors.primary, shape: BoxShape.circle),
+                  decoration: BoxDecoration(color: AppColors.primary, shape: BoxShape.circle),
                 ),
             ],
           ),

@@ -19,7 +19,7 @@ class StepperField extends StatelessWidget {
       icon: Icon(icon, size: 20),
       style: IconButton.styleFrom(
         foregroundColor: AppColors.primary,
-        side: const BorderSide(color: AppColors.primary),
+        side: BorderSide(color: AppColors.primary),
       ),
     );
 

@@ -113,7 +113,7 @@ Future<void> pumpApp(
         if (catalog != null) catalogRepositoryProvider.overrideWithValue(catalog),
       ],
       child: MaterialApp(
-        theme: AppTheme.light,
+        theme: AppTheme.build(),
         locale: Locale(language),
         supportedLocales: AppLocalizations.supportedLocales,
         localizationsDelegates: const [

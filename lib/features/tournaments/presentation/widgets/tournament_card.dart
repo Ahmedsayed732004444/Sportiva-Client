@@ -43,7 +43,7 @@ class TournamentCard extends StatelessWidget {
                     decoration: BoxDecoration(color: tournament.status.color, borderRadius: BorderRadius.circular(20)),
                     child: Text(
                       tournament.status.label(l10n),
-                      style: AppTextStyles.caption.copyWith(color: AppColors.white, fontWeight: FontWeight.w700),
+                      style: AppTextStyles.caption.copyWith(color: AppColors.onBrand, fontWeight: FontWeight.w700),
                     ),
                   ),
                 ),

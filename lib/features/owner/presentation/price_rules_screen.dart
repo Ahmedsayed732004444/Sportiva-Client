@@ -202,7 +202,7 @@ class _PriceRulesScreenState extends ConsumerState<PriceRulesScreen> with Submit
                       subtitle: Text(formatPricePerHour(l10n, rules[i].pricePiasters)),
                       onTap: () => _edit(rule: rules[i], index: i),
                       trailing: IconButton(
-                        icon: const Icon(Icons.delete_outline, color: AppColors.error),
+                        icon: Icon(Icons.delete_outline, color: AppColors.error),
                         onPressed: () => setState(() => _rules = [...rules]..removeAt(i)),
                       ),
                     ),

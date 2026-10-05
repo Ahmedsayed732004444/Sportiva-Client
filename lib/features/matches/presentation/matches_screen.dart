@@ -43,7 +43,7 @@ class MatchesScreen extends ConsumerWidget {
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () => context.push('/matches/create'),
           backgroundColor: AppColors.primary,
-          foregroundColor: AppColors.white,
+          foregroundColor: AppColors.onBrand,
           icon: const Icon(Icons.add),
           label: Text(l10n.createMatch),
         ),

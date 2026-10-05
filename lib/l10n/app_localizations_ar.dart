@@ -2093,4 +2093,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String morePlayers(int count) {
     return '+$count';
   }
+
+  @override
+  String get appearance => 'المظهر';
+
+  @override
+  String get themeSystem => 'حسب الهاتف';
+
+  @override
+  String get themeLight => 'فاتح';
+
+  @override
+  String get themeDark => 'داكن';
 }

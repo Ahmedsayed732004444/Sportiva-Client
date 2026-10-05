@@ -987,5 +987,9 @@
         "type": "int"
       }
     }
-  }
+  },
+  "appearance": "المظهر",
+  "themeSystem": "حسب الهاتف",
+  "themeLight": "فاتح",
+  "themeDark": "داكن"
 }

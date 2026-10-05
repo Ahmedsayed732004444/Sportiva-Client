@@ -243,7 +243,7 @@ class _CourtBodyState extends ConsumerState<_CourtBody> with SubmitMixin {
         ],
       ),
       bottomNavigationBar: DecoratedBox(
-        decoration: const BoxDecoration(color: AppColors.white, boxShadow: AppShadows.drop),
+        decoration: BoxDecoration(color: AppColors.surface, boxShadow: AppShadows.drop),
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(AppSpacing.s),
@@ -327,7 +327,7 @@ class _DayStrip extends StatelessWidget {
             child: Container(
               width: 64,
               decoration: BoxDecoration(
-                color: isSelected ? AppColors.primary : AppColors.white,
+                color: isSelected ? AppColors.primary : AppColors.surface,
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(color: isSelected ? AppColors.primary : AppColors.gray400),
               ),
@@ -336,12 +336,12 @@ class _DayStrip extends StatelessWidget {
                 children: [
                   Text(
                     formatDay(locale, day).split(' ').first,
-                    style: AppTextStyles.caption.copyWith(color: isSelected ? AppColors.white : AppColors.black600),
+                    style: AppTextStyles.caption.copyWith(color: isSelected ? AppColors.onBrand : AppColors.black600),
                   ),
                   Text(
                     '${day.day}',
                     style: AppTextStyles.title.copyWith(
-                      color: isSelected ? AppColors.white : AppColors.black,
+                      color: isSelected ? AppColors.onBrand : AppColors.ink,
                       fontWeight: FontWeight.w700,
                     ),
                   ),

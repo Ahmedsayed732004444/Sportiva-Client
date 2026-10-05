@@ -12,7 +12,7 @@ class OrDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const line = Expanded(child: Divider(color: AppColors.gray200, thickness: 1));
+    final line = Expanded(child: Divider(color: AppColors.gray200, thickness: 1));
     return Row(
       children: [
         line,

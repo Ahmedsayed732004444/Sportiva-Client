@@ -71,7 +71,7 @@ class ClubCard extends StatelessWidget {
                     ),
                     const Spacer(),
                     if (club.distanceText != null) ...[
-                      const Icon(Icons.location_on_outlined, size: 16, color: AppColors.primaryMid),
+                      Icon(Icons.location_on_outlined, size: 16, color: AppColors.primaryMid),
                       Text(club.distanceText!, style: AppTextStyles.caption),
                     ],
                   ],

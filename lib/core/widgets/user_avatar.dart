@@ -24,7 +24,7 @@ class UserAvatar extends StatelessWidget {
           ? null
           : Text(
               name.isEmpty ? '?' : name.characters.first,
-              style: TextStyle(color: AppColors.white, fontSize: radius * 0.8),
+              style: TextStyle(color: AppColors.onBrand, fontSize: radius * 0.8),
             ),
     );
   }

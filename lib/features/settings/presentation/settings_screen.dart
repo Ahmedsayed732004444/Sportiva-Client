@@ -8,6 +8,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/validation/validators.dart';
+import '../../../core/theme/theme_controller.dart';
 import '../../../core/widgets/language_button.dart';
 import '../../../core/widgets/snack.dart';
 import '../../auth/application/auth_controller.dart';
@@ -75,7 +76,7 @@ class SettingsScreen extends ConsumerWidget {
             TextButton(onPressed: () => Navigator.pop(context, false), child: Text(l10n.cancel)),
             TextButton(
               onPressed: () => Navigator.pop(context, true),
-              child: Text(l10n.deleteAccountConfirm, style: const TextStyle(color: AppColors.error)),
+              child: Text(l10n.deleteAccountConfirm, style: TextStyle(color: AppColors.error)),
             ),
           ],
         ),
@@ -110,36 +111,62 @@ class SettingsScreen extends ConsumerWidget {
         children: [
           section(l10n.account),
           ListTile(
-            leading: const Icon(Icons.mail_outline, color: AppColors.primary),
+            leading: Icon(Icons.mail_outline, color: AppColors.primary),
             title: Text(account?.email ?? '', style: AppTextStyles.body1),
           ),
           ListTile(
-            leading: const Icon(Icons.phone_outlined, color: AppColors.primary),
+            leading: Icon(Icons.phone_outlined, color: AppColors.primary),
             title: Text(account?.phone ?? l10n.enterPhone, style: AppTextStyles.body1),
             trailing: const Icon(Icons.edit_outlined, size: 20),
             onTap: account == null ? null : editPhone,
           ),
           ListTile(
-            leading: const Icon(Icons.lock_outline, color: AppColors.primary),
+            leading: Icon(Icons.lock_outline, color: AppColors.primary),
             title: Text(l10n.changePassword, style: AppTextStyles.body1),
             trailing: const Icon(Icons.chevron_right),
             onTap: () => context.push('/settings/password'),
           ),
           section(l10n.settings),
           ListTile(
-            leading: const Icon(Icons.translate, color: AppColors.primary),
+            leading: Icon(Icons.translate, color: AppColors.primary),
             title: Text(l10n.language, style: AppTextStyles.body1),
             trailing: const LanguageButton(),
           ),
           ListTile(
-            leading: const Icon(Icons.notifications_outlined, color: AppColors.primary),
+            leading: Icon(Icons.dark_mode_outlined, color: AppColors.primary),
+            title: Text(l10n.appearance, style: AppTextStyles.body1),
+            subtitle: Padding(
+              padding: const EdgeInsets.only(top: AppSpacing.xs),
+              child: SegmentedButton<ThemeMode>(
+                showSelectedIcon: false,
+                segments: [
+                  ButtonSegment(
+                    value: ThemeMode.system,
+                    label: Text(l10n.themeSystem, style: AppTextStyles.caption),
+                  ),
+                  ButtonSegment(
+                    value: ThemeMode.light,
+                    label: Text(l10n.themeLight, style: AppTextStyles.caption),
+                  ),
+                  ButtonSegment(
+                    value: ThemeMode.dark,
+                    label: Text(l10n.themeDark, style: AppTextStyles.caption),
+                  ),
+                ],
+                selected: {ref.watch(themeModeProvider)},
+                onSelectionChanged: (modes) => ref.read(themeModeProvider.notifier).set(modes.first),
+              ),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.notifications_outlined, color: AppColors.primary),
             title: Text(l10n.notificationSettings, style: AppTextStyles.body1),
             trailing: const Icon(Icons.chevron_right),
             onTap: () => context.push('/settings/notifications'),
           ),
           const Divider(height: AppSpacing.xl),
           ListTile(
-            leading: const Icon(Icons.delete_outline, color: AppColors.error),
+            leading: Icon(Icons.delete_outline, color: AppColors.error),
             title: Text(l10n.deleteAccount, style: AppTextStyles.body1.copyWith(color: AppColors.error)),
             onTap: deleteAccount,
           ),

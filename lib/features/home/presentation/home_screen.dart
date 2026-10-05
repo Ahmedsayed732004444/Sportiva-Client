@@ -112,7 +112,7 @@ class _TournamentsEntry extends StatelessWidget {
       child: AppCard(
         onTap: () => context.push('/tournaments'),
         child: ListTile(
-          leading: const Icon(Icons.emoji_events_outlined, color: AppColors.primary, size: 32),
+          leading: Icon(Icons.emoji_events_outlined, color: AppColors.primary, size: 32),
           title: Text(l10n.tournaments, style: AppTextStyles.title.copyWith(fontWeight: FontWeight.w700)),
           subtitle: Text(l10n.tournamentsSubtitle, style: AppTextStyles.body2),
           trailing: const Icon(Icons.chevron_right),
@@ -136,7 +136,7 @@ class _BecomeOwnerEntry extends ConsumerWidget {
       child: AppCard(
         onTap: () => context.push('/membership'),
         child: ListTile(
-          leading: const Icon(Icons.add_business_outlined, color: AppColors.primary, size: 32),
+          leading: Icon(Icons.add_business_outlined, color: AppColors.primary, size: 32),
           title: Text(l10n.becomeOwner, style: AppTextStyles.title.copyWith(fontWeight: FontWeight.w700)),
           subtitle: Text(
             l10n.membershipIntro,

@@ -153,7 +153,7 @@ class _HeaderState extends ConsumerState<_Header> {
                     Chip(
                       label: Text(
                         tournament.status.label(l10n),
-                        style: AppTextStyles.caption.copyWith(color: AppColors.white),
+                        style: AppTextStyles.caption.copyWith(color: AppColors.onBrand),
                       ),
                       backgroundColor: tournament.status.color,
                       side: BorderSide.none,
@@ -249,7 +249,7 @@ class _InfoTab extends StatelessWidget {
             color: AppColors.primary.withValues(alpha: 0.08),
             elevation: 0,
             child: ListTile(
-              leading: const Icon(Icons.emoji_events, color: AppColors.primary),
+              leading: Icon(Icons.emoji_events, color: AppColors.primary),
               title: Text(l10n.champion, style: AppTextStyles.caption),
               subtitle: Text(
                 tournament.champion!.name,

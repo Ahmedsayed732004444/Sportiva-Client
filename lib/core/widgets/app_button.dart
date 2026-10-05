@@ -27,10 +27,10 @@ class AppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final filled = style == AppButtonStyle.filled;
-    final foreground = filled ? AppColors.white : AppColors.primary;
+    final foreground = filled ? AppColors.onBrand : AppColors.primary;
     final shape = RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(AppSpacing.radiusPill),
-      side: filled ? BorderSide.none : const BorderSide(color: AppColors.primary),
+      side: filled ? BorderSide.none : BorderSide(color: AppColors.primary),
     );
 
     return SizedBox(
@@ -41,10 +41,10 @@ class AppButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           elevation: 0,
           shape: shape,
-          backgroundColor: filled ? AppColors.primary : AppColors.white,
+          backgroundColor: filled ? AppColors.primary : AppColors.surface,
           foregroundColor: foreground,
-          disabledBackgroundColor: filled ? AppColors.primary.withValues(alpha: 0.4) : AppColors.white,
-          disabledForegroundColor: filled ? AppColors.white : AppColors.gray400,
+          disabledBackgroundColor: filled ? AppColors.primary.withValues(alpha: 0.4) : AppColors.onBrand,
+          disabledForegroundColor: filled ? AppColors.onBrand : AppColors.gray400,
         ),
         child: isLoading
             ? SizedBox.square(dimension: 24, child: CircularProgressIndicator(strokeWidth: 2.5, color: foreground))

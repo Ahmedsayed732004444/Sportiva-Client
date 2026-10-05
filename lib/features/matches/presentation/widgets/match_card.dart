@@ -114,7 +114,7 @@ class _Faces extends StatelessWidget {
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      border: Border.all(color: AppColors.white, width: 1.5),
+                      border: Border.all(color: AppColors.onBrand, width: 1.5),
                     ),
                     child: UserAvatar(name: first[i].fullName, url: first[i].avatarUrl, radius: _radius),
                   ),

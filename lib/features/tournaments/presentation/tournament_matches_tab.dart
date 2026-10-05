@@ -110,7 +110,7 @@ class _MatchTile extends ConsumerWidget {
       maxLines: 2,
       overflow: TextOverflow.ellipsis,
       style: AppTextStyles.body1Semibold.copyWith(
-        color: team == null ? AppColors.gray500 : AppColors.black,
+        color: team == null ? AppColors.gray500 : AppColors.ink,
         fontWeight: won ? FontWeight.w800 : FontWeight.w600,
       ),
     );

@@ -85,7 +85,7 @@ class _ChatViewState extends ConsumerState<ChatView> with SubmitMixin {
                 IconButton.filled(
                   onPressed: isSubmitting ? null : _send,
                   style: IconButton.styleFrom(backgroundColor: AppColors.primary),
-                  icon: const Icon(Icons.send_rounded, color: AppColors.white),
+                  icon: const Icon(Icons.send_rounded, color: AppColors.onBrand),
                   tooltip: l10n.send,
                 ),
               ],
@@ -125,11 +125,11 @@ class _Bubble extends StatelessWidget {
                 message.senderName,
                 style: AppTextStyles.caption.copyWith(color: AppColors.primaryMid, fontWeight: FontWeight.w700),
               ),
-            Text(message.text, style: AppTextStyles.body1.copyWith(color: mine ? AppColors.white : AppColors.black)),
+            Text(message.text, style: AppTextStyles.body1.copyWith(color: mine ? AppColors.onBrand : AppColors.ink)),
             Text(
               relativeTime(context.l10n, message.sentAt),
               style: AppTextStyles.small.copyWith(
-                color: mine ? AppColors.white.withValues(alpha: 0.7) : AppColors.gray500,
+                color: mine ? AppColors.onBrand.withValues(alpha: 0.7) : AppColors.gray500,
               ),
             ),
           ],

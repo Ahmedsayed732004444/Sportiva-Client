@@ -97,8 +97,8 @@ class _ClubBody extends ConsumerWidget {
                           child: Chip(
                             avatar: Icon(sport.icon, size: 18, color: AppColors.primary),
                             label: Text(sport.label(l10n), style: AppTextStyles.caption),
-                            backgroundColor: AppColors.white,
-                            side: const BorderSide(color: AppColors.gray200),
+                            backgroundColor: AppColors.surface,
+                            side: BorderSide(color: AppColors.gray200),
                             visualDensity: VisualDensity.compact,
                           ),
                         ),
@@ -107,7 +107,7 @@ class _ClubBody extends ConsumerWidget {
                   const SizedBox(height: AppSpacing.s),
                   ListTile(
                     contentPadding: EdgeInsets.zero,
-                    leading: const Icon(Icons.location_on_outlined, color: AppColors.primary),
+                    leading: Icon(Icons.location_on_outlined, color: AppColors.primary),
                     title: Text(place, style: AppTextStyles.body1),
                     trailing: TextButton(onPressed: _openMap, child: Text(l10n.openInMaps)),
                   ),
@@ -185,7 +185,7 @@ class _WorkingHours extends StatelessWidget {
       data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
       child: ExpansionTile(
         tilePadding: EdgeInsets.zero,
-        leading: const Icon(Icons.schedule_outlined, color: AppColors.primary),
+        leading: Icon(Icons.schedule_outlined, color: AppColors.primary),
         title: Text(l10n.workingHours, style: AppTextStyles.body1),
         children: [
           for (final day in [
@@ -201,7 +201,7 @@ class _WorkingHours extends StatelessWidget {
                     day.isClosed
                         ? l10n.closed
                         : l10n.timeRange(formatTime(locale, day.opensAt), formatTime(locale, day.closesAt)),
-                    style: AppTextStyles.body2.copyWith(color: day.isClosed ? AppColors.error : AppColors.black),
+                    style: AppTextStyles.body2.copyWith(color: day.isClosed ? AppColors.error : AppColors.ink),
                   ),
                 ],
               ),
