@@ -1,0 +1,820 @@
+{
+  "@@locale": "en",
+  "appName": "Sportiva",
+  "login": "Login",
+  "signUp": "Sign up",
+  "email": "Email",
+  "enterEmail": "Enter your email",
+  "password": "Password",
+  "enterPassword": "Enter your password",
+  "rePassword": "Re-Password",
+  "retypePassword": "Retype your password",
+  "firstName": "First name",
+  "enterFirstName": "Enter your first name",
+  "lastName": "Last name",
+  "enterLastName": "Enter your last name",
+  "forgotPassword": "Forgot password?",
+  "signIn": "Sign in",
+  "noAccount": "Don't have an account?",
+  "haveAccount": "Already have an account?",
+  "signUpLink": "Sign up",
+  "signInLink": "Sign in",
+  "orLoginWith": "or login with",
+  "orSignUpWith": "or sign up with",
+  "checkYourEmail": "Check your email",
+  "codeSentTo": "We sent a code to",
+  "enterCodeHint": "Enter the 6-digit code mentioned in the email",
+  "verifyCode": "Verify code",
+  "noEmailYet": "Haven't got the email yet?",
+  "resendEmail": "Resend email",
+  "resendIn": "Resend in {seconds}s",
+  "@resendIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "forgotPasswordTitle": "Forgot password",
+  "forgotPasswordHint": "Please enter your email to reset your password",
+  "continueLabel": "Continue",
+  "setNewPassword": "Set a new password",
+  "setNewPasswordHint": "Create a new password and make sure it differs from previous ones for security",
+  "confirmPassword": "Confirm password",
+  "updatePassword": "Update password",
+  "fieldRequired": "This field is required",
+  "invalidEmail": "Enter a valid email address",
+  "passwordRule": "At least 8 characters with a digit, a lowercase letter, an uppercase letter and a symbol",
+  "passwordsDontMatch": "Passwords don't match",
+  "nameTooShort": "At least 3 characters",
+  "invalidCode": "Enter the 6-digit code",
+  "networkError": "Can't reach the server. Check your connection and try again.",
+  "unknownError": "Something went wrong. Please try again.",
+  "googleNotConfigured": "Google sign-in isn't set up yet.",
+  "googleSignInFailed": "Google sign-in failed. Please try again.",
+  "emailConfirmed": "Email confirmed. You can sign in now.",
+  "passwordUpdated": "Password updated. You can sign in now.",
+  "codeResent": "A new code was sent if the email needs one.",
+  "accountCreated": "Account created. Check your email for the code.",
+  "emailNotConfirmedHint": "Your email isn't confirmed yet. We sent you a code.",
+  "welcome": "Welcome, {name}",
+  "@welcome": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "signOut": "Sign out",
+  "switchLanguage": "العربية",
+  "navHome": "Home",
+  "navMatches": "Matches",
+  "navSocial": "Community",
+  "navBookings": "Bookings",
+  "navProfile": "Profile",
+  "comingSoon": "Coming soon",
+  "retry": "Try again",
+  "notifications": "Notifications",
+  "markAllRead": "Mark all as read",
+  "noNotifications": "No notifications yet",
+  "delete": "Delete",
+  "nothingHere": "Nothing here yet",
+  "timeNow": "now",
+  "timeMinutes": "{count}m ago",
+  "@timeMinutes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "timeHours": "{count}h ago",
+  "@timeHours": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "timeDays": "{count}d ago",
+  "@timeDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "language": "Language",
+  "locationTitle": "Find courts near you",
+  "locationBody": "Allow location access so we can show the nearest courts and how far each one is from you.",
+  "allowLocation": "Allow location",
+  "notNow": "Not now",
+  "openSettings": "Open settings",
+  "turnOnLocation": "Turn on location",
+  "locationDeniedForever": "Location access is blocked for the app. Enable it from the phone settings.",
+  "locationServiceOff": "Location is turned off on your phone.",
+  "helloUser": "Hello, {name}",
+  "@helloUser": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "courtsNearYou": "Courts near you",
+  "courtsOfSport": "{sport} courts",
+  "@courtsOfSport": {
+    "placeholders": {
+      "sport": {
+        "type": "String"
+      }
+    }
+  },
+  "noCourtsForSport": "No courts for this sport yet",
+  "topRatedClubs": "Top rated clubs",
+  "noClubsYet": "No clubs yet",
+  "chooseSport": "Choose a sport",
+  "sportFootball": "Football",
+  "sportPadel": "Padel",
+  "sportBasketball": "Basketball",
+  "sportTennis": "Tennis",
+  "sportVolleyball": "Volleyball",
+  "sportOther": "Other",
+  "perHour": "{price} EGP / hr",
+  "@perHour": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "courtsCount": "{count} courts",
+  "@courtsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "courts": "Courts",
+  "workingHours": "Working hours",
+  "reviews": "Reviews",
+  "noReviews": "No ratings yet",
+  "address": "Address",
+  "callClub": "Call",
+  "openInMaps": "Open in Maps",
+  "closed": "Closed",
+  "allDay": "Open",
+  "chooseDay": "Choose the day",
+  "duration": "Duration",
+  "courtPart": "Court",
+  "fullCourt": "Full court",
+  "halfA": "Half A",
+  "halfB": "Half B",
+  "playFormat": "Play format",
+  "singles": "Singles",
+  "doubles": "Doubles",
+  "chooseTime": "Choose the time",
+  "noTimesAvailable": "No free times for this choice",
+  "minutesLabel": "{minutes} min",
+  "@minutesLabel": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "priceTotal": "{price} EGP",
+  "@priceTotal": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "total": "Total",
+  "bookNow": "Book now",
+  "confirmBooking": "Confirm booking",
+  "bookingSummary": "Booking summary",
+  "confirm": "Confirm",
+  "cancel": "Cancel",
+  "selectTimeFirst": "Pick a time to continue",
+  "bookingConfirmed": "Your booking is confirmed",
+  "bookingRequested": "Request sent. The club will confirm it soon.",
+  "upcoming": "Upcoming",
+  "past": "Past",
+  "noBookings": "No bookings yet",
+  "bookingCode": "Booking {code}",
+  "@bookingCode": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "cancelBooking": "Cancel booking",
+  "cancelBookingBody": "Do you want to cancel this booking?",
+  "cancelReasonHint": "Reason (optional)",
+  "keepBooking": "Keep it",
+  "bookingCancelled": "Booking cancelled",
+  "bookingDetails": "Booking details",
+  "court": "Court",
+  "club": "Club",
+  "dateLabel": "Date",
+  "timeLabel": "Time",
+  "status": "Status",
+  "waitingForClub": "Waiting for the club to confirm",
+  "statusPending": "Pending",
+  "statusConfirmed": "Confirmed",
+  "statusRejected": "Rejected",
+  "statusCancelled": "Cancelled",
+  "statusCompleted": "Completed",
+  "statusNoShow": "No show",
+  "statusExpired": "Expired",
+  "reason": "Reason",
+  "timeRange": "{from} - {to}",
+  "@timeRange": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "openMatches": "Open matches",
+  "myMatches": "My matches",
+  "allSports": "All",
+  "noOpenMatches": "No open matches right now",
+  "noMyMatches": "You have no matches yet",
+  "createMatch": "Create match",
+  "matchDetails": "Match details",
+  "organizer": "Organizer",
+  "players": "Players",
+  "playersCount": "{joined}/{needed} players",
+  "@playersCount": {
+    "placeholders": {
+      "joined": {
+        "type": "int"
+      },
+      "needed": {
+        "type": "int"
+      }
+    }
+  },
+  "spotsLeft": "{count} spots left",
+  "@spotsLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "requestToJoin": "Request to join",
+  "requestSent": "Request sent",
+  "leaveMatch": "Leave match",
+  "cancelRequest": "Cancel request",
+  "cancelMatch": "Cancel match",
+  "cancelMatchBody": "Cancel this match for everyone?",
+  "matchCancelled": "Match cancelled",
+  "joinRequests": "Join requests",
+  "accept": "Accept",
+  "reject": "Reject",
+  "noRequests": "No pending requests",
+  "openChat": "Match chat",
+  "matchStatusOpen": "Open",
+  "matchStatusFull": "Full",
+  "matchStatusInProgress": "In progress",
+  "matchStatusCompleted": "Completed",
+  "matchStatusCancelled": "Cancelled",
+  "waitingClubConfirm": "Waiting for the club to confirm the booking",
+  "sport": "Sport",
+  "playersNeeded": "Players needed",
+  "placeName": "Place name",
+  "enterPlaceName": "Enter the place name",
+  "city": "City",
+  "enterCity": "Enter the city",
+  "governorate": "Governorate",
+  "note": "Note (optional)",
+  "enterNote": "Anything players should know",
+  "pickDate": "Pick a date",
+  "pickTime": "Pick a time",
+  "matchCreated": "Match created",
+  "openMatchFromBooking": "Open this booking for players",
+  "openMatch": "Open match",
+  "playersToFind": "How many players do you need?",
+  "typeMessage": "Type a message",
+  "noMessages": "No messages yet",
+  "send": "Send",
+  "playerRating": "{rating}",
+  "@playerRating": {
+    "placeholders": {
+      "rating": {
+        "type": "String"
+      }
+    }
+  },
+  "youAreOrganizer": "You are the organizer",
+  "requestPending": "Your request is pending",
+  "youAreIn": "You are in this match",
+  "wholeDayHint": "Times are on the hour or half hour",
+  "feed": "Following",
+  "explore": "Explore",
+  "reels": "Reels",
+  "searchHint": "Search people, clubs and posts",
+  "noPosts": "No posts yet",
+  "newPostsAvailable": "New posts",
+  "newPost": "New post",
+  "whatsOnYourMind": "What's on your mind?",
+  "addPhotos": "Photos",
+  "addVideo": "Video",
+  "publish": "Publish",
+  "postProcessing": "Your post is being prepared and will appear when it's ready.",
+  "postPublished": "Post published",
+  "postFailed": "This post couldn't be published",
+  "postEmpty": "Write something or add a photo or video",
+  "maxPhotos": "At most {count} photos",
+  "@maxPhotos": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "videoTooLarge": "The video is too large (100 MB at most)",
+  "likes": "{count} likes",
+  "@likes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "comments": "Comments",
+  "commentsCount": "{count} comments",
+  "@commentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "writeComment": "Write a comment",
+  "replyingTo": "Replying to {name}",
+  "@replyingTo": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "reply": "Reply",
+  "replies": "{count} replies",
+  "@replies": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "hideReplies": "Hide replies",
+  "noComments": "No comments yet",
+  "deletePost": "Delete post",
+  "deletePostBody": "Delete this post?",
+  "editPost": "Edit post",
+  "save": "Save",
+  "report": "Report",
+  "reportTitle": "Why are you reporting this?",
+  "reportSent": "Thanks, we'll review it",
+  "reasonSexualContent": "Sexual content",
+  "reasonViolence": "Violence",
+  "reasonHarassment": "Harassment",
+  "reasonSpam": "Spam",
+  "reasonMisinformation": "Misinformation",
+  "reasonImpersonation": "Impersonation",
+  "reasonOther": "Other",
+  "block": "Block",
+  "unblock": "Unblock",
+  "blockBody": "They won't be able to see your posts or message you.",
+  "blocked": "User blocked",
+  "follow": "Follow",
+  "following": "Following",
+  "followBack": "Follow back",
+  "followers": "Followers",
+  "followingLabel": "Following",
+  "postsLabel": "Posts",
+  "message": "Message",
+  "editProfile": "Edit profile",
+  "bio": "Bio",
+  "enterBio": "Tell people about you",
+  "changePhoto": "Change photo",
+  "profileSaved": "Profile saved",
+  "online": "Online",
+  "messages": "Messages",
+  "noConversations": "No conversations yet",
+  "noPeople": "No people yet",
+  "you": "You",
+  "viewReel": "Reels",
+  "noReels": "No reels yet",
+  "videoUnavailable": "Video unavailable",
+  "searchPeople": "People",
+  "searchClubs": "Clubs",
+  "searchPosts": "Posts",
+  "typeToSearch": "Type to search",
+  "noResults": "No results",
+  "viewProfile": "View profile",
+  "videoPicked": "Video selected",
+  "removeVideo": "Remove video",
+  "showNewPosts": "Show new posts",
+  "followersOf": "Followers",
+  "followingOf": "Following",
+  "blockedProfile": "You blocked this person",
+  "sendFirstMessage": "Say hello",
+  "tournaments": "Tournaments",
+  "tournamentsSubtitle": "Join a tournament or follow one",
+  "noTournaments": "No tournaments right now",
+  "tournamentDetails": "Tournament",
+  "tabInfo": "Info",
+  "tabTeams": "Teams",
+  "tabMatches": "Matches",
+  "tabStandings": "Standings",
+  "tournamentRegistrationOpen": "Registration open",
+  "tournamentRegistrationClosed": "Registration closed",
+  "tournamentInProgress": "In progress",
+  "tournamentCompleted": "Completed",
+  "tournamentCancelled": "Cancelled",
+  "tournamentDraft": "Draft",
+  "formatKnockout": "Knockout",
+  "formatLeague": "League",
+  "formatGroupsKnockout": "Groups + knockout",
+  "individualTournament": "Individual",
+  "teamsCount": "{joined}/{max} teams",
+  "@teamsCount": {
+    "placeholders": {
+      "joined": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "entryFee": "Entry fee",
+  "free": "Free",
+  "feeAmount": "{amount} EGP",
+  "@feeAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "registrationCloses": "Registration closes",
+  "startsOn": "Starts",
+  "endsOn": "Ends",
+  "tournamentFormat": "Format",
+  "teamSize": "Players per team",
+  "teamSizeValue": "{players} + {subs} substitutes",
+  "@teamSizeValue": {
+    "placeholders": {
+      "players": {
+        "type": "int"
+      },
+      "subs": {
+        "type": "int"
+      }
+    }
+  },
+  "matchLength": "Match length",
+  "tournamentCourts": "Courts",
+  "description": "Description",
+  "rules": "Rules",
+  "prizes": "Prizes",
+  "champion": "Champion",
+  "cancellationReason": "Cancelled: {reason}",
+  "@cancellationReason": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "registerTeam": "Register a team",
+  "registerPlayer": "Join the tournament",
+  "myTeam": "My team",
+  "teamName": "Team name",
+  "enterTeamName": "Enter the team name",
+  "teamCreated": "Team created",
+  "noTeams": "No teams yet",
+  "noMatchesYet": "The schedule isn't ready yet",
+  "noStandings": "No standings yet",
+  "stageLeague": "League",
+  "stageGroup": "Group {number}",
+  "@stageGroup": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "stageKnockout": "Knockout",
+  "roundLabel": "Round {number}",
+  "@roundLabel": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "tbd": "To be decided",
+  "bye": "Bye",
+  "matchWaiting": "Waiting",
+  "matchScheduled": "Scheduled",
+  "matchDone": "Finished",
+  "matchCancelledShort": "Cancelled",
+  "colPlayed": "P",
+  "colWon": "W",
+  "colDrawn": "D",
+  "colLost": "L",
+  "colGoalDiff": "GD",
+  "colPoints": "Pts",
+  "groupNumber": "Group {number}",
+  "@groupNumber": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "teamStatusForming": "Forming",
+  "teamStatusPendingPayment": "Waiting for payment",
+  "teamStatusPendingApproval": "Waiting for approval",
+  "teamStatusApproved": "Approved",
+  "teamStatusRejected": "Rejected",
+  "teamStatusWithdrawn": "Withdrawn",
+  "teamStatusCancelled": "Cancelled",
+  "rejectionReason": "Reason: {reason}",
+  "@rejectionReason": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "captain": "Captain",
+  "substitute": "Substitute",
+  "memberInvited": "Invited",
+  "memberAccepted": "Joined",
+  "memberDeclined": "Declined",
+  "memberRemoved": "Removed",
+  "invitePlayer": "Invite a player",
+  "inviteAsSubstitute": "As a substitute",
+  "inviteSent": "Invitation sent",
+  "removeMember": "Remove from team",
+  "payNow": "Pay the entry fee",
+  "payWithCard": "Card",
+  "payWithWallet": "Mobile wallet",
+  "payHint": "You'll finish the payment in your browser; the team updates by itself.",
+  "withdrawTeam": "Withdraw the team",
+  "withdrawBody": "Withdraw this team from the tournament?",
+  "withdrawn": "Team withdrawn",
+  "myTeams": "My teams",
+  "invitations": "Invitations",
+  "noMyTeams": "You haven't joined any tournament yet",
+  "noInvitations": "No invitations",
+  "invitedBy": "{name} invited you",
+  "@invitedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "decline": "Decline",
+  "invitationAccepted": "You joined the team",
+  "invitationDeclined": "Invitation declined",
+  "searchPlayers": "Search for a player",
+  "teamsAndInvitations": "My teams and invitations",
+  "allTournamentSports": "All sports",
+  "openTournaments": "Open for registration",
+  "rateCourt": "Rate this court",
+  "ratePlayers": "Rate the players",
+  "yourRating": "Your rating",
+  "commentOptional": "Comment (optional)",
+  "submitReview": "Send rating",
+  "reviewSent": "Thanks for your rating",
+  "myReviews": "My ratings",
+  "reviewsWritten": "Given",
+  "reviewsReceived": "Received",
+  "reviewHiddenUntil": "Hidden until the rating window ends",
+  "deleteReview": "Delete rating",
+  "reviewDeleted": "Rating deleted",
+  "rated": "Rated",
+  "tapToRate": "Tap a player to rate them",
+  "settings": "Settings",
+  "account": "Account",
+  "phone": "Phone",
+  "enterPhone": "Enter your mobile number",
+  "savePhone": "Save",
+  "phoneSaved": "Phone saved",
+  "notificationSettings": "Notification settings",
+  "inApp": "In the app",
+  "byEmail": "By email",
+  "categoryBookings": "Bookings and ratings",
+  "categoryPayments": "Payments and subscriptions",
+  "categoryMatches": "Matches",
+  "categorySocial": "Social and messages",
+  "categoryTournaments": "Tournaments",
+  "categoryAccount": "Account and system",
+  "changePassword": "Change password",
+  "currentPassword": "Current password",
+  "enterCurrentPassword": "Enter your current password",
+  "newPassword": "New password",
+  "passwordChanged": "Password changed",
+  "deleteAccount": "Delete my account",
+  "deleteAccountBody": "Your account will be closed and your data erased. This can't be undone.",
+  "deleteAccountConfirm": "Delete",
+  "deletionRequested": "Your account will be deleted",
+  "manageClub": "Manage my club",
+  "invalidPhone": "Enter a valid Egyptian mobile number",
+  "ownerTitle": "My club",
+  "ownerBookings": "Bookings",
+  "ownerCourts": "Courts",
+  "ownerTournaments": "Tournaments",
+  "ownerClub": "Club",
+  "tabPending": "Requests",
+  "tabUpcoming": "Upcoming",
+  "tabPast": "Past",
+  "noOwnerBookings": "No bookings here",
+  "confirmAction": "Confirm",
+  "rejectAction": "Reject",
+  "rejectBookingTitle": "Reject this booking",
+  "reasonOptional": "Reason (optional)",
+  "cancelBookingAction": "Cancel booking",
+  "markCompleted": "Mark as played",
+  "markNoShow": "No-show",
+  "ratePlayer": "Rate the player",
+  "customer": "Customer",
+  "walkInCustomer": "Walk-in customer",
+  "manualBooking": "New booking",
+  "customerName": "Customer name",
+  "customerPhone": "Customer phone",
+  "customerEmail": "Customer email (optional)",
+  "selectCourt": "Court",
+  "bookingCreated": "Booking created",
+  "bookingUpdated": "Done",
+  "playFormatLabel": "Play format",
+  "courtPartLabel": "Court part",
+  "callCustomer": "Call",
+  "needsReply": "Reply before {time}",
+  "@needsReply": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "addCourt": "Add a court",
+  "editCourt": "Edit court",
+  "courtName": "Court name",
+  "enterCourtName": "Enter the court name",
+  "confirmationMode": "Booking confirmation",
+  "modeManual": "I confirm each booking",
+  "modeAutomatic": "Automatic",
+  "responseTimeout": "Reply within (minutes)",
+  "pricePerHour": "Price per hour (EGP)",
+  "enterPrice": "Enter the price",
+  "invalidNumber": "Enter a valid number",
+  "allowsHalfCourt": "Half court bookings",
+  "halfCourtPrice": "Half court price per hour (EGP)",
+  "courtSaved": "Court saved",
+  "courtDeleted": "Court deleted",
+  "deleteCourt": "Delete court",
+  "deleteCourtBody": "Delete this court? Its upcoming bookings must be cancelled first.",
+  "courtActive": "Open for booking",
+  "priceRules": "Price rules",
+  "priceRulesHint": "Different prices for certain days and hours",
+  "addRule": "Add a rule",
+  "anyDay": "Every day",
+  "ruleFrom": "From",
+  "ruleTo": "To",
+  "slotsAndClosing": "Close times",
+  "slotsHint": "Tap a time to close it for booking, tap again to open it",
+  "slotBooked": "Booked",
+  "pricesSaved": "Prices saved",
+  "noCourts": "No courts yet",
+  "weekdaySun": "Sun",
+  "weekdayMon": "Mon",
+  "weekdayTue": "Tue",
+  "weekdayWed": "Wed",
+  "weekdayThu": "Thu",
+  "weekdayFri": "Fri",
+  "weekdaySat": "Sat",
+  "clubOpen": "Club open for booking",
+  "editClubInfo": "Club details",
+  "clubSaved": "Club saved",
+  "hoursSaved": "Hours saved",
+  "mapUrl": "Map link (optional)",
+  "clubPhone": "Club phone",
+  "clubEmail": "Club email (optional)",
+  "changeLogo": "Change logo",
+  "changeCover": "Change cover",
+  "photoUpdated": "Photo updated",
+  "subscription": "Subscription",
+  "subNone": "No active subscription",
+  "subActive": "Active",
+  "subGrace": "Grace period - renew now",
+  "subExpired": "Expired",
+  "subPlan": "Plan",
+  "subEnds": "Ends",
+  "subCourts": "{used} of {max} courts",
+  "@subCourts": {
+    "placeholders": {
+      "used": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "renewNow": "Renew",
+  "subscribeNow": "Subscribe",
+  "choosePlan": "Choose a plan",
+  "planDetails": "{price} EGP · {courts} courts · {days} days",
+  "@planDetails": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "courts": {
+        "type": "int"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "staff": "Staff",
+  "noStaff": "No staff yet",
+  "addStaff": "Add a staff member",
+  "firstName2": "First name",
+  "staffPermissions": "Permissions",
+  "staffCourts": "Courts (none selected = all)",
+  "staffAdded": "Staff member added",
+  "staffRemoved": "Removed",
+  "removeStaff": "Remove",
+  "activateStaff": "Active",
+  "resetPassword": "Reset password",
+  "passwordReset": "Password changed",
+  "activityLog": "Activity",
+  "noActivity": "No activity yet",
+  "permManageBookings": "Manage bookings",
+  "permManualBookings": "Manual bookings",
+  "permViewReports": "View reports",
+  "permCheckIn": "Check-in",
+  "permManageSlots": "Close times",
+  "permRatePlayers": "Rate players",
+  "permTournamentResults": "Tournament results",
+  "permEditCourts": "Edit courts",
+  "permManageTournaments": "Manage tournaments",
+  "createTournament": "New tournament",
+  "tournamentName": "Tournament name",
+  "enterTournamentName": "Enter the tournament name",
+  "rulesField": "Rules (optional)",
+  "prizesField": "Prizes (optional)",
+  "individualSwitch": "Individual (one player per entry)",
+  "playersPerTeamLabel": "Players per team",
+  "substitutesLabel": "Substitutes per team",
+  "maxTeamsLabel": "Maximum teams",
+  "groupsCountLabel": "Number of groups",
+  "qualifiersLabel": "Qualifiers per group",
+  "registrationCloseLabel": "Registration closes",
+  "startDateLabel": "Start date",
+  "endDateLabel": "End date",
+  "dailyStartLabel": "Daily start",
+  "dailyEndLabel": "Daily end",
+  "matchMinutesLabel": "Match length",
+  "pickCourts": "Courts used",
+  "tournamentCreated": "Tournament created",
+  "publishTournament": "Publish",
+  "closeRegistration": "Close registration",
+  "drawTournament": "Draw and schedule",
+  "cancelTournament": "Cancel tournament",
+  "cancelTournamentTitle": "Cancel this tournament?",
+  "cancelReasonRequired": "Reason (required)",
+  "tournamentActionDone": "Done",
+  "approveTeam": "Approve",
+  "rejectTeam": "Reject",
+  "rejectTeamTitle": "Reject this team",
+  "noManagedTournaments": "You haven't created a tournament yet",
+  "enterResult": "Enter result",
+  "homeScore": "Home score",
+  "awayScore": "Away score",
+  "winnerOnDraw": "Winner (needed on a draw)",
+  "resultSaved": "Result saved",
+  "pickPoster": "Change poster",
+  "teamsPending": "Waiting for you",
+  "mustPickCourt": "Pick at least one court"
+}

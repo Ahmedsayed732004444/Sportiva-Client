@@ -1,0 +1,379 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../../core/localization/date_time_format.dart';
+import '../../../core/localization/l10n_extension.dart';
+import '../../../core/localization/price_format.dart';
+import '../../../core/network/api_exception.dart';
+import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_shadows.dart';
+import '../../../core/theme/app_spacing.dart';
+import '../../../core/theme/app_text_styles.dart';
+import '../../../core/widgets/app_button.dart';
+import '../../../core/widgets/app_network_image.dart';
+import '../../../core/widgets/choice_chips.dart';
+import '../../../core/widgets/rating_badge.dart';
+import '../../../core/widgets/state_views.dart';
+import '../../../core/widgets/submit_mixin.dart';
+import '../../catalog/data/catalog_models.dart';
+import '../application/court_booking_controller.dart';
+import '../data/booking_models.dart';
+import '../data/booking_repository.dart';
+import '../domain/slot_planner.dart';
+import 'booking_labels.dart';
+
+class CourtScreen extends ConsumerWidget {
+  const CourtScreen({super.key, required this.courtId});
+
+  final String courtId;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final court = ref.watch(courtProvider(courtId));
+
+    return court.when(
+      loading: () => Scaffold(appBar: AppBar(), body: const LoadingView()),
+      error: (error, _) => Scaffold(
+        appBar: AppBar(),
+        body: ErrorView(
+          error: error is ApiException ? error : const ApiException(kind: ApiErrorKind.unknown),
+          onRetry: () => ref.invalidate(courtProvider(courtId)),
+        ),
+      ),
+      data: (court) => _CourtBody(court: court),
+    );
+  }
+}
+
+class _CourtBody extends ConsumerStatefulWidget {
+  const _CourtBody({required this.court});
+
+  final CourtDetails court;
+
+  @override
+  ConsumerState<_CourtBody> createState() => _CourtBodyState();
+}
+
+class _CourtBodyState extends ConsumerState<_CourtBody> with SubmitMixin {
+  CourtDetails get court => widget.court;
+
+  Future<void> _book(CourtSelection selection, BookableStart start) async {
+    final confirmed = await showModalBottomSheet<bool>(
+      context: context,
+      showDragHandle: true,
+      builder: (_) => _ConfirmSheet(court: court, selection: selection, start: start),
+    );
+    if (confirmed != true || !mounted) return;
+
+    Booking? booking;
+    final done = await submit(() async {
+      booking = await ref
+          .read(bookingRepositoryProvider)
+          .create(
+            courtId: court.id,
+            day: selection.day,
+            startTime: start.startTime,
+            durationMinutes: selection.durationMinutes,
+            part: selection.part,
+            playFormat: selection.playFormat,
+          );
+    });
+
+    if (!mounted) return;
+    if (done && booking != null) {
+      showMessage(court.isAutomatic ? context.l10n.bookingConfirmed : context.l10n.bookingRequested);
+      context.pushReplacement('/booking/${booking!.id}');
+    } else {
+      // Probably taken a moment ago: show what is free now.
+      ref.invalidate(availabilityProvider);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final selectionProvider = courtSelectionProvider(court);
+    final selection = ref.watch(selectionProvider);
+    final controller = ref.read(selectionProvider.notifier);
+    final locale = Localizations.localeOf(context).languageCode;
+
+    final availability = ref.watch(availabilityProvider((courtId: court.id, day: selection.day)));
+    final starts = availability.valueOrNull == null
+        ? const <BookableStart>[]
+        : SlotPlanner.starts(availability.value!, durationMinutes: selection.durationMinutes, part: selection.part);
+    final chosen = starts.where((s) => s.startTime == selection.startTime).firstOrNull;
+
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            pinned: true,
+            expandedHeight: 220,
+            flexibleSpace: FlexibleSpaceBar(
+              background: AppNetworkImage(url: court.imageUrl, icon: court.sport.icon),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(AppSpacing.screenPadding),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(child: Text(court.name, style: AppTextStyles.header)),
+                      RatingBadge(rating: court.averageRating, count: court.reviewsCount),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    '${court.club.name} · ${court.sport.label(l10n)}',
+                    style: AppTextStyles.body1.copyWith(color: AppColors.black600),
+                  ),
+                  if (court.description?.isNotEmpty ?? false) ...[
+                    const SizedBox(height: AppSpacing.xs),
+                    Text(court.description!, style: AppTextStyles.paragraph),
+                  ],
+                  const SizedBox(height: 4),
+                  Text(
+                    formatPricePerHour(l10n, court.pricePerHourPiasters),
+                    style: AppTextStyles.body1Semibold.copyWith(color: AppColors.primary),
+                  ),
+                  _Section(
+                    title: l10n.chooseDay,
+                    child: _DayStrip(selected: selection.day, locale: locale, onPicked: controller.pickDay),
+                  ),
+                  _Section(
+                    title: l10n.duration,
+                    child: ChoiceChips<int>(
+                      options: court.allowedDurations,
+                      selected: selection.durationMinutes,
+                      labelOf: (m) => l10n.minutesLabel(m),
+                      onSelected: controller.pickDuration,
+                    ),
+                  ),
+                  if (court.allowsHalfCourt)
+                    _Section(
+                      title: l10n.courtPart,
+                      child: ChoiceChips<CourtPart>(
+                        options: CourtPart.values,
+                        selected: selection.part,
+                        labelOf: (p) => p.label(l10n),
+                        onSelected: controller.pickPart,
+                      ),
+                    ),
+                  if (PlayFormat.appliesTo(court.sport))
+                    _Section(
+                      title: l10n.playFormat,
+                      child: ChoiceChips<PlayFormat>(
+                        options: PlayFormat.values,
+                        selected: selection.playFormat,
+                        labelOf: (f) => f.label(l10n),
+                        onSelected: controller.pickFormat,
+                      ),
+                    ),
+                  _Section(
+                    title: l10n.chooseTime,
+                    child: availability.when(
+                      loading: () => const SizedBox(height: 80, child: LoadingView()),
+                      error: (error, _) => ErrorView(
+                        error: error is ApiException ? error : const ApiException(kind: ApiErrorKind.unknown),
+                        onRetry: () => ref.invalidate(availabilityProvider),
+                      ),
+                      data: (_) => starts.isEmpty
+                          ? Padding(
+                              padding: const EdgeInsets.symmetric(vertical: AppSpacing.s),
+                              child: Text(
+                                l10n.noTimesAvailable,
+                                style: AppTextStyles.body2.copyWith(color: AppColors.black600),
+                              ),
+                            )
+                          : ChoiceChips<BookableStart>(
+                              options: starts,
+                              selected: chosen,
+                              labelOf: (s) => formatTime(locale, s.startTime),
+                              onSelected: (s) => controller.pickStart(s.startTime),
+                            ),
+                    ),
+                  ),
+                  const SizedBox(height: AppSpacing.xxl),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: DecoratedBox(
+        decoration: const BoxDecoration(color: AppColors.white, boxShadow: AppShadows.drop),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(AppSpacing.s),
+            child: Row(
+              children: [
+                if (chosen != null)
+                  Padding(
+                    padding: const EdgeInsetsDirectional.only(end: AppSpacing.s),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(l10n.total, style: AppTextStyles.caption.copyWith(color: AppColors.black600)),
+                        Text(
+                          l10n.priceTotal(formatPounds(chosen.pricePiasters)),
+                          style: AppTextStyles.title.copyWith(fontWeight: FontWeight.w700),
+                        ),
+                      ],
+                    ),
+                  ),
+                Expanded(
+                  child: AppButton(
+                    label: l10n.bookNow,
+                    isLoading: isSubmitting,
+                    onPressed: chosen == null || !court.canBook ? null : () => _book(selection, chosen),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _Section extends StatelessWidget {
+  const _Section({required this.title, required this.child});
+
+  final String title;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: AppSpacing.m),
+        Text(title, style: AppTextStyles.title.copyWith(fontWeight: FontWeight.w700)),
+        const SizedBox(height: AppSpacing.xs),
+        child,
+      ],
+    );
+  }
+}
+
+class _DayStrip extends StatelessWidget {
+  const _DayStrip({required this.selected, required this.locale, required this.onPicked});
+
+  final DateTime selected;
+  final String locale;
+  final ValueChanged<DateTime> onPicked;
+
+  @override
+  Widget build(BuildContext context) {
+    final first = today();
+
+    return SizedBox(
+      height: 64,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemCount: bookingDaysAhead,
+        separatorBuilder: (_, _) => const SizedBox(width: AppSpacing.xs),
+        itemBuilder: (context, index) {
+          final day = first.add(Duration(days: index));
+          final isSelected = day == selected;
+
+          return InkWell(
+            onTap: () => onPicked(day),
+            borderRadius: BorderRadius.circular(16),
+            child: Container(
+              width: 64,
+              decoration: BoxDecoration(
+                color: isSelected ? AppColors.primary : AppColors.white,
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: isSelected ? AppColors.primary : AppColors.gray400),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    formatDay(locale, day).split(' ').first,
+                    style: AppTextStyles.caption.copyWith(color: isSelected ? AppColors.white : AppColors.black600),
+                  ),
+                  Text(
+                    '${day.day}',
+                    style: AppTextStyles.title.copyWith(
+                      color: isSelected ? AppColors.white : AppColors.black,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class _ConfirmSheet extends StatelessWidget {
+  const _ConfirmSheet({required this.court, required this.selection, required this.start});
+
+  final CourtDetails court;
+  final CourtSelection selection;
+  final BookableStart start;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final locale = Localizations.localeOf(context).languageCode;
+
+    Widget row(String label, String value) => Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        children: [
+          Text(label, style: AppTextStyles.body2.copyWith(color: AppColors.black600)),
+          const Spacer(),
+          Flexible(
+            child: Text(value, textAlign: TextAlign.end, style: AppTextStyles.body1Semibold),
+          ),
+        ],
+      ),
+    );
+
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(AppSpacing.screenPadding, 0, AppSpacing.screenPadding, AppSpacing.s),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(l10n.bookingSummary, style: AppTextStyles.header),
+            const SizedBox(height: AppSpacing.s),
+            row(l10n.court, '${court.club.name} - ${court.name}'),
+            row(l10n.dateLabel, formatLongDay(locale, selection.day)),
+            row(l10n.timeLabel, l10n.timeRange(formatTime(locale, start.startTime), formatTime(locale, start.endTime))),
+            row(l10n.duration, l10n.minutesLabel(selection.durationMinutes)),
+            if (court.allowsHalfCourt) row(l10n.courtPart, selection.part.label(l10n)),
+            const Divider(),
+            row(l10n.total, l10n.priceTotal(formatPounds(start.pricePiasters))),
+            if (!court.isAutomatic)
+              Padding(
+                padding: const EdgeInsets.only(top: AppSpacing.xs),
+                child: Text(l10n.waitingForClub, style: AppTextStyles.body2.copyWith(color: AppColors.primaryMid)),
+              ),
+            const SizedBox(height: AppSpacing.m),
+            AppButton(label: l10n.confirmBooking, onPressed: () => Navigator.of(context).pop(true)),
+            const SizedBox(height: AppSpacing.xs),
+            AppButton(
+              label: l10n.cancel,
+              style: AppButtonStyle.outlined,
+              onPressed: () => Navigator.of(context).pop(false),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

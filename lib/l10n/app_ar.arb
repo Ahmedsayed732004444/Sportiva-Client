@@ -1,0 +1,820 @@
+{
+  "@@locale": "ar",
+  "appName": "سبورتيفا",
+  "login": "تسجيل الدخول",
+  "signUp": "إنشاء حساب",
+  "email": "البريد الإلكتروني",
+  "enterEmail": "اكتب بريدك الإلكتروني",
+  "password": "كلمة السر",
+  "enterPassword": "اكتب كلمة السر",
+  "rePassword": "تأكيد كلمة السر",
+  "retypePassword": "اكتب كلمة السر تاني",
+  "firstName": "الاسم الأول",
+  "enterFirstName": "اكتب اسمك الأول",
+  "lastName": "اسم العائلة",
+  "enterLastName": "اكتب اسم العائلة",
+  "forgotPassword": "نسيت كلمة السر؟",
+  "signIn": "دخول",
+  "noAccount": "معندكش حساب؟",
+  "haveAccount": "عندك حساب؟",
+  "signUpLink": "سجّل دلوقتي",
+  "signInLink": "ادخل",
+  "orLoginWith": "أو سجّل الدخول بـ",
+  "orSignUpWith": "أو أنشئ حساب بـ",
+  "checkYourEmail": "شوف إيميلك",
+  "codeSentTo": "بعتنا كود على",
+  "enterCodeHint": "اكتب الكود المكوّن من 6 أرقام اللي في الإيميل",
+  "verifyCode": "تأكيد الكود",
+  "noEmailYet": "لسه ما وصلكش الإيميل؟",
+  "resendEmail": "ابعت تاني",
+  "resendIn": "ابعت تاني بعد {seconds} ثانية",
+  "@resendIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "forgotPasswordTitle": "نسيت كلمة السر",
+  "forgotPasswordHint": "اكتب بريدك الإلكتروني عشان نغيّر كلمة السر",
+  "continueLabel": "متابعة",
+  "setNewPassword": "كلمة سر جديدة",
+  "setNewPasswordHint": "اختار كلمة سر جديدة ومختلفة عن القديمة عشان أمان حسابك",
+  "confirmPassword": "تأكيد كلمة السر",
+  "updatePassword": "تحديث كلمة السر",
+  "fieldRequired": "الحقل ده مطلوب",
+  "invalidEmail": "اكتب بريد إلكتروني صحيح",
+  "passwordRule": "8 حروف على الأقل وفيها رقم وحرف كبير وحرف صغير ورمز",
+  "passwordsDontMatch": "كلمتين السر مش متطابقين",
+  "nameTooShort": "3 حروف على الأقل",
+  "invalidCode": "اكتب الكود المكوّن من 6 أرقام",
+  "networkError": "مش قادرين نوصل للسيرفر. اتأكد من الإنترنت وجرّب تاني.",
+  "unknownError": "حصلت مشكلة. جرّب تاني.",
+  "googleNotConfigured": "الدخول بجوجل لسه مش متظبط.",
+  "googleSignInFailed": "الدخول بجوجل فشل. جرّب تاني.",
+  "emailConfirmed": "الإيميل اتأكد. تقدر تدخل دلوقتي.",
+  "passwordUpdated": "كلمة السر اتحدّثت. تقدر تدخل دلوقتي.",
+  "codeResent": "لو الإيميل محتاج كود، اتبعتله كود جديد.",
+  "accountCreated": "الحساب اتعمل. شوف إيميلك علشان الكود.",
+  "emailNotConfirmedHint": "إيميلك لسه مش مأكّد. بعتنالك كود.",
+  "welcome": "أهلاً {name}",
+  "@welcome": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "signOut": "تسجيل الخروج",
+  "switchLanguage": "English",
+  "navHome": "الرئيسية",
+  "navMatches": "ماتشات",
+  "navSocial": "المجتمع",
+  "navBookings": "حجوزاتي",
+  "navProfile": "حسابي",
+  "comingSoon": "قريباً",
+  "retry": "حاول تاني",
+  "notifications": "الإشعارات",
+  "markAllRead": "تعليم الكل كمقروء",
+  "noNotifications": "مفيش إشعارات لسه",
+  "delete": "مسح",
+  "nothingHere": "مفيش حاجة هنا لسه",
+  "timeNow": "دلوقتي",
+  "timeMinutes": "من {count} د",
+  "@timeMinutes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "timeHours": "من {count} س",
+  "@timeHours": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "timeDays": "من {count} يوم",
+  "@timeDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "language": "اللغة",
+  "locationTitle": "اعرف الملاعب اللي حواليك",
+  "locationBody": "اسمح بالوصول للموقع عشان نعرضلك أقرب الملاعب ونقولك كل ملعب بعيد عنك قد إيه.",
+  "allowLocation": "السماح بالموقع",
+  "notNow": "مش دلوقتي",
+  "openSettings": "فتح الإعدادات",
+  "turnOnLocation": "شغّل الموقع",
+  "locationDeniedForever": "الوصول للموقع متقفل للتطبيق. فعّله من إعدادات التليفون.",
+  "locationServiceOff": "الموقع مقفول على تليفونك.",
+  "helloUser": "أهلاً {name}",
+  "@helloUser": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "courtsNearYou": "ملاعب قريبة منك",
+  "courtsOfSport": "ملاعب {sport}",
+  "@courtsOfSport": {
+    "placeholders": {
+      "sport": {
+        "type": "String"
+      }
+    }
+  },
+  "noCourtsForSport": "مفيش ملاعب للرياضة دي لسه",
+  "topRatedClubs": "الأندية الأعلى تقييماً",
+  "noClubsYet": "مفيش أندية لسه",
+  "chooseSport": "اختار رياضة",
+  "sportFootball": "كرة قدم",
+  "sportPadel": "بادل",
+  "sportBasketball": "سلة",
+  "sportTennis": "تنس",
+  "sportVolleyball": "طائرة",
+  "sportOther": "أخرى",
+  "perHour": "{price} ج / ساعة",
+  "@perHour": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "courtsCount": "{count} ملاعب",
+  "@courtsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "courts": "الملاعب",
+  "workingHours": "مواعيد العمل",
+  "reviews": "التقييمات",
+  "noReviews": "مفيش تقييمات لسه",
+  "address": "العنوان",
+  "callClub": "اتصال",
+  "openInMaps": "افتح في الخرائط",
+  "closed": "مقفول",
+  "allDay": "مفتوح",
+  "chooseDay": "اختار اليوم",
+  "duration": "المدة",
+  "courtPart": "الملعب",
+  "fullCourt": "ملعب كامل",
+  "halfA": "النص الأول",
+  "halfB": "النص التاني",
+  "playFormat": "نظام اللعب",
+  "singles": "فردي",
+  "doubles": "زوجي",
+  "chooseTime": "اختار الميعاد",
+  "noTimesAvailable": "مفيش مواعيد فاضية بالاختيار ده",
+  "minutesLabel": "{minutes} د",
+  "@minutesLabel": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "priceTotal": "{price} ج",
+  "@priceTotal": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "total": "الإجمالي",
+  "bookNow": "احجز دلوقتي",
+  "confirmBooking": "تأكيد الحجز",
+  "bookingSummary": "ملخص الحجز",
+  "confirm": "تأكيد",
+  "cancel": "إلغاء",
+  "selectTimeFirst": "اختار ميعاد عشان تكمّل",
+  "bookingConfirmed": "حجزك اتأكد",
+  "bookingRequested": "الطلب اتبعت. النادي هيأكده قريب.",
+  "upcoming": "الجاية",
+  "past": "السابقة",
+  "noBookings": "مفيش حجوزات لسه",
+  "bookingCode": "حجز {code}",
+  "@bookingCode": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "cancelBooking": "إلغاء الحجز",
+  "cancelBookingBody": "عايز تلغي الحجز ده؟",
+  "cancelReasonHint": "السبب (اختياري)",
+  "keepBooking": "سيبه",
+  "bookingCancelled": "الحجز اتلغى",
+  "bookingDetails": "تفاصيل الحجز",
+  "court": "الملعب",
+  "club": "النادي",
+  "dateLabel": "اليوم",
+  "timeLabel": "الوقت",
+  "status": "الحالة",
+  "waitingForClub": "مستني تأكيد النادي",
+  "statusPending": "مستني",
+  "statusConfirmed": "مؤكد",
+  "statusRejected": "مرفوض",
+  "statusCancelled": "ملغي",
+  "statusCompleted": "اتلعب",
+  "statusNoShow": "ماجاش",
+  "statusExpired": "انتهى",
+  "reason": "السبب",
+  "timeRange": "{from} - {to}",
+  "@timeRange": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "openMatches": "ماتشات مفتوحة",
+  "myMatches": "ماتشاتي",
+  "allSports": "الكل",
+  "noOpenMatches": "مفيش ماتشات مفتوحة دلوقتي",
+  "noMyMatches": "معندكش ماتشات لسه",
+  "createMatch": "ابدأ ماتش",
+  "matchDetails": "تفاصيل الماتش",
+  "organizer": "المنظّم",
+  "players": "اللاعيبة",
+  "playersCount": "{joined}/{needed} لاعيبة",
+  "@playersCount": {
+    "placeholders": {
+      "joined": {
+        "type": "int"
+      },
+      "needed": {
+        "type": "int"
+      }
+    }
+  },
+  "spotsLeft": "فاضل {count} أماكن",
+  "@spotsLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "requestToJoin": "اطلب الانضمام",
+  "requestSent": "الطلب اتبعت",
+  "leaveMatch": "اطلع من الماتش",
+  "cancelRequest": "الغي الطلب",
+  "cancelMatch": "الغي الماتش",
+  "cancelMatchBody": "تلغي الماتش ده للكل؟",
+  "matchCancelled": "الماتش اتلغى",
+  "joinRequests": "طلبات الانضمام",
+  "accept": "قبول",
+  "reject": "رفض",
+  "noRequests": "مفيش طلبات معلّقة",
+  "openChat": "شات الماتش",
+  "matchStatusOpen": "مفتوح",
+  "matchStatusFull": "كامل",
+  "matchStatusInProgress": "شغّال",
+  "matchStatusCompleted": "خلص",
+  "matchStatusCancelled": "ملغي",
+  "waitingClubConfirm": "مستني النادي يأكد الحجز",
+  "sport": "الرياضة",
+  "playersNeeded": "عدد اللاعيبة المطلوب",
+  "placeName": "اسم المكان",
+  "enterPlaceName": "اكتب اسم المكان",
+  "city": "المدينة",
+  "enterCity": "اكتب المدينة",
+  "governorate": "المحافظة",
+  "note": "ملاحظة (اختياري)",
+  "enterNote": "أي حاجة اللاعيبة لازم يعرفوها",
+  "pickDate": "اختار اليوم",
+  "pickTime": "اختار الميعاد",
+  "matchCreated": "الماتش اتعمل",
+  "openMatchFromBooking": "افتح الحجز ده للاعيبة",
+  "openMatch": "افتح ماتش",
+  "playersToFind": "محتاج كام لاعب؟",
+  "typeMessage": "اكتب رسالة",
+  "noMessages": "مفيش رسايل لسه",
+  "send": "ابعت",
+  "playerRating": "{rating}",
+  "@playerRating": {
+    "placeholders": {
+      "rating": {
+        "type": "String"
+      }
+    }
+  },
+  "youAreOrganizer": "إنت المنظّم",
+  "requestPending": "طلبك معلّق",
+  "youAreIn": "إنت في الماتش ده",
+  "wholeDayHint": "الميعاد على الساعة أو النص",
+  "feed": "بتتابعهم",
+  "explore": "استكشف",
+  "reels": "ريلز",
+  "searchHint": "دوّر على ناس وأندية وبوستات",
+  "noPosts": "مفيش بوستات لسه",
+  "newPostsAvailable": "فيه بوستات جديدة",
+  "newPost": "بوست جديد",
+  "whatsOnYourMind": "بتفكر في إيه؟",
+  "addPhotos": "صور",
+  "addVideo": "فيديو",
+  "publish": "نشر",
+  "postProcessing": "بوستك بيتجهز وهيظهر أول ما يخلص.",
+  "postPublished": "البوست اتنشر",
+  "postFailed": "البوست ماتنشرش",
+  "postEmpty": "اكتب حاجة أو ضيف صورة أو فيديو",
+  "maxPhotos": "أقصى عدد صور {count}",
+  "@maxPhotos": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "videoTooLarge": "الفيديو كبير (100 ميجا بالكتير)",
+  "likes": "{count} إعجاب",
+  "@likes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "comments": "التعليقات",
+  "commentsCount": "{count} تعليق",
+  "@commentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "writeComment": "اكتب تعليق",
+  "replyingTo": "رد على {name}",
+  "@replyingTo": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "reply": "رد",
+  "replies": "{count} ردود",
+  "@replies": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "hideReplies": "إخفاء الردود",
+  "noComments": "مفيش تعليقات لسه",
+  "deletePost": "مسح البوست",
+  "deletePostBody": "تمسح البوست ده؟",
+  "editPost": "تعديل البوست",
+  "save": "حفظ",
+  "report": "إبلاغ",
+  "reportTitle": "ليه بتبلّغ عن ده؟",
+  "reportSent": "شكرًا، هنراجعه",
+  "reasonSexualContent": "محتوى جنسي",
+  "reasonViolence": "عنف",
+  "reasonHarassment": "مضايقة",
+  "reasonSpam": "سبام",
+  "reasonMisinformation": "معلومات مضللة",
+  "reasonImpersonation": "انتحال شخصية",
+  "reasonOther": "حاجة تانية",
+  "block": "حظر",
+  "unblock": "إلغاء الحظر",
+  "blockBody": "مش هيقدر يشوف بوستاتك ولا يبعتلك رسايل.",
+  "blocked": "اتحظر",
+  "follow": "تابع",
+  "following": "بتتابعه",
+  "followBack": "تابعه كمان",
+  "followers": "المتابعين",
+  "followingLabel": "بيتابع",
+  "postsLabel": "بوستات",
+  "message": "رسالة",
+  "editProfile": "تعديل البروفايل",
+  "bio": "نبذة",
+  "enterBio": "عرّف الناس بنفسك",
+  "changePhoto": "تغيير الصورة",
+  "profileSaved": "البروفايل اتحفظ",
+  "online": "أونلاين",
+  "messages": "الرسايل",
+  "noConversations": "مفيش محادثات لسه",
+  "noPeople": "مفيش ناس لسه",
+  "you": "إنت",
+  "viewReel": "ريلز",
+  "noReels": "مفيش ريلز لسه",
+  "videoUnavailable": "الفيديو مش متاح",
+  "searchPeople": "ناس",
+  "searchClubs": "أندية",
+  "searchPosts": "بوستات",
+  "typeToSearch": "اكتب عشان تدوّر",
+  "noResults": "مفيش نتايج",
+  "viewProfile": "عرض البروفايل",
+  "videoPicked": "الفيديو اتختار",
+  "removeVideo": "شيل الفيديو",
+  "showNewPosts": "اعرض البوستات الجديدة",
+  "followersOf": "المتابعين",
+  "followingOf": "بيتابع",
+  "blockedProfile": "إنت حاظر الشخص ده",
+  "sendFirstMessage": "ابدأ بالسلام",
+  "tournaments": "البطولات",
+  "tournamentsSubtitle": "اشترك في بطولة أو تابع واحدة",
+  "noTournaments": "مفيش بطولات دلوقتي",
+  "tournamentDetails": "البطولة",
+  "tabInfo": "معلومات",
+  "tabTeams": "الفرق",
+  "tabMatches": "الماتشات",
+  "tabStandings": "الترتيب",
+  "tournamentRegistrationOpen": "التسجيل مفتوح",
+  "tournamentRegistrationClosed": "التسجيل اتقفل",
+  "tournamentInProgress": "شغّالة",
+  "tournamentCompleted": "خلصت",
+  "tournamentCancelled": "ملغية",
+  "tournamentDraft": "مسودة",
+  "formatKnockout": "خروج المغلوب",
+  "formatLeague": "دوري",
+  "formatGroupsKnockout": "مجموعات + خروج المغلوب",
+  "individualTournament": "فردي",
+  "teamsCount": "{joined}/{max} فريق",
+  "@teamsCount": {
+    "placeholders": {
+      "joined": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "entryFee": "رسوم الاشتراك",
+  "free": "مجاني",
+  "feeAmount": "{amount} جنيه",
+  "@feeAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "registrationCloses": "التسجيل بيقفل",
+  "startsOn": "بتبدأ",
+  "endsOn": "بتخلص",
+  "tournamentFormat": "النظام",
+  "teamSize": "لاعيبة الفريق",
+  "teamSizeValue": "{players} + {subs} احتياطي",
+  "@teamSizeValue": {
+    "placeholders": {
+      "players": {
+        "type": "int"
+      },
+      "subs": {
+        "type": "int"
+      }
+    }
+  },
+  "matchLength": "مدة الماتش",
+  "tournamentCourts": "الملاعب",
+  "description": "الوصف",
+  "rules": "القواعد",
+  "prizes": "الجوايز",
+  "champion": "البطل",
+  "cancellationReason": "اتلغت: {reason}",
+  "@cancellationReason": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "registerTeam": "سجّل فريق",
+  "registerPlayer": "اشترك في البطولة",
+  "myTeam": "فريقي",
+  "teamName": "اسم الفريق",
+  "enterTeamName": "اكتب اسم الفريق",
+  "teamCreated": "الفريق اتعمل",
+  "noTeams": "مفيش فرق لسه",
+  "noMatchesYet": "الجدول لسه مجهزش",
+  "noStandings": "مفيش ترتيب لسه",
+  "stageLeague": "الدوري",
+  "stageGroup": "مجموعة {number}",
+  "@stageGroup": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "stageKnockout": "خروج المغلوب",
+  "roundLabel": "الدور {number}",
+  "@roundLabel": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "tbd": "لسه هيتحدد",
+  "bye": "إعفاء",
+  "matchWaiting": "مستني",
+  "matchScheduled": "متحدد",
+  "matchDone": "خلص",
+  "matchCancelledShort": "ملغي",
+  "colPlayed": "لعب",
+  "colWon": "فاز",
+  "colDrawn": "تعادل",
+  "colLost": "خسر",
+  "colGoalDiff": "فارق",
+  "colPoints": "نقاط",
+  "groupNumber": "مجموعة {number}",
+  "@groupNumber": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "teamStatusForming": "بيتكوّن",
+  "teamStatusPendingPayment": "مستني الدفع",
+  "teamStatusPendingApproval": "مستني الموافقة",
+  "teamStatusApproved": "متقبّل",
+  "teamStatusRejected": "مرفوض",
+  "teamStatusWithdrawn": "منسحب",
+  "teamStatusCancelled": "ملغي",
+  "rejectionReason": "السبب: {reason}",
+  "@rejectionReason": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "captain": "الكابتن",
+  "substitute": "احتياطي",
+  "memberInvited": "مدعو",
+  "memberAccepted": "انضم",
+  "memberDeclined": "رفض",
+  "memberRemoved": "اتشال",
+  "invitePlayer": "ادعو لاعب",
+  "inviteAsSubstitute": "كاحتياطي",
+  "inviteSent": "الدعوة اتبعتت",
+  "removeMember": "شيله من الفريق",
+  "payNow": "ادفع رسوم الاشتراك",
+  "payWithCard": "كارت",
+  "payWithWallet": "محفظة موبايل",
+  "payHint": "هتكمّل الدفع في المتصفح والفريق بيتحدّث لوحده.",
+  "withdrawTeam": "انسحب بالفريق",
+  "withdrawBody": "تسحب الفريق ده من البطولة؟",
+  "withdrawn": "الفريق انسحب",
+  "myTeams": "فرقي",
+  "invitations": "الدعوات",
+  "noMyTeams": "لسه مشتركتش في أي بطولة",
+  "noInvitations": "مفيش دعوات",
+  "invitedBy": "{name} دعاك",
+  "@invitedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "decline": "ارفض",
+  "invitationAccepted": "انضممت للفريق",
+  "invitationDeclined": "الدعوة اترفضت",
+  "searchPlayers": "دوّر على لاعب",
+  "teamsAndInvitations": "فرقي ودعواتي",
+  "allTournamentSports": "كل الرياضات",
+  "openTournaments": "التسجيل مفتوح",
+  "rateCourt": "قيّم الملعب",
+  "ratePlayers": "قيّم اللاعيبة",
+  "yourRating": "تقييمك",
+  "commentOptional": "تعليق (اختياري)",
+  "submitReview": "ابعت التقييم",
+  "reviewSent": "شكرًا على تقييمك",
+  "myReviews": "تقييماتي",
+  "reviewsWritten": "اللي عملتها",
+  "reviewsReceived": "اللي جاتلي",
+  "reviewHiddenUntil": "مخفي لحد ما فترة التقييم تخلص",
+  "deleteReview": "مسح التقييم",
+  "reviewDeleted": "التقييم اتمسح",
+  "rated": "اتقيّم",
+  "tapToRate": "اضغط على لاعب عشان تقيّمه",
+  "settings": "الإعدادات",
+  "account": "الحساب",
+  "phone": "الموبايل",
+  "enterPhone": "اكتب رقم موبايلك",
+  "savePhone": "حفظ",
+  "phoneSaved": "الرقم اتحفظ",
+  "notificationSettings": "إعدادات الإشعارات",
+  "inApp": "جوه التطبيق",
+  "byEmail": "بالإيميل",
+  "categoryBookings": "الحجوزات والتقييمات",
+  "categoryPayments": "المدفوعات والاشتراكات",
+  "categoryMatches": "الماتشات",
+  "categorySocial": "السوشيال والرسايل",
+  "categoryTournaments": "البطولات",
+  "categoryAccount": "الحساب والنظام",
+  "changePassword": "تغيير كلمة المرور",
+  "currentPassword": "كلمة المرور الحالية",
+  "enterCurrentPassword": "اكتب كلمة المرور الحالية",
+  "newPassword": "كلمة المرور الجديدة",
+  "passwordChanged": "كلمة المرور اتغيّرت",
+  "deleteAccount": "امسح حسابي",
+  "deleteAccountBody": "حسابك هيتقفل وبياناتك هتتمسح. ومش هتقدر ترجع فيها.",
+  "deleteAccountConfirm": "امسح",
+  "deletionRequested": "حسابك هيتمسح",
+  "manageClub": "إدارة ناديي",
+  "invalidPhone": "اكتب رقم موبايل مصري صحيح",
+  "ownerTitle": "ناديي",
+  "ownerBookings": "الحجوزات",
+  "ownerCourts": "الملاعب",
+  "ownerTournaments": "البطولات",
+  "ownerClub": "النادي",
+  "tabPending": "الطلبات",
+  "tabUpcoming": "الجاية",
+  "tabPast": "السابقة",
+  "noOwnerBookings": "مفيش حجوزات هنا",
+  "confirmAction": "تأكيد",
+  "rejectAction": "رفض",
+  "rejectBookingTitle": "رفض الحجز",
+  "reasonOptional": "السبب (اختياري)",
+  "cancelBookingAction": "إلغاء الحجز",
+  "markCompleted": "تم اللعب",
+  "markNoShow": "ماجاش",
+  "ratePlayer": "قيّم اللاعب",
+  "customer": "العميل",
+  "walkInCustomer": "عميل من الاستقبال",
+  "manualBooking": "حجز جديد",
+  "customerName": "اسم العميل",
+  "customerPhone": "موبايل العميل",
+  "customerEmail": "إيميل العميل (اختياري)",
+  "selectCourt": "الملعب",
+  "bookingCreated": "الحجز اتعمل",
+  "bookingUpdated": "تمام",
+  "playFormatLabel": "نظام اللعب",
+  "courtPartLabel": "جزء الملعب",
+  "callCustomer": "اتصل",
+  "needsReply": "رد قبل {time}",
+  "@needsReply": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "addCourt": "ضيف ملعب",
+  "editCourt": "تعديل الملعب",
+  "courtName": "اسم الملعب",
+  "enterCourtName": "اكتب اسم الملعب",
+  "confirmationMode": "تأكيد الحجز",
+  "modeManual": "أنا اللي أأكد كل حجز",
+  "modeAutomatic": "تلقائي",
+  "responseTimeout": "الرد خلال (دقيقة)",
+  "pricePerHour": "سعر الساعة (جنيه)",
+  "enterPrice": "اكتب السعر",
+  "invalidNumber": "اكتب رقم صحيح",
+  "allowsHalfCourt": "حجز نص ملعب",
+  "halfCourtPrice": "سعر ساعة نص الملعب (جنيه)",
+  "courtSaved": "الملعب اتحفظ",
+  "courtDeleted": "الملعب اتمسح",
+  "deleteCourt": "مسح الملعب",
+  "deleteCourtBody": "تمسح الملعب ده؟ لازم تلغي حجوزاته الجاية الأول.",
+  "courtActive": "مفتوح للحجز",
+  "priceRules": "قواعد الأسعار",
+  "priceRulesHint": "أسعار مختلفة لأيام وساعات معينة",
+  "addRule": "ضيف قاعدة",
+  "anyDay": "كل يوم",
+  "ruleFrom": "من",
+  "ruleTo": "إلى",
+  "slotsAndClosing": "قفل المواعيد",
+  "slotsHint": "اضغط على ميعاد عشان تقفله للحجز، واضغط تاني عشان تفتحه",
+  "slotBooked": "محجوز",
+  "pricesSaved": "الأسعار اتحفظت",
+  "noCourts": "مفيش ملاعب لسه",
+  "weekdaySun": "الأحد",
+  "weekdayMon": "الاثنين",
+  "weekdayTue": "الثلاثاء",
+  "weekdayWed": "الأربعاء",
+  "weekdayThu": "الخميس",
+  "weekdayFri": "الجمعة",
+  "weekdaySat": "السبت",
+  "clubOpen": "النادي مفتوح للحجز",
+  "editClubInfo": "بيانات النادي",
+  "clubSaved": "النادي اتحفظ",
+  "hoursSaved": "المواعيد اتحفظت",
+  "mapUrl": "لينك الخريطة (اختياري)",
+  "clubPhone": "موبايل النادي",
+  "clubEmail": "إيميل النادي (اختياري)",
+  "changeLogo": "تغيير اللوجو",
+  "changeCover": "تغيير الغلاف",
+  "photoUpdated": "الصورة اتغيّرت",
+  "subscription": "الاشتراك",
+  "subNone": "مفيش اشتراك فعّال",
+  "subActive": "فعّال",
+  "subGrace": "فترة سماح - جدّد دلوقتي",
+  "subExpired": "منتهي",
+  "subPlan": "الباقة",
+  "subEnds": "بينتهي",
+  "subCourts": "{used} من {max} ملعب",
+  "@subCourts": {
+    "placeholders": {
+      "used": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "renewNow": "جدّد",
+  "subscribeNow": "اشترك",
+  "choosePlan": "اختار باقة",
+  "planDetails": "{price} جنيه · {courts} ملاعب · {days} يوم",
+  "@planDetails": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "courts": {
+        "type": "int"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "staff": "الموظفين",
+  "noStaff": "مفيش موظفين لسه",
+  "addStaff": "ضيف موظف",
+  "firstName2": "الاسم الأول",
+  "staffPermissions": "الصلاحيات",
+  "staffCourts": "الملاعب (من غير اختيار = كلها)",
+  "staffAdded": "الموظف اتضاف",
+  "staffRemoved": "اتشال",
+  "removeStaff": "شيل",
+  "activateStaff": "فعّال",
+  "resetPassword": "تغيير كلمة المرور",
+  "passwordReset": "كلمة المرور اتغيّرت",
+  "activityLog": "النشاط",
+  "noActivity": "مفيش نشاط لسه",
+  "permManageBookings": "إدارة الحجوزات",
+  "permManualBookings": "حجوزات يدوية",
+  "permViewReports": "عرض التقارير",
+  "permCheckIn": "تسجيل الحضور",
+  "permManageSlots": "قفل المواعيد",
+  "permRatePlayers": "تقييم اللاعيبة",
+  "permTournamentResults": "نتايج البطولات",
+  "permEditCourts": "تعديل الملاعب",
+  "permManageTournaments": "إدارة البطولات",
+  "createTournament": "بطولة جديدة",
+  "tournamentName": "اسم البطولة",
+  "enterTournamentName": "اكتب اسم البطولة",
+  "rulesField": "القواعد (اختياري)",
+  "prizesField": "الجوايز (اختياري)",
+  "individualSwitch": "فردي (لاعب واحد في كل مشاركة)",
+  "playersPerTeamLabel": "لاعيبة الفريق",
+  "substitutesLabel": "احتياطي الفريق",
+  "maxTeamsLabel": "أقصى عدد فرق",
+  "groupsCountLabel": "عدد المجموعات",
+  "qualifiersLabel": "المتأهلين من كل مجموعة",
+  "registrationCloseLabel": "التسجيل بيقفل",
+  "startDateLabel": "تاريخ البداية",
+  "endDateLabel": "تاريخ النهاية",
+  "dailyStartLabel": "بداية اليوم",
+  "dailyEndLabel": "نهاية اليوم",
+  "matchMinutesLabel": "مدة الماتش",
+  "pickCourts": "الملاعب المستخدمة",
+  "tournamentCreated": "البطولة اتعملت",
+  "publishTournament": "انشر",
+  "closeRegistration": "اقفل التسجيل",
+  "drawTournament": "اسحب وجدول",
+  "cancelTournament": "الغي البطولة",
+  "cancelTournamentTitle": "تلغي البطولة دي؟",
+  "cancelReasonRequired": "السبب (مطلوب)",
+  "tournamentActionDone": "تمام",
+  "approveTeam": "قبول",
+  "rejectTeam": "رفض",
+  "rejectTeamTitle": "رفض الفريق",
+  "noManagedTournaments": "لسه معملتش بطولة",
+  "enterResult": "سجّل النتيجة",
+  "homeScore": "نتيجة الأول",
+  "awayScore": "نتيجة التاني",
+  "winnerOnDraw": "الفايز (مطلوب لو تعادل)",
+  "resultSaved": "النتيجة اتسجلت",
+  "pickPoster": "تغيير البوستر",
+  "teamsPending": "مستنيك",
+  "mustPickCourt": "اختار ملعب واحد على الأقل"
+}
