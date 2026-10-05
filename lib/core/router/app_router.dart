@@ -16,10 +16,12 @@ import '../../features/catalog/presentation/club_screen.dart';
 import '../../features/booking/presentation/recurring_screens.dart';
 import '../../features/home/presentation/home_screen.dart';
 import '../../features/location/location_gate_screen.dart';
+import '../../features/matches/presentation/court_picker_screen.dart';
 import '../../features/matches/presentation/create_match_screen.dart';
 import '../../features/matches/presentation/match_chat_screen.dart';
 import '../../features/matches/presentation/match_details_screen.dart';
 import '../../features/matches/presentation/matches_screen.dart';
+import '../../features/membership/presentation/membership_screen.dart';
 import '../../features/notifications/presentation/notifications_screen.dart';
 import '../../features/tournaments/presentation/my_teams_screen.dart';
 import '../../features/tournaments/presentation/team_screen.dart';
@@ -107,12 +109,14 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: '/court/:id',
-        builder: (_, state) => CourtScreen(courtId: state.pathParameters['id']!),
+        builder: (_, state) =>
+            CourtScreen(courtId: state.pathParameters['id']!, matchMode: state.uri.queryParameters['match'] == '1'),
       ),
       GoRoute(
         path: '/booking/:id',
         builder: (_, state) => BookingDetailsScreen(bookingId: state.pathParameters['id']!),
       ),
+      GoRoute(path: '/matches/pick-court', builder: (_, _) => const CourtPickerScreen()),
       GoRoute(path: '/matches/create', builder: (_, _) => const CreateMatchScreen()),
       GoRoute(
         path: '/match/:id',
@@ -168,6 +172,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/owner/courts/:id/slots',
         builder: (_, state) => CourtSlotsScreen(courtId: state.pathParameters['id']!),
       ),
+      GoRoute(path: '/membership', builder: (_, _) => const MembershipScreen()),
       GoRoute(path: '/reviews', builder: (_, _) => const MyReviewsScreen()),
       GoRoute(path: '/settings', builder: (_, _) => const SettingsScreen()),
       GoRoute(path: '/settings/password', builder: (_, _) => const ChangePasswordScreen()),

@@ -16,7 +16,9 @@ import '../../../core/widgets/choice_chips.dart';
 import '../../../core/widgets/rating_badge.dart';
 import '../../../core/widgets/state_views.dart';
 import '../../../core/widgets/submit_mixin.dart';
+import '../../../core/widgets/stepper_field.dart';
 import '../../catalog/data/catalog_models.dart';
+import '../../matches/data/match_repository.dart';
 import '../application/court_booking_controller.dart';
 import '../data/booking_models.dart';
 import '../data/booking_repository.dart';
@@ -24,9 +26,11 @@ import '../domain/slot_planner.dart';
 import 'booking_labels.dart';
 
 class CourtScreen extends ConsumerWidget {
-  const CourtScreen({super.key, required this.courtId});
+  const CourtScreen({super.key, required this.courtId, this.matchMode = false});
 
   final String courtId;
+  // Booking this court to play a match with others: the booking opens as a match.
+  final bool matchMode;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -41,15 +45,16 @@ class CourtScreen extends ConsumerWidget {
           onRetry: () => ref.invalidate(courtProvider(courtId)),
         ),
       ),
-      data: (court) => _CourtBody(court: court),
+      data: (court) => _CourtBody(court: court, matchMode: matchMode),
     );
   }
 }
 
 class _CourtBody extends ConsumerStatefulWidget {
-  const _CourtBody({required this.court});
+  const _CourtBody({required this.court, required this.matchMode});
 
   final CourtDetails court;
+  final bool matchMode;
 
   @override
   ConsumerState<_CourtBody> createState() => _CourtBodyState();
@@ -59,31 +64,54 @@ class _CourtBodyState extends ConsumerState<_CourtBody> with SubmitMixin {
   CourtDetails get court => widget.court;
 
   Future<void> _book(CourtSelection selection, BookableStart start) async {
-    final confirmed = await showModalBottomSheet<bool>(
+    final confirmed = await showModalBottomSheet<_Confirmed>(
       context: context,
+      isScrollControlled: true,
       showDragHandle: true,
-      builder: (_) => _ConfirmSheet(court: court, selection: selection, start: start),
+      builder: (_) => _ConfirmSheet(court: court, selection: selection, start: start, matchMode: widget.matchMode),
     );
-    if (confirmed != true || !mounted) return;
+    if (confirmed == null || !mounted) return;
 
-    Booking? booking;
+    String? target;
     final done = await submit(() async {
-      booking = await ref
-          .read(bookingRepositoryProvider)
-          .create(
-            courtId: court.id,
-            day: selection.day,
-            startTime: start.startTime,
-            durationMinutes: selection.durationMinutes,
-            part: selection.part,
-            playFormat: selection.playFormat,
-          );
+      if (widget.matchMode) {
+        final match = await ref
+            .read(matchRepositoryProvider)
+            .createOnCourt(
+              courtId: court.id,
+              day: selection.day,
+              startTime: start.startTime,
+              durationMinutes: selection.durationMinutes,
+              part: selection.part,
+              playFormat: selection.playFormat,
+              playersNeeded: confirmed.players,
+              note: confirmed.note,
+            );
+        target = '/match/${match.id}';
+      } else {
+        final booking = await ref
+            .read(bookingRepositoryProvider)
+            .create(
+              courtId: court.id,
+              day: selection.day,
+              startTime: start.startTime,
+              durationMinutes: selection.durationMinutes,
+              part: selection.part,
+              playFormat: selection.playFormat,
+            );
+        target = '/booking/${booking.id}';
+      }
     });
 
     if (!mounted) return;
-    if (done && booking != null) {
-      showMessage(court.isAutomatic ? context.l10n.bookingConfirmed : context.l10n.bookingRequested);
-      context.pushReplacement('/booking/${booking!.id}');
+    if (done && target != null) {
+      final l10n = context.l10n;
+      showMessage(
+        widget.matchMode
+            ? l10n.matchStartedOnCourt
+            : (court.isAutomatic ? l10n.bookingConfirmed : l10n.bookingRequested),
+      );
+      context.pushReplacement(target!);
     } else {
       // Probably taken a moment ago: show what is free now.
       ref.invalidate(availabilityProvider);
@@ -236,7 +264,7 @@ class _CourtBodyState extends ConsumerState<_CourtBody> with SubmitMixin {
                   ),
                 Expanded(
                   child: AppButton(
-                    label: l10n.bookNow,
+                    label: widget.matchMode ? l10n.openMatchNow : l10n.bookNow,
                     isLoading: isSubmitting,
                     onPressed: chosen == null || !court.canBook ? null : () => _book(selection, chosen),
                   ),
@@ -325,17 +353,43 @@ class _DayStrip extends StatelessWidget {
   }
 }
 
-class _ConfirmSheet extends StatelessWidget {
-  const _ConfirmSheet({required this.court, required this.selection, required this.start});
+// What the player decided in the summary sheet: how many players to find when it is a match, and a note for them.
+class _Confirmed {
+  const _Confirmed({this.players = 0, this.note});
+
+  final int players;
+  final String? note;
+}
+
+class _ConfirmSheet extends StatefulWidget {
+  const _ConfirmSheet({required this.court, required this.selection, required this.start, required this.matchMode});
 
   final CourtDetails court;
   final CourtSelection selection;
   final BookableStart start;
+  final bool matchMode;
+
+  @override
+  State<_ConfirmSheet> createState() => _ConfirmSheetState();
+}
+
+class _ConfirmSheetState extends State<_ConfirmSheet> {
+  final _note = TextEditingController();
+  int _players = 3;
+
+  @override
+  void dispose() {
+    _note.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final locale = Localizations.localeOf(context).languageCode;
+    final court = widget.court;
+    final selection = widget.selection;
+    final start = widget.start;
 
     Widget row(String label, String value) => Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
@@ -351,8 +405,13 @@ class _ConfirmSheet extends StatelessWidget {
     );
 
     return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(AppSpacing.screenPadding, 0, AppSpacing.screenPadding, AppSpacing.s),
+      child: SingleChildScrollView(
+        padding: EdgeInsets.fromLTRB(
+          AppSpacing.screenPadding,
+          0,
+          AppSpacing.screenPadding,
+          MediaQuery.viewInsetsOf(context).bottom + AppSpacing.s,
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -371,14 +430,34 @@ class _ConfirmSheet extends StatelessWidget {
                 padding: const EdgeInsets.only(top: AppSpacing.xs),
                 child: Text(l10n.waitingForClub, style: AppTextStyles.body2.copyWith(color: AppColors.primaryMid)),
               ),
+            if (widget.matchMode) ...[
+              const SizedBox(height: AppSpacing.s),
+              Row(
+                children: [
+                  Expanded(child: Text(l10n.playersNeeded, style: AppTextStyles.title)),
+                  StepperField(value: _players, onChanged: (value) => setState(() => _players = value)),
+                ],
+              ),
+              const SizedBox(height: AppSpacing.xs),
+              TextField(
+                controller: _note,
+                decoration: InputDecoration(hintText: l10n.enterNote),
+              ),
+              const SizedBox(height: 4),
+              Text(l10n.openAsMatchHint, style: AppTextStyles.caption.copyWith(color: AppColors.black600)),
+            ],
             const SizedBox(height: AppSpacing.m),
-            AppButton(label: l10n.confirmBooking, onPressed: () => Navigator.of(context).pop(true)),
-            const SizedBox(height: AppSpacing.xs),
             AppButton(
-              label: l10n.cancel,
-              style: AppButtonStyle.outlined,
-              onPressed: () => Navigator.of(context).pop(false),
+              label: widget.matchMode ? l10n.openMatchNow : l10n.confirmBooking,
+              onPressed: () => Navigator.of(context).pop(
+                _Confirmed(
+                  players: widget.matchMode ? _players : 0,
+                  note: _note.text.trim().isEmpty ? null : _note.text.trim(),
+                ),
+              ),
             ),
+            const SizedBox(height: AppSpacing.xs),
+            AppButton(label: l10n.cancel, style: AppButtonStyle.outlined, onPressed: () => Navigator.of(context).pop()),
           ],
         ),
       ),

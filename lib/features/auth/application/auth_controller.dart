@@ -25,6 +25,12 @@ class AuthController extends AsyncNotifier<AuthSession?> {
     await _start(await ref.read(authRepositoryProvider).signInWithGoogle(idToken));
   }
 
+  Future<void> refreshSession() async {
+    final session = state.valueOrNull;
+    if (session == null) return;
+    await _start(await ref.read(authRepositoryProvider).refresh(session));
+  }
+
   Future<void> signOut() async {
     final session = state.valueOrNull;
     state = const AsyncData(null);

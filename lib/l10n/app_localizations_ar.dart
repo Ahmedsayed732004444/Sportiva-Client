@@ -1932,4 +1932,131 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get pickCourt => 'الملعب';
+
+  @override
+  String get becomeOwner => 'صاحب نادي؟ انضم لسبورتيفا';
+
+  @override
+  String get membershipTitle => 'طلب صاحب نادي';
+
+  @override
+  String get membershipIntro => 'عرّفنا بنادييك. فريق سبورتيفا بيراجع الطلب وبيجهّز ناديك.';
+
+  @override
+  String get applicantName => 'اسمك بالكامل';
+
+  @override
+  String get enterFullName => 'اكتب اسمك بالكامل';
+
+  @override
+  String get clubNameField => 'اسم النادي';
+
+  @override
+  String get enterClubName => 'اكتب اسم النادي';
+
+  @override
+  String get addressHint => 'الشارع، المنطقة';
+
+  @override
+  String get locationUrl => 'لينك الخريطة (اختياري)';
+
+  @override
+  String get attachFiles => 'صور وفيديوهات للنادي';
+
+  @override
+  String attachHint(int images, int videos) {
+    return 'لحد $images صور و$videos فيديو';
+  }
+
+  @override
+  String get addVideoShort => 'ضيف فيديو';
+
+  @override
+  String tooManyVideos(int count) {
+    return 'أقصى عدد فيديوهات $count';
+  }
+
+  @override
+  String get submitRequest => 'ابعت الطلب';
+
+  @override
+  String get requestSentMembership => 'طلبك اتبعت';
+
+  @override
+  String get membershipPending => 'تحت المراجعة';
+
+  @override
+  String get membershipApproved => 'اتقبل';
+
+  @override
+  String get membershipRejected => 'اترفض';
+
+  @override
+  String get membershipPendingBody => 'هنبلغك أول ما الفريق يراجعه.';
+
+  @override
+  String get membershipApprovedBody => 'حسابك بقى حساب صاحب نادي. الفريق هيربط ناديك قريب.';
+
+  @override
+  String get membershipRejectedBody => 'تقدر تبعت طلب جديد.';
+
+  @override
+  String get rejectionReasonLabel => 'السبب';
+
+  @override
+  String get newRequest => 'ابعت طلب جديد';
+
+  @override
+  String get mediaProcessing => 'بيتجهّز';
+
+  @override
+  String get mediaFailed => 'فشل';
+
+  @override
+  String get addMoreFiles => 'ضيف ملفات كمان';
+
+  @override
+  String get removeFile => 'شيل';
+
+  @override
+  String get yourRequest => 'طلبك';
+
+  @override
+  String get preferredSports => 'رياضاتي المفضلة';
+
+  @override
+  String get preferredSportsHint => 'اختار الرياضات اللي بتلعبها';
+
+  @override
+  String get preferredSportsSaved => 'اتحفظ';
+
+  @override
+  String get matchOnCourt => 'ماتش على ملعب نادي';
+
+  @override
+  String get matchOnOutside => 'ماتش في مكان تاني';
+
+  @override
+  String get pickClubCourt => 'اختار الملعب والميعاد من صفحة النادي، وبعدها افتح الماتش من حجزك.';
+
+  @override
+  String get openAsMatch => 'افتحه كماتش';
+
+  @override
+  String get openAsMatchHint => 'اللاعيبة يقدروا يطلبوا الانضمام أول ما النادي يأكد';
+
+  @override
+  String get openMatchNow => 'احجز وافتح الماتش';
+
+  @override
+  String get pickCourtTitle => 'اختار ملعب';
+
+  @override
+  String get pickCourtButton => 'اختار ملعب';
+
+  @override
+  String get chooseCourtForMatch => 'الماتش على ملعب نادي: اختار الملعب واليوم والميعاد.';
+
+  @override
+  String get matchStartedOnCourt => 'حجز الملعب اتعمل، والماتش بيتفتح لما النادي يأكد';
 }

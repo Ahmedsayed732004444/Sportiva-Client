@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../booking/data/booking_models.dart';
+
 import '../../../core/localization/date_time_format.dart';
 import '../../../core/network/api_client.dart';
 import '../../../core/network/api_exception.dart';
@@ -55,6 +57,34 @@ class MatchRepository {
           'address': address,
           'governorateId': governorateId,
           'city': city,
+          'note': note,
+        },
+      )).data!,
+    ),
+  );
+
+  // A match on a club's court: it books the court in the organizer's name, and opens once the club confirms.
+  Future<FriendlyMatch> createOnCourt({
+    required String courtId,
+    required DateTime day,
+    required String startTime,
+    required int durationMinutes,
+    required CourtPart part,
+    PlayFormat? playFormat,
+    required int playersNeeded,
+    String? note,
+  }) => _call(
+    () async => FriendlyMatch.fromJson(
+      (await _dio.post<Map<String, dynamic>>(
+        '/matches',
+        data: {
+          'courtId': courtId,
+          'day': apiDay(day),
+          'startTime': startTime,
+          'durationMinutes': durationMinutes,
+          'courtPart': part.apiName,
+          'playFormat': playFormat?.apiName,
+          'playersNeeded': playersNeeded,
           'note': note,
         },
       )).data!,

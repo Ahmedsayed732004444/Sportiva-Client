@@ -905,5 +905,63 @@
   },
   "rescheduleMatch": "Change time",
   "rescheduled": "Match rescheduled",
-  "pickCourt": "Court"
+  "pickCourt": "Court",
+  "becomeOwner": "Own a club? Join Sportiva",
+  "membershipTitle": "Club owner request",
+  "membershipIntro": "Tell us about your club. The Sportiva team reviews your request and sets your club up.",
+  "applicantName": "Your full name",
+  "enterFullName": "Enter your full name",
+  "clubNameField": "Club name",
+  "enterClubName": "Enter the club name",
+  "addressHint": "Street, area",
+  "locationUrl": "Map link (optional)",
+  "attachFiles": "Photos and videos of the club",
+  "attachHint": "Up to {images} photos and {videos} videos",
+  "@attachHint": {
+    "placeholders": {
+      "images": {
+        "type": "int"
+      },
+      "videos": {
+        "type": "int"
+      }
+    }
+  },
+  "addVideoShort": "Add video",
+  "tooManyVideos": "At most {count} videos",
+  "@tooManyVideos": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "submitRequest": "Send request",
+  "requestSentMembership": "Your request was sent",
+  "membershipPending": "Under review",
+  "membershipApproved": "Approved",
+  "membershipRejected": "Rejected",
+  "membershipPendingBody": "We'll notify you as soon as the team reviews it.",
+  "membershipApprovedBody": "Your account is now a club owner account. The team will link your club shortly.",
+  "membershipRejectedBody": "You can send a new request.",
+  "rejectionReasonLabel": "Reason",
+  "newRequest": "Send a new request",
+  "mediaProcessing": "Processing",
+  "mediaFailed": "Failed",
+  "addMoreFiles": "Add more files",
+  "removeFile": "Remove",
+  "yourRequest": "Your request",
+  "preferredSports": "Favorite sports",
+  "preferredSportsHint": "Pick the sports you play",
+  "preferredSportsSaved": "Saved",
+  "matchOnCourt": "Match on a club court",
+  "matchOnOutside": "Match somewhere else",
+  "pickClubCourt": "Pick the court and time from the club page, then open the match from your booking.",
+  "openAsMatch": "Open it as a match",
+  "openAsMatchHint": "Players can ask to join once the club confirms",
+  "openMatchNow": "Book and open the match",
+  "pickCourtTitle": "Pick a court",
+  "pickCourtButton": "Pick a court",
+  "chooseCourtForMatch": "The match is held on a club court: pick the court, the day and the time.",
+  "matchStartedOnCourt": "Your court booking is in; the match opens when the club confirms"
 }

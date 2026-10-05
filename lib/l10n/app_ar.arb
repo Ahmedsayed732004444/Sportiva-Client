@@ -905,5 +905,63 @@
   },
   "rescheduleMatch": "تغيير الميعاد",
   "rescheduled": "الماتش اتأجل",
-  "pickCourt": "الملعب"
+  "pickCourt": "الملعب",
+  "becomeOwner": "صاحب نادي؟ انضم لسبورتيفا",
+  "membershipTitle": "طلب صاحب نادي",
+  "membershipIntro": "عرّفنا بنادييك. فريق سبورتيفا بيراجع الطلب وبيجهّز ناديك.",
+  "applicantName": "اسمك بالكامل",
+  "enterFullName": "اكتب اسمك بالكامل",
+  "clubNameField": "اسم النادي",
+  "enterClubName": "اكتب اسم النادي",
+  "addressHint": "الشارع، المنطقة",
+  "locationUrl": "لينك الخريطة (اختياري)",
+  "attachFiles": "صور وفيديوهات للنادي",
+  "attachHint": "لحد {images} صور و{videos} فيديو",
+  "@attachHint": {
+    "placeholders": {
+      "images": {
+        "type": "int"
+      },
+      "videos": {
+        "type": "int"
+      }
+    }
+  },
+  "addVideoShort": "ضيف فيديو",
+  "tooManyVideos": "أقصى عدد فيديوهات {count}",
+  "@tooManyVideos": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "submitRequest": "ابعت الطلب",
+  "requestSentMembership": "طلبك اتبعت",
+  "membershipPending": "تحت المراجعة",
+  "membershipApproved": "اتقبل",
+  "membershipRejected": "اترفض",
+  "membershipPendingBody": "هنبلغك أول ما الفريق يراجعه.",
+  "membershipApprovedBody": "حسابك بقى حساب صاحب نادي. الفريق هيربط ناديك قريب.",
+  "membershipRejectedBody": "تقدر تبعت طلب جديد.",
+  "rejectionReasonLabel": "السبب",
+  "newRequest": "ابعت طلب جديد",
+  "mediaProcessing": "بيتجهّز",
+  "mediaFailed": "فشل",
+  "addMoreFiles": "ضيف ملفات كمان",
+  "removeFile": "شيل",
+  "yourRequest": "طلبك",
+  "preferredSports": "رياضاتي المفضلة",
+  "preferredSportsHint": "اختار الرياضات اللي بتلعبها",
+  "preferredSportsSaved": "اتحفظ",
+  "matchOnCourt": "ماتش على ملعب نادي",
+  "matchOnOutside": "ماتش في مكان تاني",
+  "pickClubCourt": "اختار الملعب والميعاد من صفحة النادي، وبعدها افتح الماتش من حجزك.",
+  "openAsMatch": "افتحه كماتش",
+  "openAsMatchHint": "اللاعيبة يقدروا يطلبوا الانضمام أول ما النادي يأكد",
+  "openMatchNow": "احجز وافتح الماتش",
+  "pickCourtTitle": "اختار ملعب",
+  "pickCourtButton": "اختار ملعب",
+  "chooseCourtForMatch": "الماتش على ملعب نادي: اختار الملعب واليوم والميعاد.",
+  "matchStartedOnCourt": "حجز الملعب اتعمل، والماتش بيتفتح لما النادي يأكد"
 }

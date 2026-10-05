@@ -38,6 +38,10 @@ class AuthRepository {
   Future<void> resetPassword({required String email, required String code, required String newPassword}) =>
       _send('/auth/reset-password', {'email': email, 'code': code, 'newPassword': newPassword});
 
+  // A fresh token pair: the roles inside the token follow the account as it is now.
+  Future<AuthSession> refresh(AuthSession session) =>
+      _session('/auth/refresh', {'token': session.token, 'refreshToken': session.refreshToken});
+
   Future<void> revoke(AuthSession session) =>
       _send('/auth/revoke-refresh-token', {'token': session.token, 'refreshToken': session.refreshToken});
 

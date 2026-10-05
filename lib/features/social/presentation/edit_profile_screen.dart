@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../core/localization/l10n_extension.dart';
 import '../../../core/network/api_exception.dart';
+import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/validation/validators.dart';
@@ -14,6 +15,7 @@ import '../../../core/widgets/state_views.dart';
 import '../../../core/widgets/submit_mixin.dart';
 import '../../../core/widgets/user_avatar.dart';
 import '../../auth/application/auth_controller.dart';
+import '../../catalog/data/sport_type.dart';
 import '../../matches/application/matches_controller.dart';
 import '../application/social_controllers.dart';
 import '../data/social_models.dart';
@@ -58,6 +60,7 @@ class _FormState extends ConsumerState<_Form> with SubmitMixin {
   late final _last = TextEditingController(text: widget.profile.lastName);
   late final _bio = TextEditingController(text: widget.profile.bio);
   late final _city = TextEditingController(text: widget.profile.city);
+  late final Set<SportType> _sports = {...widget.profile.preferredSports};
   int? _governorateId;
 
   @override
@@ -85,7 +88,7 @@ class _FormState extends ConsumerState<_Form> with SubmitMixin {
           .updateProfile(
             firstName: _first.text.trim(),
             lastName: _last.text.trim(),
-            preferredSports: widget.profile.preferredSports,
+            preferredSports: _sports.toList(),
             bio: _bio.text.trim().isEmpty ? null : _bio.text.trim(),
             city: _city.text.trim().isEmpty ? null : _city.text.trim(),
             governorateId: _governorateId,
@@ -121,6 +124,23 @@ class _FormState extends ConsumerState<_Form> with SubmitMixin {
           AppTextField(label: l10n.lastName, hint: l10n.lastName, controller: _last, validator: validators.name),
           const SizedBox(height: AppSpacing.m),
           AppTextField(label: l10n.bio, hint: l10n.enterBio, controller: _bio),
+          const SizedBox(height: AppSpacing.m),
+          Text(l10n.preferredSports, style: AppTextStyles.title),
+          Text(l10n.preferredSportsHint, style: AppTextStyles.caption.copyWith(color: AppColors.black600)),
+          const SizedBox(height: AppSpacing.xs),
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: [
+              for (final sport in SportType.values.where((sport) => sport != SportType.other))
+                FilterChip(
+                  avatar: Icon(sport.icon, size: 18),
+                  label: Text(sport.label(l10n)),
+                  selected: _sports.contains(sport),
+                  onSelected: (on) => setState(() => on ? _sports.add(sport) : _sports.remove(sport)),
+                ),
+            ],
+          ),
           const SizedBox(height: AppSpacing.m),
           Text(l10n.governorate, style: AppTextStyles.title),
           const SizedBox(height: AppSpacing.xs),

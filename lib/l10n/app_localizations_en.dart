@@ -1933,4 +1933,133 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pickCourt => 'Court';
+
+  @override
+  String get becomeOwner => 'Own a club? Join Sportiva';
+
+  @override
+  String get membershipTitle => 'Club owner request';
+
+  @override
+  String get membershipIntro =>
+      'Tell us about your club. The Sportiva team reviews your request and sets your club up.';
+
+  @override
+  String get applicantName => 'Your full name';
+
+  @override
+  String get enterFullName => 'Enter your full name';
+
+  @override
+  String get clubNameField => 'Club name';
+
+  @override
+  String get enterClubName => 'Enter the club name';
+
+  @override
+  String get addressHint => 'Street, area';
+
+  @override
+  String get locationUrl => 'Map link (optional)';
+
+  @override
+  String get attachFiles => 'Photos and videos of the club';
+
+  @override
+  String attachHint(int images, int videos) {
+    return 'Up to $images photos and $videos videos';
+  }
+
+  @override
+  String get addVideoShort => 'Add video';
+
+  @override
+  String tooManyVideos(int count) {
+    return 'At most $count videos';
+  }
+
+  @override
+  String get submitRequest => 'Send request';
+
+  @override
+  String get requestSentMembership => 'Your request was sent';
+
+  @override
+  String get membershipPending => 'Under review';
+
+  @override
+  String get membershipApproved => 'Approved';
+
+  @override
+  String get membershipRejected => 'Rejected';
+
+  @override
+  String get membershipPendingBody => 'We\'ll notify you as soon as the team reviews it.';
+
+  @override
+  String get membershipApprovedBody =>
+      'Your account is now a club owner account. The team will link your club shortly.';
+
+  @override
+  String get membershipRejectedBody => 'You can send a new request.';
+
+  @override
+  String get rejectionReasonLabel => 'Reason';
+
+  @override
+  String get newRequest => 'Send a new request';
+
+  @override
+  String get mediaProcessing => 'Processing';
+
+  @override
+  String get mediaFailed => 'Failed';
+
+  @override
+  String get addMoreFiles => 'Add more files';
+
+  @override
+  String get removeFile => 'Remove';
+
+  @override
+  String get yourRequest => 'Your request';
+
+  @override
+  String get preferredSports => 'Favorite sports';
+
+  @override
+  String get preferredSportsHint => 'Pick the sports you play';
+
+  @override
+  String get preferredSportsSaved => 'Saved';
+
+  @override
+  String get matchOnCourt => 'Match on a club court';
+
+  @override
+  String get matchOnOutside => 'Match somewhere else';
+
+  @override
+  String get pickClubCourt => 'Pick the court and time from the club page, then open the match from your booking.';
+
+  @override
+  String get openAsMatch => 'Open it as a match';
+
+  @override
+  String get openAsMatchHint => 'Players can ask to join once the club confirms';
+
+  @override
+  String get openMatchNow => 'Book and open the match';
+
+  @override
+  String get pickCourtTitle => 'Pick a court';
+
+  @override
+  String get pickCourtButton => 'Pick a court';
+
+  @override
+  String get chooseCourtForMatch => 'The match is held on a club court: pick the court, the day and the time.';
+
+  @override
+  String get matchStartedOnCourt => 'Your court booking is in; the match opens when the club confirms';
 }

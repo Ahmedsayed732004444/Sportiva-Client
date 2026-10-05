@@ -45,7 +45,10 @@ class ProfileScreen extends ConsumerWidget {
             style: AppTextStyles.body2.copyWith(color: AppColors.black600),
           ),
           const SizedBox(height: AppSpacing.l),
-          if (managesClub) tile(Icons.storefront_outlined, l10n.manageClub, '/owner'),
+          if (managesClub)
+            tile(Icons.storefront_outlined, l10n.manageClub, '/owner')
+          else
+            tile(Icons.add_business_outlined, l10n.becomeOwner, '/membership'),
           if (session != null) tile(Icons.person_outline, l10n.viewProfile, '/user/${session.userId}'),
           tile(Icons.emoji_events_outlined, l10n.teamsAndInvitations, '/tournaments/mine'),
           tile(Icons.star_border_rounded, l10n.myReviews, '/reviews'),

@@ -3793,6 +3793,252 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Court'**
   String get pickCourt;
+
+  /// No description provided for @becomeOwner.
+  ///
+  /// In en, this message translates to:
+  /// **'Own a club? Join Sportiva'**
+  String get becomeOwner;
+
+  /// No description provided for @membershipTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Club owner request'**
+  String get membershipTitle;
+
+  /// No description provided for @membershipIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell us about your club. The Sportiva team reviews your request and sets your club up.'**
+  String get membershipIntro;
+
+  /// No description provided for @applicantName.
+  ///
+  /// In en, this message translates to:
+  /// **'Your full name'**
+  String get applicantName;
+
+  /// No description provided for @enterFullName.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your full name'**
+  String get enterFullName;
+
+  /// No description provided for @clubNameField.
+  ///
+  /// In en, this message translates to:
+  /// **'Club name'**
+  String get clubNameField;
+
+  /// No description provided for @enterClubName.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the club name'**
+  String get enterClubName;
+
+  /// No description provided for @addressHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Street, area'**
+  String get addressHint;
+
+  /// No description provided for @locationUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Map link (optional)'**
+  String get locationUrl;
+
+  /// No description provided for @attachFiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Photos and videos of the club'**
+  String get attachFiles;
+
+  /// No description provided for @attachHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Up to {images} photos and {videos} videos'**
+  String attachHint(int images, int videos);
+
+  /// No description provided for @addVideoShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Add video'**
+  String get addVideoShort;
+
+  /// No description provided for @tooManyVideos.
+  ///
+  /// In en, this message translates to:
+  /// **'At most {count} videos'**
+  String tooManyVideos(int count);
+
+  /// No description provided for @submitRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Send request'**
+  String get submitRequest;
+
+  /// No description provided for @requestSentMembership.
+  ///
+  /// In en, this message translates to:
+  /// **'Your request was sent'**
+  String get requestSentMembership;
+
+  /// No description provided for @membershipPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Under review'**
+  String get membershipPending;
+
+  /// No description provided for @membershipApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved'**
+  String get membershipApproved;
+
+  /// No description provided for @membershipRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected'**
+  String get membershipRejected;
+
+  /// No description provided for @membershipPendingBody.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll notify you as soon as the team reviews it.'**
+  String get membershipPendingBody;
+
+  /// No description provided for @membershipApprovedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account is now a club owner account. The team will link your club shortly.'**
+  String get membershipApprovedBody;
+
+  /// No description provided for @membershipRejectedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You can send a new request.'**
+  String get membershipRejectedBody;
+
+  /// No description provided for @rejectionReasonLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason'**
+  String get rejectionReasonLabel;
+
+  /// No description provided for @newRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Send a new request'**
+  String get newRequest;
+
+  /// No description provided for @mediaProcessing.
+  ///
+  /// In en, this message translates to:
+  /// **'Processing'**
+  String get mediaProcessing;
+
+  /// No description provided for @mediaFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed'**
+  String get mediaFailed;
+
+  /// No description provided for @addMoreFiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Add more files'**
+  String get addMoreFiles;
+
+  /// No description provided for @removeFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get removeFile;
+
+  /// No description provided for @yourRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Your request'**
+  String get yourRequest;
+
+  /// No description provided for @preferredSports.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorite sports'**
+  String get preferredSports;
+
+  /// No description provided for @preferredSportsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick the sports you play'**
+  String get preferredSportsHint;
+
+  /// No description provided for @preferredSportsSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get preferredSportsSaved;
+
+  /// No description provided for @matchOnCourt.
+  ///
+  /// In en, this message translates to:
+  /// **'Match on a club court'**
+  String get matchOnCourt;
+
+  /// No description provided for @matchOnOutside.
+  ///
+  /// In en, this message translates to:
+  /// **'Match somewhere else'**
+  String get matchOnOutside;
+
+  /// No description provided for @pickClubCourt.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick the court and time from the club page, then open the match from your booking.'**
+  String get pickClubCourt;
+
+  /// No description provided for @openAsMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Open it as a match'**
+  String get openAsMatch;
+
+  /// No description provided for @openAsMatchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Players can ask to join once the club confirms'**
+  String get openAsMatchHint;
+
+  /// No description provided for @openMatchNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Book and open the match'**
+  String get openMatchNow;
+
+  /// No description provided for @pickCourtTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a court'**
+  String get pickCourtTitle;
+
+  /// No description provided for @pickCourtButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a court'**
+  String get pickCourtButton;
+
+  /// No description provided for @chooseCourtForMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'The match is held on a club court: pick the court, the day and the time.'**
+  String get chooseCourtForMatch;
+
+  /// No description provided for @matchStartedOnCourt.
+  ///
+  /// In en, this message translates to:
+  /// **'Your court booking is in; the match opens when the club confirms'**
+  String get matchStartedOnCourt;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
