@@ -2062,4 +2062,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get matchStartedOnCourt => 'Your court booking is in; the match opens when the club confirms';
+
+  @override
+  String get paymentSucceeded => 'Payment received. Thank you!';
+
+  @override
+  String get paymentFailed => 'The payment didn\'t go through. You can try again.';
+
+  @override
+  String get paymentExpired => 'The payment page expired. Start again.';
+
+  @override
+  String get paymentChecking => 'Checking your payment...';
+
+  @override
+  String get noPaymentMethods => 'Payment isn\'t available right now';
+
+  @override
+  String get paymentRefunded => 'Your payment was refunded';
 }

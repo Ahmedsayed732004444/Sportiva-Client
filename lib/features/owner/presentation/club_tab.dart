@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/localization/date_time_format.dart';
 import '../../../core/localization/l10n_extension.dart';
@@ -16,7 +15,8 @@ import '../../../core/widgets/app_network_image.dart';
 import '../../../core/widgets/rating_badge.dart';
 import '../../../core/widgets/snack.dart';
 import '../../../core/widgets/state_views.dart';
-import '../../tournaments/data/tournament_models.dart';
+import '../../payments/data/payment_models.dart';
+import '../../payments/presentation/pay_flow.dart';
 import '../application/owner_controllers.dart';
 import '../data/owner_club_models.dart';
 import '../data/owner_club_repository.dart';
@@ -142,41 +142,7 @@ class _SubscriptionCard extends ConsumerWidget {
     final state = subscription?.state ?? SubscriptionState.none;
     final repository = ref.read(ownerClubRepositoryProvider);
 
-    Future<void> pay(Future<String> Function(PayMethod method) start) async {
-      final method = await showModalBottomSheet<PayMethod>(
-        context: context,
-        showDragHandle: true,
-        builder: (context) => SafeArea(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ListTile(
-                leading: const Icon(Icons.credit_card),
-                title: Text(l10n.payWithCard),
-                onTap: () => Navigator.pop(context, PayMethod.card),
-              ),
-              ListTile(
-                leading: const Icon(Icons.account_balance_wallet_outlined),
-                title: Text(l10n.payWithWallet),
-                onTap: () => Navigator.pop(context, PayMethod.wallet),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(AppSpacing.s),
-                child: Text(l10n.payHint, style: AppTextStyles.caption),
-              ),
-            ],
-          ),
-        ),
-      );
-      if (method == null) return;
-
-      try {
-        final url = await start(method);
-        await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
-      } on ApiException catch (e) {
-        if (context.mounted) showApiError(context, e);
-      }
-    }
+    Future<void> pay(Future<PaymentSession> Function(PayMethod method) start) => startPayment(context, ref, start);
 
     Future<void> choosePlan() async {
       final List<Plan> plans;

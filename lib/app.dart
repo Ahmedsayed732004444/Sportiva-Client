@@ -6,6 +6,8 @@ import 'core/localization/locale_controller.dart';
 import 'core/realtime/realtime_service.dart';
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
+import 'core/widgets/snack.dart';
+import 'features/payments/application/payment_providers.dart';
 import 'features/settings/application/account_providers.dart';
 import 'l10n/app_localizations.dart';
 
@@ -17,8 +19,10 @@ class SportivaApp extends ConsumerWidget {
     // Keeps the live connection open while signed in.
     ref.watch(realtimeLifecycleProvider);
     ref.watch(languageSyncProvider);
+    ref.watch(paymentFeedbackProvider);
 
     return MaterialApp.router(
+      scaffoldMessengerKey: rootMessengerKey,
       onGenerateTitle: (context) => AppLocalizations.of(context).appName,
       theme: AppTheme.light,
       locale: ref.watch(localeProvider),

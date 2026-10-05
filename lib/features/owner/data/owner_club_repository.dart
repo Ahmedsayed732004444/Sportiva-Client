@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/network/api_client.dart';
 import '../../../core/network/api_exception.dart';
 import '../../../core/paging/paged_result.dart';
-import '../../tournaments/data/tournament_models.dart';
+import '../../payments/data/payment_models.dart';
 import '../../../core/localization/date_time_format.dart';
 import 'owner_club_models.dart';
 import 'report_models.dart';
@@ -89,23 +89,19 @@ class OwnerClubRepository {
     return response.data!.cast<Map<String, dynamic>>().map(Plan.fromJson).toList();
   });
 
-  // The page where the subscription is paid (opened in the browser).
-  Future<String> subscribe(String planId, PayMethod method) => _call(
-    () async =>
-        (await _dio.post<Map<String, dynamic>>(
-              '/clubs/me/subscriptions',
-              data: {'planId': planId, 'method': method.apiName},
-            )).data!['checkoutUrl']
-            as String,
+  Future<PaymentSession> subscribe(String planId, PayMethod method) => _call(
+    () async => PaymentSession.fromJson(
+      (await _dio.post<Map<String, dynamic>>(
+        '/clubs/me/subscriptions',
+        data: {'planId': planId, 'method': method.apiName},
+      )).data!,
+    ),
   );
 
-  Future<String> renew(PayMethod method) => _call(
-    () async =>
-        (await _dio.post<Map<String, dynamic>>(
-              '/clubs/me/subscriptions/renew',
-              data: {'method': method.apiName},
-            )).data!['checkoutUrl']
-            as String,
+  Future<PaymentSession> renew(PayMethod method) => _call(
+    () async => PaymentSession.fromJson(
+      (await _dio.post<Map<String, dynamic>>('/clubs/me/subscriptions/renew', data: {'method': method.apiName})).data!,
+    ),
   );
 
   Future<List<StaffMember>> staff() => _call(() async {

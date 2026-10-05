@@ -419,11 +419,3 @@ class Invitation {
     isSubstitute: json['isSubstitute'] as bool? ?? false,
   );
 }
-
-enum PayMethod {
-  card('Card'),
-  wallet('Wallet');
-
-  const PayMethod(this.apiName);
-  final String apiName;
-}

@@ -5,6 +5,7 @@ import '../../../core/network/api_client.dart';
 import '../../../core/network/api_exception.dart';
 import '../../../core/paging/paged_result.dart';
 import '../../catalog/data/sport_type.dart';
+import '../../payments/data/payment_models.dart';
 import 'tournament_models.dart';
 
 final tournamentRepositoryProvider = Provider<TournamentRepository>(
@@ -83,14 +84,10 @@ class TournamentRepository {
       _call(() => _dio.post<void>('/tournament-teams/$teamId/invitation/decline'));
   Future<void> withdraw(String teamId) => _call(() => _dio.post<void>('/tournament-teams/$teamId/withdraw'));
 
-  // The page where the entry fee is paid (opened in the browser).
-  Future<String> pay(String teamId, PayMethod method) => _call(
-    () async =>
-        (await _dio.post<Map<String, dynamic>>(
-              '/tournament-teams/$teamId/pay',
-              data: {'method': method.apiName},
-            )).data!['checkoutUrl']
-            as String,
+  Future<PaymentSession> pay(String teamId, PayMethod method) => _call(
+    () async => PaymentSession.fromJson(
+      (await _dio.post<Map<String, dynamic>>('/tournament-teams/$teamId/pay', data: {'method': method.apiName})).data!,
+    ),
   );
 
   Future<List<T>> _list<T>(String path, T Function(Map<String, dynamic>) parse) => _call(() async {

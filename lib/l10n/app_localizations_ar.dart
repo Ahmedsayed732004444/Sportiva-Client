@@ -2059,4 +2059,22 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get matchStartedOnCourt => 'حجز الملعب اتعمل، والماتش بيتفتح لما النادي يأكد';
+
+  @override
+  String get paymentSucceeded => 'الدفع تم. شكرًا!';
+
+  @override
+  String get paymentFailed => 'الدفع ماتمش. تقدر تجرّب تاني.';
+
+  @override
+  String get paymentExpired => 'صفحة الدفع انتهت. ابدأ من تاني.';
+
+  @override
+  String get paymentChecking => 'بنتأكد من الدفع...';
+
+  @override
+  String get noPaymentMethods => 'الدفع مش متاح دلوقتي';
+
+  @override
+  String get paymentRefunded => 'فلوسك اترجعت';
 }

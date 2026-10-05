@@ -963,5 +963,11 @@
   "pickCourtTitle": "اختار ملعب",
   "pickCourtButton": "اختار ملعب",
   "chooseCourtForMatch": "الماتش على ملعب نادي: اختار الملعب واليوم والميعاد.",
-  "matchStartedOnCourt": "حجز الملعب اتعمل، والماتش بيتفتح لما النادي يأكد"
+  "matchStartedOnCourt": "حجز الملعب اتعمل، والماتش بيتفتح لما النادي يأكد",
+  "paymentSucceeded": "الدفع تم. شكرًا!",
+  "paymentFailed": "الدفع ماتمش. تقدر تجرّب تاني.",
+  "paymentExpired": "صفحة الدفع انتهت. ابدأ من تاني.",
+  "paymentChecking": "بنتأكد من الدفع...",
+  "noPaymentMethods": "الدفع مش متاح دلوقتي",
+  "paymentRefunded": "فلوسك اترجعت"
 }

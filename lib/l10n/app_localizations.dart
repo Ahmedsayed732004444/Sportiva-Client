@@ -4039,6 +4039,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your court booking is in; the match opens when the club confirms'**
   String get matchStartedOnCourt;
+
+  /// No description provided for @paymentSucceeded.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment received. Thank you!'**
+  String get paymentSucceeded;
+
+  /// No description provided for @paymentFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'The payment didn\'t go through. You can try again.'**
+  String get paymentFailed;
+
+  /// No description provided for @paymentExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'The payment page expired. Start again.'**
+  String get paymentExpired;
+
+  /// No description provided for @paymentChecking.
+  ///
+  /// In en, this message translates to:
+  /// **'Checking your payment...'**
+  String get paymentChecking;
+
+  /// No description provided for @noPaymentMethods.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment isn\'t available right now'**
+  String get noPaymentMethods;
+
+  /// No description provided for @paymentRefunded.
+  ///
+  /// In en, this message translates to:
+  /// **'Your payment was refunded'**
+  String get paymentRefunded;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

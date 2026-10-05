@@ -14,3 +14,12 @@ void showSnack(BuildContext context, String? message) {
 void showApiError(BuildContext context, ApiException error) {
   if (context.mounted) showSnack(context, error.messageFor(context.l10n) ?? context.l10n.unknownError);
 }
+
+// A message that is shown whichever screen is open (a payment finished while the user was elsewhere).
+final rootMessengerKey = GlobalKey<ScaffoldMessengerState>();
+
+void showRootSnack(String message) {
+  rootMessengerKey.currentState
+    ?..hideCurrentSnackBar()
+    ..showSnackBar(SnackBar(content: Text(message)));
+}

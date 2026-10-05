@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/localization/l10n_extension.dart';
 import '../../../core/network/api_exception.dart';
@@ -13,6 +12,7 @@ import '../../../core/widgets/snack.dart';
 import '../../../core/widgets/state_views.dart';
 import '../../../core/widgets/user_avatar.dart';
 import '../../auth/application/auth_controller.dart';
+import '../../payments/presentation/pay_flow.dart';
 import '../../social/presentation/person_picker_sheet.dart';
 import '../application/tournament_controllers.dart';
 import '../data/tournament_models.dart';
@@ -84,38 +84,10 @@ class _BodyState extends ConsumerState<_Body> {
   }
 
   Future<void> _pay() async {
-    final l10n = context.l10n;
-    final method = await showModalBottomSheet<PayMethod>(
-      context: context,
-      showDragHandle: true,
-      builder: (context) => SafeArea(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ListTile(
-              leading: const Icon(Icons.credit_card),
-              title: Text(l10n.payWithCard),
-              onTap: () => Navigator.pop(context, PayMethod.card),
-            ),
-            ListTile(
-              leading: const Icon(Icons.account_balance_wallet_outlined),
-              title: Text(l10n.payWithWallet),
-              onTap: () => Navigator.pop(context, PayMethod.wallet),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(AppSpacing.s),
-              child: Text(l10n.payHint, style: AppTextStyles.caption),
-            ),
-          ],
-        ),
-      ),
-    );
-    if (method == null || !mounted) return;
-
-    await _run(() async {
-      final url = await ref.read(tournamentRepositoryProvider).pay(team.id, method);
-      await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
-    });
+    if (_busy) return;
+    setState(() => _busy = true);
+    await startPayment(context, ref, (method) => ref.read(tournamentRepositoryProvider).pay(team.id, method));
+    if (mounted) setState(() => _busy = false);
   }
 
   Future<void> _withdraw() async {

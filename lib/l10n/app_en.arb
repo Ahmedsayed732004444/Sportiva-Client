@@ -963,5 +963,11 @@
   "pickCourtTitle": "Pick a court",
   "pickCourtButton": "Pick a court",
   "chooseCourtForMatch": "The match is held on a club court: pick the court, the day and the time.",
-  "matchStartedOnCourt": "Your court booking is in; the match opens when the club confirms"
+  "matchStartedOnCourt": "Your court booking is in; the match opens when the club confirms",
+  "paymentSucceeded": "Payment received. Thank you!",
+  "paymentFailed": "The payment didn't go through. You can try again.",
+  "paymentExpired": "The payment page expired. Start again.",
+  "paymentChecking": "Checking your payment...",
+  "noPaymentMethods": "Payment isn't available right now",
+  "paymentRefunded": "Your payment was refunded"
 }
