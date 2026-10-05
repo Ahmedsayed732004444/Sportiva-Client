@@ -26,7 +26,14 @@ class BookingsScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(l10n.navBookings),
-          actions: const [NotificationBell()],
+          actions: [
+            IconButton(
+              onPressed: () => context.push('/bookings/recurring'),
+              icon: const Icon(Icons.repeat),
+              tooltip: l10n.myRecurring,
+            ),
+            const NotificationBell(),
+          ],
           bottom: TabBar(
             labelColor: AppColors.primary,
             unselectedLabelColor: AppColors.black600,

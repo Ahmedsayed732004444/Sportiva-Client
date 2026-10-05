@@ -14,7 +14,11 @@ import '../../../core/widgets/choice_chips.dart';
 import '../../../core/widgets/picker_field.dart';
 import '../../../core/widgets/state_views.dart';
 import '../../../core/widgets/submit_mixin.dart';
+import '../../../core/widgets/stepper_field.dart';
+import '../../booking/application/recurring_controllers.dart';
 import '../../booking/data/booking_models.dart';
+import '../../booking/data/recurring_models.dart';
+import '../../booking/data/recurring_repository.dart';
 import '../../booking/presentation/booking_labels.dart';
 import '../application/owner_controllers.dart';
 import '../data/owner_booking_repository.dart';
@@ -42,6 +46,8 @@ class _ManualBookingScreenState extends ConsumerState<ManualBookingScreen> with 
   int _duration = 60;
   CourtPart _part = CourtPart.full;
   PlayFormat? _format;
+  bool _weekly = false;
+  int _weeks = 4;
 
   @override
   void dispose() {
@@ -84,6 +90,35 @@ class _ManualBookingScreenState extends ConsumerState<ManualBookingScreen> with 
     if (!_formKey.currentState!.validate()) return;
     if (_court == null || _day == null || _time == null) {
       showMessage('${l10n.selectCourt} / ${l10n.pickDate} / ${l10n.pickTime}');
+      return;
+    }
+
+    if (_weekly) {
+      final request = RecurringRequest(
+        courtId: _court!.id,
+        firstDay: apiDay(_day!),
+        startTime: _hms(_time!),
+        durationMinutes: _duration,
+        part: _court!.allowsHalfCourt ? _part : CourtPart.full,
+        weeks: _weeks,
+        skipUnavailable: true,
+        playFormat: _court!.hasPlayFormat ? (_format ?? PlayFormat.doubles) : null,
+      );
+      final created = await submit(
+        () => ref
+            .read(recurringRepositoryProvider)
+            .createManual(
+              request,
+              customerName: _name.text.trim().isEmpty ? null : _name.text.trim(),
+              customerPhone: _phone.text.trim().isEmpty ? null : _phone.text.trim(),
+              userEmail: _email.text.trim().isEmpty ? null : _email.text.trim(),
+            ),
+      );
+      if (created && mounted) {
+        ref.invalidate(clubRecurringProvider);
+        showMessage(l10n.recurringCreated);
+        context.pop();
+      }
       return;
     }
 
@@ -193,6 +228,32 @@ class _ManualBookingScreenState extends ConsumerState<ManualBookingScreen> with 
                   onSelected: (f) => setState(() => _format = f),
                 ),
               ],
+              SwitchListTile(
+                contentPadding: EdgeInsets.zero,
+                title: Text(l10n.repeatWeekly),
+                value: _weekly,
+                onChanged: (v) => setState(() => _weekly = v),
+              ),
+              if (_weekly)
+                Row(
+                  children: [
+                    Expanded(child: Text(l10n.weeksCount, style: AppTextStyles.title)),
+                    StepperField(value: _weeks, min: 2, max: 52, onChanged: (v) => setState(() => _weeks = v)),
+                  ],
+                ),
+              SwitchListTile(
+                contentPadding: EdgeInsets.zero,
+                title: Text(l10n.repeatWeekly),
+                value: _weekly,
+                onChanged: (v) => setState(() => _weekly = v),
+              ),
+              if (_weekly)
+                Row(
+                  children: [
+                    Expanded(child: Text(l10n.weeksCount, style: AppTextStyles.title)),
+                    StepperField(value: _weeks, min: 2, max: 52, onChanged: (v) => setState(() => _weeks = v)),
+                  ],
+                ),
               const SizedBox(height: AppSpacing.m),
               AppTextField(label: l10n.customerName, hint: l10n.customerName, controller: _name),
               const SizedBox(height: AppSpacing.m),

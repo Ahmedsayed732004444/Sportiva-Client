@@ -1769,4 +1769,168 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get mustPickCourt => 'Pick at least one court';
+
+  @override
+  String get recurringBooking => 'Book every week';
+
+  @override
+  String get recurringTitle => 'Weekly booking';
+
+  @override
+  String get weeksCount => 'Number of weeks';
+
+  @override
+  String get firstDay => 'First day';
+
+  @override
+  String get skipUnavailable => 'Skip weeks that are taken';
+
+  @override
+  String get previewWeeks => 'Check the weeks';
+
+  @override
+  String get weekAvailable => 'Available';
+
+  @override
+  String get weekTaken => 'Taken';
+
+  @override
+  String availableWeeksTotal(int count, String price) {
+    return '$count weeks available · total $price EGP';
+  }
+
+  @override
+  String get confirmRecurring => 'Book the available weeks';
+
+  @override
+  String get recurringCreated => 'Weekly booking created';
+
+  @override
+  String get myRecurring => 'Weekly bookings';
+
+  @override
+  String get noRecurring => 'No weekly bookings';
+
+  @override
+  String everyWeekDay(String day) {
+    return 'Every $day';
+  }
+
+  @override
+  String weeksOf(int count, String day) {
+    return '$count weeks from $day';
+  }
+
+  @override
+  String get cancelRecurring => 'Cancel all';
+
+  @override
+  String get recurringCancelled => 'Weekly booking cancelled';
+
+  @override
+  String get tabWeekly => 'Weekly';
+
+  @override
+  String get repeatWeekly => 'Repeat every week';
+
+  @override
+  String get recurringStatusPending => 'Waiting for the club';
+
+  @override
+  String get recurringStatusConfirmed => 'Confirmed';
+
+  @override
+  String get recurringStatusRejected => 'Rejected';
+
+  @override
+  String get recurringStatusCancelled => 'Cancelled';
+
+  @override
+  String get recurringStatusExpired => 'Expired';
+
+  @override
+  String get clubPhotos => 'Club photos';
+
+  @override
+  String get courtPhotos => 'Court photos';
+
+  @override
+  String get addPhotos2 => 'Add photos';
+
+  @override
+  String get deletePhoto => 'Delete photo';
+
+  @override
+  String get setCover => 'Set as cover';
+
+  @override
+  String get photoAdded => 'Photos added';
+
+  @override
+  String get photoDeleted => 'Photo deleted';
+
+  @override
+  String get coverSet => 'Cover updated';
+
+  @override
+  String get noPhotos => 'No photos yet';
+
+  @override
+  String get courtPhotosMenu => 'Photos';
+
+  @override
+  String get reports => 'Reports';
+
+  @override
+  String get reportPeriod7 => '7 days';
+
+  @override
+  String get reportPeriod30 => '30 days';
+
+  @override
+  String get reportPeriod90 => '90 days';
+
+  @override
+  String get revenue => 'Revenue';
+
+  @override
+  String get bookingsTotal => 'Bookings';
+
+  @override
+  String get noShowRate => 'No-show rate';
+
+  @override
+  String get occupancy => 'Court occupancy';
+
+  @override
+  String get peakHours => 'Busiest times';
+
+  @override
+  String get bySource => 'Where bookings come from';
+
+  @override
+  String get topCustomers => 'Top customers';
+
+  @override
+  String get ratingsSummary => 'Ratings';
+
+  @override
+  String get sourceApp => 'App';
+
+  @override
+  String get sourceManual => 'Manual';
+
+  @override
+  String hoursBooked(String booked, String available) {
+    return '$booked of $available h';
+  }
+
+  @override
+  String get rescheduleMatch => 'Change time';
+
+  @override
+  String get rescheduled => 'Match rescheduled';
+
+  @override
+  String get pickCourt => 'Court';
 }

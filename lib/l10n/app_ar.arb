@@ -816,5 +816,94 @@
   "resultSaved": "النتيجة اتسجلت",
   "pickPoster": "تغيير البوستر",
   "teamsPending": "مستنيك",
-  "mustPickCourt": "اختار ملعب واحد على الأقل"
+  "mustPickCourt": "اختار ملعب واحد على الأقل",
+  "recurringBooking": "احجز كل أسبوع",
+  "recurringTitle": "حجز أسبوعي",
+  "weeksCount": "عدد الأسابيع",
+  "firstDay": "أول يوم",
+  "skipUnavailable": "تخطّى الأسابيع المحجوزة",
+  "previewWeeks": "شوف الأسابيع",
+  "weekAvailable": "متاح",
+  "weekTaken": "محجوز",
+  "availableWeeksTotal": "{count} أسبوع متاح · الإجمالي {price} جنيه",
+  "@availableWeeksTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "confirmRecurring": "احجز الأسابيع المتاحة",
+  "recurringCreated": "الحجز الأسبوعي اتعمل",
+  "myRecurring": "الحجوزات الأسبوعية",
+  "noRecurring": "مفيش حجوزات أسبوعية",
+  "everyWeekDay": "كل {day}",
+  "@everyWeekDay": {
+    "placeholders": {
+      "day": {
+        "type": "String"
+      }
+    }
+  },
+  "weeksOf": "{count} أسبوع من {day}",
+  "@weeksOf": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "day": {
+        "type": "String"
+      }
+    }
+  },
+  "cancelRecurring": "الغي الكل",
+  "recurringCancelled": "الحجز الأسبوعي اتلغى",
+  "tabWeekly": "أسبوعي",
+  "repeatWeekly": "كرّر كل أسبوع",
+  "recurringStatusPending": "مستني النادي",
+  "recurringStatusConfirmed": "متأكد",
+  "recurringStatusRejected": "مرفوض",
+  "recurringStatusCancelled": "ملغي",
+  "recurringStatusExpired": "منتهي",
+  "clubPhotos": "صور النادي",
+  "courtPhotos": "صور الملعب",
+  "addPhotos2": "ضيف صور",
+  "deletePhoto": "امسح الصورة",
+  "setCover": "خليها الغلاف",
+  "photoAdded": "الصور اتضافت",
+  "photoDeleted": "الصورة اتمسحت",
+  "coverSet": "الغلاف اتغيّر",
+  "noPhotos": "مفيش صور لسه",
+  "courtPhotosMenu": "الصور",
+  "reports": "التقارير",
+  "reportPeriod7": "7 أيام",
+  "reportPeriod30": "30 يوم",
+  "reportPeriod90": "90 يوم",
+  "revenue": "الإيراد",
+  "bookingsTotal": "الحجوزات",
+  "noShowRate": "نسبة عدم الحضور",
+  "occupancy": "إشغال الملاعب",
+  "peakHours": "أوقات الذروة",
+  "bySource": "مصدر الحجوزات",
+  "topCustomers": "أكتر العملاء",
+  "ratingsSummary": "التقييمات",
+  "sourceApp": "التطبيق",
+  "sourceManual": "يدوي",
+  "hoursBooked": "{booked} من {available} ساعة",
+  "@hoursBooked": {
+    "placeholders": {
+      "booked": {
+        "type": "String"
+      },
+      "available": {
+        "type": "String"
+      }
+    }
+  },
+  "rescheduleMatch": "تغيير الميعاد",
+  "rescheduled": "الماتش اتأجل",
+  "pickCourt": "الملعب"
 }

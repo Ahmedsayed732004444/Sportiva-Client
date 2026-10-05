@@ -13,6 +13,7 @@ import '../../features/booking/presentation/booking_details_screen.dart';
 import '../../features/booking/presentation/bookings_screen.dart';
 import '../../features/booking/presentation/court_screen.dart';
 import '../../features/catalog/presentation/club_screen.dart';
+import '../../features/booking/presentation/recurring_screens.dart';
 import '../../features/home/presentation/home_screen.dart';
 import '../../features/location/location_gate_screen.dart';
 import '../../features/matches/presentation/create_match_screen.dart';
@@ -30,6 +31,8 @@ import '../../features/owner/presentation/staff_screen.dart';
 import '../../features/owner/presentation/working_hours_screen.dart';
 import '../../features/owner/presentation/owner_tournament_screen.dart';
 import '../../features/owner/presentation/tournament_form_screen.dart';
+import '../../features/owner/presentation/photos_screen.dart';
+import '../../features/owner/presentation/reports_screen.dart';
 import '../../features/owner/presentation/court_form_screen.dart';
 import '../../features/owner/presentation/court_slots_screen.dart';
 import '../../features/owner/presentation/manual_booking_screen.dart';
@@ -129,6 +132,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/team/:id',
         builder: (_, state) => TeamScreen(teamId: state.pathParameters['id']!),
       ),
+      GoRoute(path: '/bookings/recurring', builder: (_, _) => const MyRecurringScreen()),
+      GoRoute(
+        path: '/court/:id/recurring',
+        builder: (_, state) => RecurringBookingScreen(courtId: state.pathParameters['id']!),
+      ),
       GoRoute(path: '/owner', builder: (_, _) => const OwnerScreen()),
       GoRoute(path: '/owner/club/edit', builder: (_, _) => const ClubEditScreen()),
       GoRoute(path: '/owner/club/hours', builder: (_, _) => const WorkingHoursScreen()),
@@ -140,6 +148,12 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/owner/tournament/:id',
         builder: (_, state) => OwnerTournamentScreen(tournamentId: state.pathParameters['id']!),
       ),
+      GoRoute(path: '/owner/club/photos', builder: (_, _) => const PhotosScreen()),
+      GoRoute(
+        path: '/owner/courts/:id/photos',
+        builder: (_, state) => PhotosScreen(courtId: state.pathParameters['id']),
+      ),
+      GoRoute(path: '/owner/reports', builder: (_, _) => const ReportsScreen()),
       GoRoute(path: '/owner/bookings/new', builder: (_, _) => const ManualBookingScreen()),
       GoRoute(path: '/owner/courts/new', builder: (_, _) => const CourtFormScreen()),
       GoRoute(

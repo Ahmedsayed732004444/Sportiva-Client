@@ -16,7 +16,7 @@ import '../application/owner_controllers.dart';
 import '../data/owner_court_models.dart';
 import '../data/owner_court_repository.dart';
 
-enum _CourtAction { edit, prices, slots, delete }
+enum _CourtAction { edit, prices, slots, photos, delete }
 
 class OwnerCourtsTab extends ConsumerWidget {
   const OwnerCourtsTab({super.key});
@@ -84,6 +84,9 @@ class _CourtCard extends ConsumerWidget {
           await context.push('/owner/courts/${court.id}/prices');
         case _CourtAction.slots:
           await context.push('/owner/courts/${court.id}/slots');
+        case _CourtAction.photos:
+          await context.push('/owner/courts/${court.id}/photos');
+          ref.invalidate(ownerCourtsProvider);
         case _CourtAction.delete:
           final confirmed = await showDialog<bool>(
             context: context,
@@ -143,6 +146,7 @@ class _CourtCard extends ConsumerWidget {
               PopupMenuItem(value: _CourtAction.edit, child: Text(l10n.editCourt)),
               PopupMenuItem(value: _CourtAction.prices, child: Text(l10n.priceRules)),
               PopupMenuItem(value: _CourtAction.slots, child: Text(l10n.slotsAndClosing)),
+              PopupMenuItem(value: _CourtAction.photos, child: Text(l10n.courtPhotosMenu)),
               PopupMenuItem(value: _CourtAction.delete, child: Text(l10n.deleteCourt)),
             ],
           ),

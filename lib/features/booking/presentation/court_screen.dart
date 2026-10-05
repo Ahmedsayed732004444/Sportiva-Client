@@ -140,6 +140,14 @@ class _CourtBodyState extends ConsumerState<_CourtBody> with SubmitMixin {
                     formatPricePerHour(l10n, court.pricePerHourPiasters),
                     style: AppTextStyles.body1Semibold.copyWith(color: AppColors.primary),
                   ),
+                  Align(
+                    alignment: AlignmentDirectional.centerStart,
+                    child: TextButton.icon(
+                      onPressed: () => context.push('/court/${court.id}/recurring'),
+                      icon: const Icon(Icons.repeat),
+                      label: Text(l10n.recurringBooking),
+                    ),
+                  ),
                   _Section(
                     title: l10n.chooseDay,
                     child: _DayStrip(selected: selection.day, locale: locale, onPicked: controller.pickDay),

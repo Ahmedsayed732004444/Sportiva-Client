@@ -1,4 +1,5 @@
 import '../../catalog/data/catalog_models.dart';
+import 'owner_court_models.dart';
 
 enum SubscriptionState {
   none,
@@ -55,6 +56,7 @@ class OwnerClub {
     required this.isActive,
     required this.isOwner,
     required this.workingHours,
+    this.images = const [],
     this.logoUrl,
     this.coverUrl,
     this.mapUrl,
@@ -73,6 +75,7 @@ class OwnerClub {
   final bool isActive;
   final bool isOwner;
   final List<WorkingDay> workingHours;
+  final List<GalleryImage> images;
   final String? logoUrl;
   final String? coverUrl;
   final String? mapUrl;
@@ -94,6 +97,7 @@ class OwnerClub {
         .cast<Map<String, dynamic>>()
         .map(WorkingDay.fromJson)
         .toList(),
+    images: (json['images'] as List? ?? const []).cast<Map<String, dynamic>>().map(GalleryImage.fromJson).toList(),
     logoUrl: json['logoUrl'] as String?,
     coverUrl: json['coverUrl'] as String?,
     mapUrl: json['mapUrl'] as String?,

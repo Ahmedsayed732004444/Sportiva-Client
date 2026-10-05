@@ -167,6 +167,7 @@ class Tournament {
     required this.dailyEndTime,
     required this.matchMinutes,
     required this.courts,
+    this.courtRefs = const [],
     this.description,
     this.rules,
     this.prizes,
@@ -185,6 +186,8 @@ class Tournament {
   final String dailyEndTime;
   final int matchMinutes;
   final List<String> courts;
+  // The same courts with their ids, for rescheduling a match onto one of them.
+  final List<({String id, String name})> courtRefs;
   final String? description;
   final String? rules;
   final String? prizes;
@@ -209,6 +212,10 @@ class Tournament {
     dailyEndTime: json['dailyEndTime'] as String,
     matchMinutes: json['matchMinutes'] as int,
     courts: (json['courts'] as List? ?? const []).cast<Map<String, dynamic>>().map((c) => c['name'] as String).toList(),
+    courtRefs: (json['courts'] as List? ?? const [])
+        .cast<Map<String, dynamic>>()
+        .map((c) => (id: c['id'] as String, name: c['name'] as String))
+        .toList(),
     description: json['description'] as String?,
     rules: json['rules'] as String?,
     prizes: json['prizes'] as String?,

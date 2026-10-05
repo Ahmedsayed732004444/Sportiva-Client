@@ -816,5 +816,94 @@
   "resultSaved": "Result saved",
   "pickPoster": "Change poster",
   "teamsPending": "Waiting for you",
-  "mustPickCourt": "Pick at least one court"
+  "mustPickCourt": "Pick at least one court",
+  "recurringBooking": "Book every week",
+  "recurringTitle": "Weekly booking",
+  "weeksCount": "Number of weeks",
+  "firstDay": "First day",
+  "skipUnavailable": "Skip weeks that are taken",
+  "previewWeeks": "Check the weeks",
+  "weekAvailable": "Available",
+  "weekTaken": "Taken",
+  "availableWeeksTotal": "{count} weeks available · total {price} EGP",
+  "@availableWeeksTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "confirmRecurring": "Book the available weeks",
+  "recurringCreated": "Weekly booking created",
+  "myRecurring": "Weekly bookings",
+  "noRecurring": "No weekly bookings",
+  "everyWeekDay": "Every {day}",
+  "@everyWeekDay": {
+    "placeholders": {
+      "day": {
+        "type": "String"
+      }
+    }
+  },
+  "weeksOf": "{count} weeks from {day}",
+  "@weeksOf": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "day": {
+        "type": "String"
+      }
+    }
+  },
+  "cancelRecurring": "Cancel all",
+  "recurringCancelled": "Weekly booking cancelled",
+  "tabWeekly": "Weekly",
+  "repeatWeekly": "Repeat every week",
+  "recurringStatusPending": "Waiting for the club",
+  "recurringStatusConfirmed": "Confirmed",
+  "recurringStatusRejected": "Rejected",
+  "recurringStatusCancelled": "Cancelled",
+  "recurringStatusExpired": "Expired",
+  "clubPhotos": "Club photos",
+  "courtPhotos": "Court photos",
+  "addPhotos2": "Add photos",
+  "deletePhoto": "Delete photo",
+  "setCover": "Set as cover",
+  "photoAdded": "Photos added",
+  "photoDeleted": "Photo deleted",
+  "coverSet": "Cover updated",
+  "noPhotos": "No photos yet",
+  "courtPhotosMenu": "Photos",
+  "reports": "Reports",
+  "reportPeriod7": "7 days",
+  "reportPeriod30": "30 days",
+  "reportPeriod90": "90 days",
+  "revenue": "Revenue",
+  "bookingsTotal": "Bookings",
+  "noShowRate": "No-show rate",
+  "occupancy": "Court occupancy",
+  "peakHours": "Busiest times",
+  "bySource": "Where bookings come from",
+  "topCustomers": "Top customers",
+  "ratingsSummary": "Ratings",
+  "sourceApp": "App",
+  "sourceManual": "Manual",
+  "hoursBooked": "{booked} of {available} h",
+  "@hoursBooked": {
+    "placeholders": {
+      "booked": {
+        "type": "String"
+      },
+      "available": {
+        "type": "String"
+      }
+    }
+  },
+  "rescheduleMatch": "Change time",
+  "rescheduled": "Match rescheduled",
+  "pickCourt": "Court"
 }

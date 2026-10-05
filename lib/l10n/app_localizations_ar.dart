@@ -1768,4 +1768,168 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get mustPickCourt => 'اختار ملعب واحد على الأقل';
+
+  @override
+  String get recurringBooking => 'احجز كل أسبوع';
+
+  @override
+  String get recurringTitle => 'حجز أسبوعي';
+
+  @override
+  String get weeksCount => 'عدد الأسابيع';
+
+  @override
+  String get firstDay => 'أول يوم';
+
+  @override
+  String get skipUnavailable => 'تخطّى الأسابيع المحجوزة';
+
+  @override
+  String get previewWeeks => 'شوف الأسابيع';
+
+  @override
+  String get weekAvailable => 'متاح';
+
+  @override
+  String get weekTaken => 'محجوز';
+
+  @override
+  String availableWeeksTotal(int count, String price) {
+    return '$count أسبوع متاح · الإجمالي $price جنيه';
+  }
+
+  @override
+  String get confirmRecurring => 'احجز الأسابيع المتاحة';
+
+  @override
+  String get recurringCreated => 'الحجز الأسبوعي اتعمل';
+
+  @override
+  String get myRecurring => 'الحجوزات الأسبوعية';
+
+  @override
+  String get noRecurring => 'مفيش حجوزات أسبوعية';
+
+  @override
+  String everyWeekDay(String day) {
+    return 'كل $day';
+  }
+
+  @override
+  String weeksOf(int count, String day) {
+    return '$count أسبوع من $day';
+  }
+
+  @override
+  String get cancelRecurring => 'الغي الكل';
+
+  @override
+  String get recurringCancelled => 'الحجز الأسبوعي اتلغى';
+
+  @override
+  String get tabWeekly => 'أسبوعي';
+
+  @override
+  String get repeatWeekly => 'كرّر كل أسبوع';
+
+  @override
+  String get recurringStatusPending => 'مستني النادي';
+
+  @override
+  String get recurringStatusConfirmed => 'متأكد';
+
+  @override
+  String get recurringStatusRejected => 'مرفوض';
+
+  @override
+  String get recurringStatusCancelled => 'ملغي';
+
+  @override
+  String get recurringStatusExpired => 'منتهي';
+
+  @override
+  String get clubPhotos => 'صور النادي';
+
+  @override
+  String get courtPhotos => 'صور الملعب';
+
+  @override
+  String get addPhotos2 => 'ضيف صور';
+
+  @override
+  String get deletePhoto => 'امسح الصورة';
+
+  @override
+  String get setCover => 'خليها الغلاف';
+
+  @override
+  String get photoAdded => 'الصور اتضافت';
+
+  @override
+  String get photoDeleted => 'الصورة اتمسحت';
+
+  @override
+  String get coverSet => 'الغلاف اتغيّر';
+
+  @override
+  String get noPhotos => 'مفيش صور لسه';
+
+  @override
+  String get courtPhotosMenu => 'الصور';
+
+  @override
+  String get reports => 'التقارير';
+
+  @override
+  String get reportPeriod7 => '7 أيام';
+
+  @override
+  String get reportPeriod30 => '30 يوم';
+
+  @override
+  String get reportPeriod90 => '90 يوم';
+
+  @override
+  String get revenue => 'الإيراد';
+
+  @override
+  String get bookingsTotal => 'الحجوزات';
+
+  @override
+  String get noShowRate => 'نسبة عدم الحضور';
+
+  @override
+  String get occupancy => 'إشغال الملاعب';
+
+  @override
+  String get peakHours => 'أوقات الذروة';
+
+  @override
+  String get bySource => 'مصدر الحجوزات';
+
+  @override
+  String get topCustomers => 'أكتر العملاء';
+
+  @override
+  String get ratingsSummary => 'التقييمات';
+
+  @override
+  String get sourceApp => 'التطبيق';
+
+  @override
+  String get sourceManual => 'يدوي';
+
+  @override
+  String hoursBooked(String booked, String available) {
+    return '$booked من $available ساعة';
+  }
+
+  @override
+  String get rescheduleMatch => 'تغيير الميعاد';
+
+  @override
+  String get rescheduled => 'الماتش اتأجل';
+
+  @override
+  String get pickCourt => 'الملعب';
 }

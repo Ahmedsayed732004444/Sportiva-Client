@@ -14,7 +14,11 @@ import '../../../core/widgets/app_card.dart';
 import '../../../core/widgets/paged_list_view.dart';
 import '../../../core/widgets/rating_badge.dart';
 import '../../../core/widgets/snack.dart';
+import '../../booking/application/recurring_controllers.dart';
 import '../../booking/data/booking_models.dart';
+import '../../booking/data/recurring_models.dart';
+import '../../booking/data/recurring_repository.dart';
+import '../../booking/presentation/widgets/recurring_card.dart';
 import '../../booking/presentation/booking_labels.dart';
 import '../../reviews/data/review_repository.dart';
 import '../../reviews/presentation/rating_sheet.dart';
@@ -29,7 +33,7 @@ class OwnerBookingsTab extends StatelessWidget {
     final l10n = context.l10n;
 
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () => context.push('/owner/bookings/new'),
@@ -77,6 +81,7 @@ class OwnerBookingsTab extends StatelessWidget {
                     separator: const SizedBox(height: AppSpacing.s),
                     itemBuilder: (context, booking) => _OwnerBookingCard(booking: booking),
                   ),
+                  const _WeeklyList(),
                 ],
               ),
             ),
@@ -249,6 +254,51 @@ class _OwnerBookingCardState extends ConsumerState<_OwnerBookingCard> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _WeeklyList extends ConsumerWidget {
+  const _WeeklyList();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = context.l10n;
+    final repository = ref.read(recurringRepositoryProvider);
+
+    Future<void> run(Future<void> Function() action) async {
+      try {
+        await action();
+        ref.invalidate(clubRecurringProvider);
+      } on ApiException catch (e) {
+        if (context.mounted) showApiError(context, e);
+      }
+    }
+
+    return PagedListView<RecurringBooking>(
+      state: clubRecurringProvider,
+      actions: clubRecurringProvider.notifier,
+      emptyMessage: l10n.noRecurring,
+      emptyIcon: Icons.repeat,
+      separator: const SizedBox(height: AppSpacing.s),
+      itemBuilder: (context, booking) => RecurringCard(
+        booking: booking,
+        showCustomer: true,
+        actions: [
+          if (booking.canRespond)
+            TextButton(onPressed: () => run(() => repository.confirm(booking.id)), child: Text(l10n.confirmAction)),
+          if (booking.canRespond)
+            TextButton(
+              onPressed: () => run(() => repository.reject(booking.id, null)),
+              child: Text(l10n.rejectAction, style: const TextStyle(color: AppColors.error)),
+            ),
+          if (booking.canCancel && !booking.canRespond)
+            TextButton(
+              onPressed: () => run(() => repository.clubCancel(booking.id, null)),
+              child: Text(l10n.cancelRecurring, style: const TextStyle(color: AppColors.error)),
+            ),
+        ],
       ),
     );
   }

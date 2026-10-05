@@ -175,7 +175,7 @@ class _OwnerTournamentScreenState extends ConsumerState<OwnerTournamentScreen> {
                 child: TabBarView(
                   children: [
                     _TeamsTab(tournamentId: id),
-                    _MatchesTab(tournamentId: id),
+                    _MatchesTab(tournamentId: id, courts: tournament.courtRefs),
                   ],
                 ),
               ),
@@ -275,9 +275,10 @@ class _TeamsTab extends ConsumerWidget {
 }
 
 class _MatchesTab extends ConsumerWidget {
-  const _MatchesTab({required this.tournamentId});
+  const _MatchesTab({required this.tournamentId, required this.courts});
 
   final String tournamentId;
+  final List<({String id, String name})> courts;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -351,6 +352,89 @@ class _MatchesTab extends ConsumerWidget {
       }
     }
 
+    Future<void> reschedule(TournamentMatch match) async {
+      var courtId = courts.isEmpty ? null : courts.first.id;
+      DateTime? day = match.day == null ? null : parseApiDay(match.day!);
+      TimeOfDay? time;
+      if (match.startTime != null) {
+        final parts = match.startTime!.split(':');
+        time = TimeOfDay(hour: int.parse(parts[0]), minute: int.parse(parts[1]));
+      }
+      String hms(TimeOfDay t) => '${t.hour.toString().padLeft(2, '0')}:${t.minute.toString().padLeft(2, '0')}:00';
+
+      final saved = await showDialog<bool>(
+        context: context,
+        builder: (context) => StatefulBuilder(
+          builder: (context, setState) => AlertDialog(
+            title: Text(l10n.rescheduleMatch),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                DropdownButtonFormField<String>(
+                  initialValue: courtId,
+                  decoration: InputDecoration(labelText: l10n.pickCourt),
+                  items: [for (final court in courts) DropdownMenuItem(value: court.id, child: Text(court.name))],
+                  onChanged: (value) => setState(() => courtId = value),
+                ),
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(day == null ? l10n.pickDate : formatLongDay(locale, day!)),
+                  trailing: const Icon(Icons.calendar_today_outlined),
+                  onTap: () async {
+                    final first = today();
+                    final picked = await showDatePicker(
+                      context: context,
+                      initialDate: day ?? first,
+                      firstDate: first,
+                      lastDate: first.add(const Duration(days: 365)),
+                    );
+                    if (picked != null) setState(() => day = picked);
+                  },
+                ),
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(time == null ? l10n.pickTime : formatTime(locale, hms(time!))),
+                  trailing: const Icon(Icons.schedule_outlined),
+                  onTap: () async {
+                    final picked = await showTimePicker(
+                      context: context,
+                      initialTime: time ?? const TimeOfDay(hour: 18, minute: 0),
+                    );
+                    if (picked == null) return;
+                    final snapped = picked.minute < 15
+                        ? 0
+                        : picked.minute < 45
+                        ? 30
+                        : 60;
+                    setState(
+                      () => time = snapped == 60
+                          ? TimeOfDay(hour: (picked.hour + 1) % 24, minute: 0)
+                          : TimeOfDay(hour: picked.hour, minute: snapped),
+                    );
+                  },
+                ),
+              ],
+            ),
+            actions: [
+              TextButton(onPressed: () => Navigator.pop(context, false), child: Text(l10n.cancel)),
+              TextButton(onPressed: () => Navigator.pop(context, true), child: Text(l10n.save)),
+            ],
+          ),
+        ),
+      );
+      if (saved != true || courtId == null || day == null || time == null) return;
+
+      try {
+        await ref
+            .read(ownerTournamentRepositoryProvider)
+            .reschedule(match.id, courtId: courtId!, day: day!, startTime: hms(time!));
+        ref.invalidate(tournamentMatchesProvider(tournamentId));
+        if (context.mounted) showSnack(context, l10n.rescheduled);
+      } on ApiException catch (e) {
+        if (context.mounted) showApiError(context, e);
+      }
+    }
+
     return matches.when(
       loading: () => const LoadingView(),
       error: (error, _) => ErrorView(
@@ -374,9 +458,14 @@ class _MatchesTab extends ConsumerWidget {
                           : '${formatDay(locale, parseApiDay(match.day!))} ${match.startTime == null ? '' : formatTime(locale, match.startTime!)} · ${match.courtName ?? ''}',
                     ),
                     trailing:
-                        match.home != null && match.away != null && match.status != TournamentMatchStatus.cancelled
-                        ? const Icon(Icons.edit_outlined)
-                        : null,
+                        match.status == TournamentMatchStatus.completed ||
+                            match.status == TournamentMatchStatus.cancelled
+                        ? null
+                        : IconButton(
+                            icon: const Icon(Icons.event_repeat_outlined),
+                            tooltip: l10n.rescheduleMatch,
+                            onPressed: () => reschedule(match),
+                          ),
                     onTap: match.home != null && match.away != null && match.status != TournamentMatchStatus.cancelled
                         ? () => enterResult(match)
                         : null,

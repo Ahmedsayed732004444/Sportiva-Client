@@ -5,7 +5,9 @@ import '../../../core/network/api_client.dart';
 import '../../../core/network/api_exception.dart';
 import '../../../core/paging/paged_result.dart';
 import '../../tournaments/data/tournament_models.dart';
+import '../../../core/localization/date_time_format.dart';
 import 'owner_club_models.dart';
+import 'report_models.dart';
 
 final ownerClubRepositoryProvider = Provider<OwnerClubRepository>(
   (ref) => OwnerClubRepository(ref.watch(apiClientProvider)),
@@ -61,6 +63,26 @@ class OwnerClubRepository {
 
   Future<void> _upload(String url, String path) =>
       _call(() async => _dio.put<void>(url, data: FormData.fromMap({'file': await MultipartFile.fromFile(path)})));
+
+  Future<void> addImages(List<String> paths) => _call(
+    () async => _dio.post<void>(
+      '/clubs/me/images',
+      data: FormData.fromMap({
+        'Images': [for (final path in paths) await MultipartFile.fromFile(path)],
+      }),
+    ),
+  );
+
+  Future<void> deleteImage(String imageId) => _call(() => _dio.delete<void>('/clubs/me/images/$imageId'));
+
+  Future<ClubReport> report({required DateTime from, required DateTime to}) => _call(
+    () async => ClubReport.fromJson(
+      (await _dio.get<Map<String, dynamic>>(
+        '/clubs/me/reports',
+        queryParameters: {'from': apiDay(from), 'to': apiDay(to)},
+      )).data!,
+    ),
+  );
 
   Future<List<Plan>> plans() => _call(() async {
     final response = await _dio.get<List<dynamic>>('/subscription-plans', options: Options(extra: noAuth));

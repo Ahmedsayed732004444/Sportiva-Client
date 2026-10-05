@@ -52,6 +52,17 @@ class PriceRule {
   }
 }
 
+class GalleryImage {
+  const GalleryImage({required this.id, required this.url, required this.isCover});
+
+  final String id;
+  final String url;
+  final bool isCover;
+
+  factory GalleryImage.fromJson(Map<String, dynamic> json) =>
+      GalleryImage(id: json['id'] as String, url: json['url'] as String, isCover: json['isCover'] as bool? ?? false);
+}
+
 class OwnerCourt {
   const OwnerCourt({
     required this.id,
@@ -69,6 +80,7 @@ class OwnerCourt {
     this.defaultDurationMinutes,
     this.allowedDurations = const [],
     this.priceRules = const [],
+    this.images = const [],
   });
 
   final String id;
@@ -86,6 +98,7 @@ class OwnerCourt {
   final int? defaultDurationMinutes;
   final List<int> allowedDurations;
   final List<PriceRule> priceRules;
+  final List<GalleryImage> images;
 
   bool get hasPlayFormat => PlayFormat.appliesTo(sport);
 
@@ -105,6 +118,7 @@ class OwnerCourt {
     defaultDurationMinutes: json['defaultDurationMinutes'] as int?,
     allowedDurations: (json['allowedDurations'] as List? ?? const []).cast<int>(),
     priceRules: (json['priceRules'] as List? ?? const []).cast<Map<String, dynamic>>().map(PriceRule.fromJson).toList(),
+    images: (json['images'] as List? ?? const []).cast<Map<String, dynamic>>().map(GalleryImage.fromJson).toList(),
   );
 }
 

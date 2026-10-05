@@ -78,6 +78,8 @@ class ClubTab extends ConsumerWidget {
             if (club.isOwner) ...[
               _tile(context, Icons.edit_outlined, l10n.editClubInfo, '/owner/club/edit'),
               _tile(context, Icons.schedule_outlined, l10n.workingHours, '/owner/club/hours'),
+              _tile(context, Icons.photo_library_outlined, l10n.clubPhotos, '/owner/club/photos'),
+              _tile(context, Icons.bar_chart, l10n.reports, '/owner/reports'),
               _PhotoTile(icon: Icons.image_outlined, label: l10n.changeLogo, pick: (repo, path) => repo.setLogo(path)),
               _PhotoTile(
                 icon: Icons.panorama_outlined,

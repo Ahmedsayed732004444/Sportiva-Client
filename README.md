@@ -31,6 +31,9 @@ flutter run                 # على الإيميوليتور أو موبايل 
 
 مثال: `flutter run --dart-define=API_BASE_URL=http://10.0.2.2:5036`
 
+أو من ملف: انسخ `env.example.json` إلى `env.json` (متجاهَل في git) وعدّل القيم، وبعدين:
+`flutter run --dart-define-from-file=env.json`
+
 ## تسجيل الدخول بجوجل / Google sign-in
 - التسجيل بالإيميل وكود التأكيد شغّال على طول.
 - تسجيل جوجل على Android محتاج إن **SHA-1** بتاع الـ keystore اللي بتبني بيه يكون مسجّل في Android OAuth client في Google Cloud (نفس package: `com.sportiva.sportiva_app`).

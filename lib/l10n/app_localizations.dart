@@ -3481,6 +3481,318 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Pick at least one court'**
   String get mustPickCourt;
+
+  /// No description provided for @recurringBooking.
+  ///
+  /// In en, this message translates to:
+  /// **'Book every week'**
+  String get recurringBooking;
+
+  /// No description provided for @recurringTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly booking'**
+  String get recurringTitle;
+
+  /// No description provided for @weeksCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Number of weeks'**
+  String get weeksCount;
+
+  /// No description provided for @firstDay.
+  ///
+  /// In en, this message translates to:
+  /// **'First day'**
+  String get firstDay;
+
+  /// No description provided for @skipUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip weeks that are taken'**
+  String get skipUnavailable;
+
+  /// No description provided for @previewWeeks.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the weeks'**
+  String get previewWeeks;
+
+  /// No description provided for @weekAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Available'**
+  String get weekAvailable;
+
+  /// No description provided for @weekTaken.
+  ///
+  /// In en, this message translates to:
+  /// **'Taken'**
+  String get weekTaken;
+
+  /// No description provided for @availableWeeksTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} weeks available · total {price} EGP'**
+  String availableWeeksTotal(int count, String price);
+
+  /// No description provided for @confirmRecurring.
+  ///
+  /// In en, this message translates to:
+  /// **'Book the available weeks'**
+  String get confirmRecurring;
+
+  /// No description provided for @recurringCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly booking created'**
+  String get recurringCreated;
+
+  /// No description provided for @myRecurring.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly bookings'**
+  String get myRecurring;
+
+  /// No description provided for @noRecurring.
+  ///
+  /// In en, this message translates to:
+  /// **'No weekly bookings'**
+  String get noRecurring;
+
+  /// No description provided for @everyWeekDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Every {day}'**
+  String everyWeekDay(String day);
+
+  /// No description provided for @weeksOf.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} weeks from {day}'**
+  String weeksOf(int count, String day);
+
+  /// No description provided for @cancelRecurring.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel all'**
+  String get cancelRecurring;
+
+  /// No description provided for @recurringCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly booking cancelled'**
+  String get recurringCancelled;
+
+  /// No description provided for @tabWeekly.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly'**
+  String get tabWeekly;
+
+  /// No description provided for @repeatWeekly.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat every week'**
+  String get repeatWeekly;
+
+  /// No description provided for @recurringStatusPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for the club'**
+  String get recurringStatusPending;
+
+  /// No description provided for @recurringStatusConfirmed.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmed'**
+  String get recurringStatusConfirmed;
+
+  /// No description provided for @recurringStatusRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected'**
+  String get recurringStatusRejected;
+
+  /// No description provided for @recurringStatusCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelled'**
+  String get recurringStatusCancelled;
+
+  /// No description provided for @recurringStatusExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'Expired'**
+  String get recurringStatusExpired;
+
+  /// No description provided for @clubPhotos.
+  ///
+  /// In en, this message translates to:
+  /// **'Club photos'**
+  String get clubPhotos;
+
+  /// No description provided for @courtPhotos.
+  ///
+  /// In en, this message translates to:
+  /// **'Court photos'**
+  String get courtPhotos;
+
+  /// No description provided for @addPhotos2.
+  ///
+  /// In en, this message translates to:
+  /// **'Add photos'**
+  String get addPhotos2;
+
+  /// No description provided for @deletePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete photo'**
+  String get deletePhoto;
+
+  /// No description provided for @setCover.
+  ///
+  /// In en, this message translates to:
+  /// **'Set as cover'**
+  String get setCover;
+
+  /// No description provided for @photoAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'Photos added'**
+  String get photoAdded;
+
+  /// No description provided for @photoDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo deleted'**
+  String get photoDeleted;
+
+  /// No description provided for @coverSet.
+  ///
+  /// In en, this message translates to:
+  /// **'Cover updated'**
+  String get coverSet;
+
+  /// No description provided for @noPhotos.
+  ///
+  /// In en, this message translates to:
+  /// **'No photos yet'**
+  String get noPhotos;
+
+  /// No description provided for @courtPhotosMenu.
+  ///
+  /// In en, this message translates to:
+  /// **'Photos'**
+  String get courtPhotosMenu;
+
+  /// No description provided for @reports.
+  ///
+  /// In en, this message translates to:
+  /// **'Reports'**
+  String get reports;
+
+  /// No description provided for @reportPeriod7.
+  ///
+  /// In en, this message translates to:
+  /// **'7 days'**
+  String get reportPeriod7;
+
+  /// No description provided for @reportPeriod30.
+  ///
+  /// In en, this message translates to:
+  /// **'30 days'**
+  String get reportPeriod30;
+
+  /// No description provided for @reportPeriod90.
+  ///
+  /// In en, this message translates to:
+  /// **'90 days'**
+  String get reportPeriod90;
+
+  /// No description provided for @revenue.
+  ///
+  /// In en, this message translates to:
+  /// **'Revenue'**
+  String get revenue;
+
+  /// No description provided for @bookingsTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookings'**
+  String get bookingsTotal;
+
+  /// No description provided for @noShowRate.
+  ///
+  /// In en, this message translates to:
+  /// **'No-show rate'**
+  String get noShowRate;
+
+  /// No description provided for @occupancy.
+  ///
+  /// In en, this message translates to:
+  /// **'Court occupancy'**
+  String get occupancy;
+
+  /// No description provided for @peakHours.
+  ///
+  /// In en, this message translates to:
+  /// **'Busiest times'**
+  String get peakHours;
+
+  /// No description provided for @bySource.
+  ///
+  /// In en, this message translates to:
+  /// **'Where bookings come from'**
+  String get bySource;
+
+  /// No description provided for @topCustomers.
+  ///
+  /// In en, this message translates to:
+  /// **'Top customers'**
+  String get topCustomers;
+
+  /// No description provided for @ratingsSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Ratings'**
+  String get ratingsSummary;
+
+  /// No description provided for @sourceApp.
+  ///
+  /// In en, this message translates to:
+  /// **'App'**
+  String get sourceApp;
+
+  /// No description provided for @sourceManual.
+  ///
+  /// In en, this message translates to:
+  /// **'Manual'**
+  String get sourceManual;
+
+  /// No description provided for @hoursBooked.
+  ///
+  /// In en, this message translates to:
+  /// **'{booked} of {available} h'**
+  String hoursBooked(String booked, String available);
+
+  /// No description provided for @rescheduleMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Change time'**
+  String get rescheduleMatch;
+
+  /// No description provided for @rescheduled.
+  ///
+  /// In en, this message translates to:
+  /// **'Match rescheduled'**
+  String get rescheduled;
+
+  /// No description provided for @pickCourt.
+  ///
+  /// In en, this message translates to:
+  /// **'Court'**
+  String get pickCourt;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

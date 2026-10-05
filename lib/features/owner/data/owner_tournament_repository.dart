@@ -128,6 +128,18 @@ class OwnerTournamentRepository {
     ),
   );
 
+  Future<void> reschedule(
+    String matchId, {
+    required String courtId,
+    required DateTime day,
+    required String startTime,
+  }) => _call(
+    () => _dio.put<void>(
+      '$_base/matches/$matchId/schedule',
+      data: {'courtId': courtId, 'day': apiDay(day), 'startTime': startTime},
+    ),
+  );
+
   Future<void> setPoster(String id, String path) => _call(
     () async =>
         _dio.put<void>('$_base/$id/poster', data: FormData.fromMap({'file': await MultipartFile.fromFile(path)})),

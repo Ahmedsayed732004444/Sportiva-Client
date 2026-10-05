@@ -30,6 +30,20 @@ class OwnerCourtRepository {
   Future<void> create(CourtForm form) => _call(() => _dio.post<void>('/clubs/me/courts', data: form.toJson()));
   Future<void> update(String id, CourtForm form) =>
       _call(() => _dio.put<void>('/clubs/me/courts/$id', data: form.toJson()));
+  Future<void> addImages(String id, List<String> paths) => _call(
+    () async => _dio.post<void>(
+      '/clubs/me/courts/$id/images',
+      data: FormData.fromMap({
+        'Images': [for (final path in paths) await MultipartFile.fromFile(path)],
+      }),
+    ),
+  );
+
+  Future<void> deleteImage(String id, String imageId) =>
+      _call(() => _dio.delete<void>('/clubs/me/courts/$id/images/$imageId'));
+  Future<void> setCover(String id, String imageId) =>
+      _call(() => _dio.put<void>('/clubs/me/courts/$id/images/cover', data: {'imageId': imageId}));
+
   Future<void> toggle(String id) => _call(() => _dio.patch<void>('/clubs/me/courts/$id/status'));
   Future<void> delete(String id) => _call(() => _dio.delete<void>('/clubs/me/courts/$id'));
 
