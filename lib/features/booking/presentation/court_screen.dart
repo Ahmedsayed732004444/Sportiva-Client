@@ -13,11 +13,12 @@ import '../../../core/theme/app_text_styles.dart';
 import '../../../core/widgets/app_button.dart';
 import '../../../core/widgets/app_network_image.dart';
 import '../../../core/widgets/choice_chips.dart';
-import '../../../core/widgets/rating_badge.dart';
+import '../../../core/widgets/star_rating.dart';
 import '../../../core/widgets/state_views.dart';
 import '../../../core/widgets/submit_mixin.dart';
 import '../../../core/widgets/stepper_field.dart';
 import '../../catalog/data/catalog_models.dart';
+import '../../catalog/presentation/widgets/distance_label.dart';
 import '../../matches/data/match_repository.dart';
 import '../application/court_booking_controller.dart';
 import '../data/booking_models.dart';
@@ -151,10 +152,11 @@ class _CourtBodyState extends ConsumerState<_CourtBody> with SubmitMixin {
                   Row(
                     children: [
                       Expanded(child: Text(court.name, style: AppTextStyles.header)),
-                      RatingBadge(rating: court.averageRating, count: court.reviewsCount),
+                      StarRating(rating: court.averageRating, count: court.reviewsCount, size: 20),
                     ],
                   ),
                   const SizedBox(height: 4),
+                  DistanceLabel(latitude: court.club.latitude, longitude: court.club.longitude),
                   Text(
                     '${court.club.name} · ${court.sport.label(l10n)}',
                     style: AppTextStyles.body1.copyWith(color: AppColors.black600),

@@ -11,6 +11,7 @@ import '../../../core/theme/app_text_styles.dart';
 import '../../../core/widgets/app_button.dart';
 import '../../../core/widgets/rating_badge.dart';
 import '../../../core/widgets/state_views.dart';
+import '../../../core/widgets/user_avatar.dart';
 import '../../../core/widgets/submit_mixin.dart';
 import '../application/matches_controller.dart';
 import '../data/match_models.dart';
@@ -150,13 +151,7 @@ class _BodyState extends ConsumerState<_Body> with SubmitMixin {
         for (final player in [match.organizer, ...match.players.where((p) => p.userId != match.organizer.userId)])
           ListTile(
             contentPadding: EdgeInsets.zero,
-            leading: CircleAvatar(
-              backgroundColor: AppColors.primary,
-              child: Text(
-                player.fullName.isEmpty ? '?' : player.fullName[0],
-                style: const TextStyle(color: AppColors.white),
-              ),
-            ),
+            leading: UserAvatar(name: player.fullName, url: player.avatarUrl),
             title: Text(player.fullName, style: AppTextStyles.body1),
             subtitle: player.userId == match.organizer.userId
                 ? Text(l10n.organizer, style: AppTextStyles.caption.copyWith(color: AppColors.primaryMid))

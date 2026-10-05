@@ -14,12 +14,15 @@ class AppButton extends StatelessWidget {
     required this.onPressed,
     this.isLoading = false,
     this.style = AppButtonStyle.filled,
+    this.icon,
   });
 
   final String label;
   final VoidCallback? onPressed;
   final bool isLoading;
   final AppButtonStyle style;
+  // An icon before the label (a phone on "call").
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +48,13 @@ class AppButton extends StatelessWidget {
         ),
         child: isLoading
             ? SizedBox.square(dimension: 24, child: CircularProgressIndicator(strokeWidth: 2.5, color: foreground))
-            : Text(label, style: AppTextStyles.cta.copyWith(color: null)),
+            : Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (icon != null) ...[Icon(icon, size: 20), const SizedBox(width: 8)],
+                  Flexible(child: Text(label, style: AppTextStyles.cta.copyWith(color: null))),
+                ],
+              ),
       ),
     );
   }

@@ -4075,6 +4075,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your payment was refunded'**
   String get paymentRefunded;
+
+  /// No description provided for @notificationChannelName.
+  ///
+  /// In en, this message translates to:
+  /// **'Sportiva alerts'**
+  String get notificationChannelName;
+
+  /// No description provided for @notificationChannelDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookings, matches, tournaments, messages and more'**
+  String get notificationChannelDescription;
+
+  /// No description provided for @distanceAway.
+  ///
+  /// In en, this message translates to:
+  /// **'{km} km away'**
+  String distanceAway(String km);
+
+  /// No description provided for @morePlayers.
+  ///
+  /// In en, this message translates to:
+  /// **'+{count}'**
+  String morePlayers(int count);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

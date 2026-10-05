@@ -969,5 +969,23 @@
   "paymentExpired": "صفحة الدفع انتهت. ابدأ من تاني.",
   "paymentChecking": "بنتأكد من الدفع...",
   "noPaymentMethods": "الدفع مش متاح دلوقتي",
-  "paymentRefunded": "فلوسك اترجعت"
+  "paymentRefunded": "فلوسك اترجعت",
+  "notificationChannelName": "تنبيهات سبورتيفا",
+  "notificationChannelDescription": "الحجوزات والماتشات والبطولات والرسايل وغيرها",
+  "distanceAway": "يبعد {km} كم",
+  "@distanceAway": {
+    "placeholders": {
+      "km": {
+        "type": "String"
+      }
+    }
+  },
+  "morePlayers": "+{count}",
+  "@morePlayers": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

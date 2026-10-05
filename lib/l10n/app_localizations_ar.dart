@@ -2077,4 +2077,20 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get paymentRefunded => 'فلوسك اترجعت';
+
+  @override
+  String get notificationChannelName => 'تنبيهات سبورتيفا';
+
+  @override
+  String get notificationChannelDescription => 'الحجوزات والماتشات والبطولات والرسايل وغيرها';
+
+  @override
+  String distanceAway(String km) {
+    return 'يبعد $km كم';
+  }
+
+  @override
+  String morePlayers(int count) {
+    return '+$count';
+  }
 }

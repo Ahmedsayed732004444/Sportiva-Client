@@ -6,7 +6,7 @@ import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/widgets/app_card.dart';
 import '../../../../core/widgets/app_network_image.dart';
-import '../../../../core/widgets/rating_badge.dart';
+import '../../../../core/widgets/star_rating.dart';
 import '../../../catalog/data/catalog_models.dart';
 
 class ClubCard extends StatelessWidget {
@@ -47,7 +47,7 @@ class ClubCard extends StatelessWidget {
                         style: AppTextStyles.title.copyWith(fontWeight: FontWeight.w700),
                       ),
                     ),
-                    RatingBadge(rating: club.averageRating, count: club.reviewsCount),
+                    StarRating(rating: club.averageRating, count: club.reviewsCount),
                   ],
                 ),
                 if (place.isNotEmpty)

@@ -7,7 +7,7 @@ import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/widgets/app_card.dart';
 import '../../../../core/widgets/app_network_image.dart';
-import '../../../../core/widgets/rating_badge.dart';
+import '../../../../core/widgets/star_rating.dart';
 import '../../../catalog/data/catalog_models.dart';
 
 class CourtCard extends StatelessWidget {
@@ -73,7 +73,7 @@ class CourtCard extends StatelessWidget {
                         ),
                         const SizedBox(width: AppSpacing.xs),
                       ],
-                      RatingBadge(rating: court.averageRating, count: court.reviewsCount),
+                      StarRating(rating: court.averageRating, count: court.reviewsCount, size: 14),
                     ],
                   ),
                   const SizedBox(height: 4),

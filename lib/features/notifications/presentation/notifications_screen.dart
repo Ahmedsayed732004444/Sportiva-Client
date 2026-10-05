@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/localization/l10n_extension.dart';
 import '../../../core/localization/relative_time.dart';
@@ -7,6 +8,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/widgets/paged_list_view.dart';
+import '../application/notification_routes.dart';
 import '../application/notifications_controller.dart';
 import '../data/app_notification.dart';
 import 'notification_icons.dart';
@@ -59,7 +61,11 @@ class _NotificationTile extends ConsumerWidget {
         child: const Icon(Icons.delete_outline, color: AppColors.white),
       ),
       child: InkWell(
-        onTap: () => controller.open(notification),
+        onTap: () {
+          controller.open(notification);
+          final route = notificationRoute(notification);
+          if (route != null) context.push(route);
+        },
         child: Container(
           color: notification.isRead ? AppColors.white : AppColors.primaryLight.withValues(alpha: 0.12),
           padding: const EdgeInsets.all(AppSpacing.s),

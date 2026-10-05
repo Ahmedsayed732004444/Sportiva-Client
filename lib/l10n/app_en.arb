@@ -969,5 +969,23 @@
   "paymentExpired": "The payment page expired. Start again.",
   "paymentChecking": "Checking your payment...",
   "noPaymentMethods": "Payment isn't available right now",
-  "paymentRefunded": "Your payment was refunded"
+  "paymentRefunded": "Your payment was refunded",
+  "notificationChannelName": "Sportiva alerts",
+  "notificationChannelDescription": "Bookings, matches, tournaments, messages and more",
+  "distanceAway": "{km} km away",
+  "@distanceAway": {
+    "placeholders": {
+      "km": {
+        "type": "String"
+      }
+    }
+  },
+  "morePlayers": "+{count}",
+  "@morePlayers": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

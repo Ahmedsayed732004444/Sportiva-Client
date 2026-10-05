@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/localization/l10n_extension.dart';
 import '../../../core/location/location_controller.dart';
-import '../../../core/network/api_exception.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/theme/app_text_styles.dart';
@@ -12,9 +11,9 @@ import '../../../core/widgets/app_card.dart';
 import '../../../core/widgets/state_views.dart';
 import '../../auth/application/auth_controller.dart';
 import '../../notifications/presentation/notification_bell.dart';
+import '../../settings/application/account_providers.dart';
 import '../application/home_controller.dart';
 import 'widgets/club_card.dart';
-import 'widgets/court_card.dart';
 import 'widgets/section_header.dart';
 import 'widgets/sports_row.dart';
 
@@ -38,7 +37,6 @@ class HomeScreen extends ConsumerWidget {
         color: AppColors.primary,
         onRefresh: () async {
           await ref.read(locationProvider.notifier).refreshPosition();
-          ref.invalidate(nearestCourtsProvider);
           await clubsController.refresh();
         },
         child: NotificationListener<ScrollNotification>(
@@ -51,8 +49,8 @@ class HomeScreen extends ConsumerWidget {
             slivers: [
               const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.xs)),
               const SliverToBoxAdapter(child: SportsRow()),
-              const SliverToBoxAdapter(child: _NearestCourts()),
               const SliverToBoxAdapter(child: _TournamentsEntry()),
+              const SliverToBoxAdapter(child: _BecomeOwnerEntry()),
               SliverToBoxAdapter(child: SectionHeader(l10n.topRatedClubs)),
               if (clubs.isFirstLoad)
                 const SliverToBoxAdapter(
@@ -124,51 +122,31 @@ class _TournamentsEntry extends StatelessWidget {
   }
 }
 
-class _NearestCourts extends ConsumerWidget {
-  const _NearestCourts();
+// A player can ask to become a club owner; the entry goes away once they are one.
+class _BecomeOwnerEntry extends ConsumerWidget {
+  const _BecomeOwnerEntry();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    if (ref.watch(managesClubProvider)) return const SizedBox.shrink();
     final l10n = context.l10n;
-    final sport = ref.watch(selectedSportProvider);
-    if (sport == null) return const SizedBox.shrink();
 
-    final hasPosition = ref.watch(locationProvider).valueOrNull?.hasPosition ?? false;
-    final courts = ref.watch(nearestCourtsProvider);
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SectionHeader(
-          hasPosition ? '${l10n.courtsNearYou} · ${sport.label(l10n)}' : l10n.courtsOfSport(sport.label(l10n)),
-        ),
-        courts.when(
-          loading: () => const SizedBox(height: 120, child: LoadingView()),
-          error: (error, _) => SizedBox(
-            height: 160,
-            child: ErrorView(
-              error: error is ApiException ? error : const ApiException(kind: ApiErrorKind.unknown),
-              onRetry: () => ref.invalidate(nearestCourtsProvider),
-            ),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(AppSpacing.screenPadding, AppSpacing.s, AppSpacing.screenPadding, 0),
+      child: AppCard(
+        onTap: () => context.push('/membership'),
+        child: ListTile(
+          leading: const Icon(Icons.add_business_outlined, color: AppColors.primary, size: 32),
+          title: Text(l10n.becomeOwner, style: AppTextStyles.title.copyWith(fontWeight: FontWeight.w700)),
+          subtitle: Text(
+            l10n.membershipIntro,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: AppTextStyles.body2,
           ),
-          data: (items) => items.isEmpty
-              ? SizedBox(
-                  height: 140,
-                  child: EmptyView(message: l10n.noCourtsForSport, icon: sport.icon),
-                )
-              : SizedBox(
-                  height: 268,
-                  child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.screenPadding, vertical: 4),
-                    itemCount: items.length,
-                    separatorBuilder: (_, _) => const SizedBox(width: AppSpacing.s),
-                    itemBuilder: (context, index) =>
-                        CourtCard(court: items[index], onTap: () => context.push('/court/${items[index].id}')),
-                  ),
-                ),
+          trailing: const Icon(Icons.chevron_right),
         ),
-      ],
+      ),
     );
   }
 }

@@ -2080,4 +2080,20 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get paymentRefunded => 'Your payment was refunded';
+
+  @override
+  String get notificationChannelName => 'Sportiva alerts';
+
+  @override
+  String get notificationChannelDescription => 'Bookings, matches, tournaments, messages and more';
+
+  @override
+  String distanceAway(String km) {
+    return '$km km away';
+  }
+
+  @override
+  String morePlayers(int count) {
+    return '+$count';
+  }
 }

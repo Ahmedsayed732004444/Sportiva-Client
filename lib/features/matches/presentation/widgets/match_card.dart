@@ -7,6 +7,7 @@ import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/widgets/app_card.dart';
+import '../../../../core/widgets/user_avatar.dart';
 import '../../data/match_models.dart';
 import '../match_labels.dart';
 
@@ -41,7 +42,20 @@ class MatchCard extends StatelessWidget {
                     style: AppTextStyles.body2,
                   ),
                   const SizedBox(height: 4),
-                  Text(match.organizer.fullName, style: AppTextStyles.caption.copyWith(color: AppColors.black600)),
+                  Row(
+                    children: [
+                      _Faces(players: match.participants),
+                      const SizedBox(width: 6),
+                      Flexible(
+                        child: Text(
+                          match.organizer.fullName,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: AppTextStyles.caption.copyWith(color: AppColors.black600),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -67,6 +81,53 @@ class MatchCard extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+// The first three people in the match as small overlapping faces, and how many more there are.
+class _Faces extends StatelessWidget {
+  const _Faces({required this.players});
+
+  final List<MatchPlayer> players;
+
+  static const _shown = 3;
+  static const _radius = 12.0;
+  static const _step = 18.0;
+
+  @override
+  Widget build(BuildContext context) {
+    final first = players.take(_shown).toList();
+    final more = players.length - first.length;
+
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SizedBox(
+          width: _step * (first.length - 1) + _radius * 2,
+          height: _radius * 2,
+          child: Stack(
+            children: [
+              for (var i = 0; i < first.length; i++)
+                PositionedDirectional(
+                  start: i * _step,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: AppColors.white, width: 1.5),
+                    ),
+                    child: UserAvatar(name: first[i].fullName, url: first[i].avatarUrl, radius: _radius),
+                  ),
+                ),
+            ],
+          ),
+        ),
+        if (more > 0)
+          Padding(
+            padding: const EdgeInsets.only(left: 4, right: 4),
+            child: Text(context.l10n.morePlayers(more), style: AppTextStyles.caption),
+          ),
+      ],
     );
   }
 }

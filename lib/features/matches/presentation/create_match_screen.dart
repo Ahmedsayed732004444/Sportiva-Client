@@ -141,7 +141,10 @@ class _CreateMatchScreenState extends ConsumerState<CreateMatchScreen> with Subm
             if (_onCourt) ...[
               Text(l10n.chooseCourtForMatch, style: AppTextStyles.body2.copyWith(color: AppColors.black600)),
               const SizedBox(height: AppSpacing.l),
-              AppButton(label: l10n.pickCourtButton, onPressed: () => context.push('/matches/pick-court')),
+              AppButton(
+                label: l10n.pickCourtButton,
+                onPressed: () => context.push('/courts?sport=${_sport.apiName}&match=1'),
+              ),
             ] else ...[
               Text(l10n.sport, style: AppTextStyles.title),
               const SizedBox(height: AppSpacing.xs),

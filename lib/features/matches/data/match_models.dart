@@ -33,18 +33,20 @@ enum JoinRequestStatus {
 }
 
 class MatchPlayer {
-  const MatchPlayer({required this.userId, required this.fullName, this.rating, this.reviewsCount = 0});
+  const MatchPlayer({required this.userId, required this.fullName, this.rating, this.reviewsCount = 0, this.avatarUrl});
 
   final String userId;
   final String fullName;
   final double? rating;
   final int reviewsCount;
+  final String? avatarUrl;
 
   factory MatchPlayer.fromJson(Map<String, dynamic> json) => MatchPlayer(
     userId: json['userId'] as String,
     fullName: json['fullName'] as String? ?? '',
     rating: (json['rating'] as num?)?.toDouble(),
     reviewsCount: json['reviewsCount'] as int? ?? 0,
+    avatarUrl: json['avatarUrl'] as String?,
   );
 }
 
@@ -103,6 +105,9 @@ class FriendlyMatch {
   final JoinRequestStatus? myRequestStatus;
 
   int get spotsLeft => playersNeeded - acceptedPlayers;
+
+  // Who is in, the organizer first: what the card shows as faces.
+  List<MatchPlayer> get participants => [organizer, ...players.where((p) => p.userId != organizer.userId)];
 
   // Where it is played: the club and court, or the outside place.
   String get title => isExternal ? (placeName ?? '') : [club?.name, courtName].whereType<String>().join(' - ');

@@ -14,9 +14,11 @@ import '../../../core/theme/app_text_styles.dart';
 import '../../../core/widgets/app_button.dart';
 import '../../../core/widgets/app_network_image.dart';
 import '../../../core/widgets/rating_badge.dart';
+import '../../../core/widgets/star_rating.dart';
 import '../../../core/widgets/state_views.dart';
 import '../../home/presentation/widgets/court_card.dart';
 import '../application/club_providers.dart';
+import 'widgets/distance_label.dart';
 import '../data/catalog_models.dart';
 
 class ClubScreen extends ConsumerWidget {
@@ -82,9 +84,10 @@ class _ClubBody extends ConsumerWidget {
                   Row(
                     children: [
                       Expanded(child: Text(club.name, style: AppTextStyles.header)),
-                      RatingBadge(rating: club.averageRating, count: club.reviewsCount),
+                      StarRating(rating: club.averageRating, count: club.reviewsCount, size: 20),
                     ],
                   ),
+                  DistanceLabel(latitude: club.latitude, longitude: club.longitude),
                   const SizedBox(height: AppSpacing.xs),
                   Row(
                     children: [
@@ -111,6 +114,7 @@ class _ClubBody extends ConsumerWidget {
                   if (club.phone.isNotEmpty)
                     AppButton(
                       label: l10n.callClub,
+                      icon: Icons.phone,
                       style: AppButtonStyle.outlined,
                       onPressed: () => launchUrl(Uri(scheme: 'tel', path: club.phone)),
                     ),

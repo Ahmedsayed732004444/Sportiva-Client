@@ -187,6 +187,7 @@ class _DetailsState extends ConsumerState<_Details> with SubmitMixin {
         if (booking.clubPhone.isNotEmpty)
           AppButton(
             label: l10n.callClub,
+            icon: Icons.phone,
             style: AppButtonStyle.outlined,
             onPressed: () => launchUrl(Uri(scheme: 'tel', path: booking.clubPhone)),
           ),

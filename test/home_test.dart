@@ -14,6 +14,7 @@ import 'package:sportiva_app/core/theme/app_theme.dart';
 import 'package:sportiva_app/features/catalog/data/catalog_models.dart';
 import 'package:sportiva_app/features/catalog/data/catalog_repository.dart';
 import 'package:sportiva_app/features/catalog/data/sport_type.dart';
+import 'package:sportiva_app/features/catalog/presentation/courts_screen.dart';
 import 'package:sportiva_app/features/home/presentation/home_screen.dart';
 import 'package:sportiva_app/features/location/location_gate_screen.dart';
 import 'package:sportiva_app/l10n/app_localizations.dart';
@@ -204,7 +205,7 @@ void main() {
     expect(container.read(locationProvider).value!.hasPosition, isFalse);
   });
 
-  testWidgets('home: sports on top, tapping one shows its nearest courts, best rated clubs below', (tester) async {
+  testWidgets('home: sports on top, best rated clubs below', (tester) async {
     tester.view.devicePixelRatio = 1;
     tester.view.physicalSize = const Size(420, 1200);
     addTearDown(tester.view.reset);
@@ -225,18 +226,27 @@ void main() {
     expect(find.text('Pitch A'), findsNothing, reason: 'no sport picked yet');
     expect(catalog.calls, contains('clubs topRated=true near=true'));
 
-    await tester.tap(find.text('Padel'));
-    await tester.pump();
+    expect(find.text('Pitch A'), findsNothing, reason: 'courts live on their own page, not on the home');
+  });
+
+  testWidgets('the courts page of a sport lists its courts nearest first', (tester) async {
+    tester.view.devicePixelRatio = 1;
+    tester.view.physicalSize = const Size(420, 1200);
+    addTearDown(tester.view.reset);
+
+    final catalog = FakeCatalog();
+    await pumpApp(
+      tester,
+      const CourtsScreen(sport: SportType.padel),
+      location: FakeLocation(start: LocationAccess.granted),
+      catalog: catalog,
+    );
     await tester.pump(const Duration(milliseconds: 50));
 
     expect(find.text('Pitch A'), findsOneWidget);
     expect(find.text('400 EGP / hr'), findsOneWidget);
-    expect(find.text('Courts near you · Padel'), findsOneWidget);
+    expect(find.text('Padel courts'), findsOneWidget);
     expect(catalog.calls, contains('courts Padel near=true'));
-
-    await tester.tap(find.text('Padel'));
-    await tester.pump();
-    expect(find.text('Pitch A'), findsNothing, reason: 'tapping the sport again clears it');
   });
 
   testWidgets('home in Arabic', (tester) async {

@@ -216,7 +216,7 @@ class _OwnerBookingCardState extends ConsumerState<_OwnerBookingCard> {
                   IconButton(
                     visualDensity: VisualDensity.compact,
                     tooltip: l10n.callCustomer,
-                    icon: const Icon(Icons.call_outlined, color: AppColors.primary),
+                    icon: const Icon(Icons.phone, color: AppColors.primary),
                     onPressed: () => launchUrl(Uri(scheme: 'tel', path: booking.customerPhone)),
                   ),
               ],

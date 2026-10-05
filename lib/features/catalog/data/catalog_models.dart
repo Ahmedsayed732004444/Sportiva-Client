@@ -2,13 +2,23 @@ import 'sport_type.dart';
 
 // The club a court belongs to (ClubSummary in the API).
 class ClubRef {
-  const ClubRef({required this.id, required this.name, this.logoUrl, this.governorateName, this.city});
+  const ClubRef({
+    required this.id,
+    required this.name,
+    this.logoUrl,
+    this.governorateName,
+    this.city,
+    this.latitude,
+    this.longitude,
+  });
 
   final String id;
   final String name;
   final String? logoUrl;
   final String? governorateName;
   final String? city;
+  final double? latitude;
+  final double? longitude;
 
   factory ClubRef.fromJson(Map<String, dynamic> json) => ClubRef(
     id: json['id'] as String,
@@ -16,6 +26,8 @@ class ClubRef {
     logoUrl: json['logoUrl'] as String?,
     governorateName: json['governorateName'] as String?,
     city: json['city'] as String?,
+    latitude: (json['latitude'] as num?)?.toDouble(),
+    longitude: (json['longitude'] as num?)?.toDouble(),
   );
 }
 

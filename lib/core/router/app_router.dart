@@ -12,11 +12,12 @@ import '../../features/auth/presentation/sign_up_screen.dart';
 import '../../features/booking/presentation/booking_details_screen.dart';
 import '../../features/booking/presentation/bookings_screen.dart';
 import '../../features/booking/presentation/court_screen.dart';
+import '../../features/catalog/data/sport_type.dart';
 import '../../features/catalog/presentation/club_screen.dart';
+import '../../features/catalog/presentation/courts_screen.dart';
 import '../../features/booking/presentation/recurring_screens.dart';
 import '../../features/home/presentation/home_screen.dart';
 import '../../features/location/location_gate_screen.dart';
-import '../../features/matches/presentation/court_picker_screen.dart';
 import '../../features/matches/presentation/create_match_screen.dart';
 import '../../features/matches/presentation/match_chat_screen.dart';
 import '../../features/matches/presentation/match_details_screen.dart';
@@ -116,7 +117,13 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/booking/:id',
         builder: (_, state) => BookingDetailsScreen(bookingId: state.pathParameters['id']!),
       ),
-      GoRoute(path: '/matches/pick-court', builder: (_, _) => const CourtPickerScreen()),
+      GoRoute(
+        path: '/courts',
+        builder: (_, state) => CourtsScreen(
+          sport: SportType.fromApi(state.uri.queryParameters['sport']),
+          matchMode: state.uri.queryParameters['match'] == '1',
+        ),
+      ),
       GoRoute(path: '/matches/create', builder: (_, _) => const CreateMatchScreen()),
       GoRoute(
         path: '/match/:id',

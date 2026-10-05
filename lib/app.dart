@@ -7,6 +7,7 @@ import 'core/realtime/realtime_service.dart';
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'core/widgets/snack.dart';
+import 'features/notifications/application/system_notifications.dart';
 import 'features/payments/application/payment_providers.dart';
 import 'features/settings/application/account_providers.dart';
 import 'l10n/app_localizations.dart';
@@ -20,6 +21,7 @@ class SportivaApp extends ConsumerWidget {
     ref.watch(realtimeLifecycleProvider);
     ref.watch(languageSyncProvider);
     ref.watch(paymentFeedbackProvider);
+    ref.watch(systemNotificationsProvider);
 
     return MaterialApp.router(
       scaffoldMessengerKey: rootMessengerKey,
