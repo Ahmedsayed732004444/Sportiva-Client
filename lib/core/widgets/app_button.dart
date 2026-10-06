@@ -43,7 +43,7 @@ class AppButton extends StatelessWidget {
           shape: shape,
           backgroundColor: filled ? AppColors.primary : AppColors.surface,
           foregroundColor: foreground,
-          disabledBackgroundColor: filled ? AppColors.primary.withValues(alpha: 0.4) : AppColors.onBrand,
+          disabledBackgroundColor: filled ? AppColors.primary.withValues(alpha: 0.4) : AppColors.surface,
           disabledForegroundColor: filled ? AppColors.onBrand : AppColors.gray400,
         ),
         child: isLoading

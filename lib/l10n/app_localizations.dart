@@ -1319,7 +1319,7 @@ abstract class AppLocalizations {
   /// No description provided for @searchHint.
   ///
   /// In en, this message translates to:
-  /// **'Search people, clubs and posts'**
+  /// **'Search clubs and courts'**
   String get searchHint;
 
   /// No description provided for @noPosts.
@@ -4123,6 +4123,252 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Dark'**
   String get themeDark;
+
+  /// No description provided for @searchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get searchTitle;
+
+  /// No description provided for @searchFilters.
+  ///
+  /// In en, this message translates to:
+  /// **'Filters'**
+  String get searchFilters;
+
+  /// No description provided for @filterSport.
+  ///
+  /// In en, this message translates to:
+  /// **'Sport'**
+  String get filterSport;
+
+  /// No description provided for @filterGovernorate.
+  ///
+  /// In en, this message translates to:
+  /// **'Governorate'**
+  String get filterGovernorate;
+
+  /// No description provided for @filterAnyGovernorate.
+  ///
+  /// In en, this message translates to:
+  /// **'Anywhere'**
+  String get filterAnyGovernorate;
+
+  /// No description provided for @filterCityHint.
+  ///
+  /// In en, this message translates to:
+  /// **'City, e.g. Tanta'**
+  String get filterCityHint;
+
+  /// No description provided for @filterPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Price per hour'**
+  String get filterPrice;
+
+  /// No description provided for @filterPriceAny.
+  ///
+  /// In en, this message translates to:
+  /// **'Any price'**
+  String get filterPriceAny;
+
+  /// No description provided for @filterPriceFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'From {min} EGP'**
+  String filterPriceFrom(String min);
+
+  /// No description provided for @filterPriceUpTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Up to {max} EGP'**
+  String filterPriceUpTo(String max);
+
+  /// No description provided for @filterPriceBetween.
+  ///
+  /// In en, this message translates to:
+  /// **'{min} - {max} EGP'**
+  String filterPriceBetween(String min, String max);
+
+  /// No description provided for @filterRating.
+  ///
+  /// In en, this message translates to:
+  /// **'Rating'**
+  String get filterRating;
+
+  /// No description provided for @filterRatingAny.
+  ///
+  /// In en, this message translates to:
+  /// **'Any'**
+  String get filterRatingAny;
+
+  /// No description provided for @filterRatingFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'{rating}+ stars'**
+  String filterRatingFrom(String rating);
+
+  /// No description provided for @filterDistance.
+  ///
+  /// In en, this message translates to:
+  /// **'Distance from you'**
+  String get filterDistance;
+
+  /// No description provided for @filterDistanceAny.
+  ///
+  /// In en, this message translates to:
+  /// **'Any distance'**
+  String get filterDistanceAny;
+
+  /// No description provided for @filterDistanceNeedsLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on your location to filter by distance'**
+  String get filterDistanceNeedsLocation;
+
+  /// No description provided for @filterSort.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort by'**
+  String get filterSort;
+
+  /// No description provided for @sortNearest.
+  ///
+  /// In en, this message translates to:
+  /// **'Nearest'**
+  String get sortNearest;
+
+  /// No description provided for @sortPriceLow.
+  ///
+  /// In en, this message translates to:
+  /// **'Price: low to high'**
+  String get sortPriceLow;
+
+  /// No description provided for @sortPriceHigh.
+  ///
+  /// In en, this message translates to:
+  /// **'Price: high to low'**
+  String get sortPriceHigh;
+
+  /// No description provided for @sortRating.
+  ///
+  /// In en, this message translates to:
+  /// **'Best rated'**
+  String get sortRating;
+
+  /// No description provided for @filtersApply.
+  ///
+  /// In en, this message translates to:
+  /// **'Show results'**
+  String get filtersApply;
+
+  /// No description provided for @filtersReset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get filtersReset;
+
+  /// No description provided for @searchNoResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing matches your search'**
+  String get searchNoResults;
+
+  /// No description provided for @searchNoResultsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Try removing a filter or searching for something else.'**
+  String get searchNoResultsHint;
+
+  /// No description provided for @searchClearFilters.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear filters'**
+  String get searchClearFilters;
+
+  /// No description provided for @kmShort.
+  ///
+  /// In en, this message translates to:
+  /// **'{km} km'**
+  String kmShort(String km);
+
+  /// No description provided for @fromPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'from {price} EGP / hr'**
+  String fromPrice(String price);
+
+  /// No description provided for @nearbyBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Nearby'**
+  String get nearbyBadge;
+
+  /// No description provided for @playerPosition.
+  ///
+  /// In en, this message translates to:
+  /// **'Position'**
+  String get playerPosition;
+
+  /// No description provided for @positionGoalkeeper.
+  ///
+  /// In en, this message translates to:
+  /// **'Goalkeeper'**
+  String get positionGoalkeeper;
+
+  /// No description provided for @positionDefender.
+  ///
+  /// In en, this message translates to:
+  /// **'Defender'**
+  String get positionDefender;
+
+  /// No description provided for @positionMidfielder.
+  ///
+  /// In en, this message translates to:
+  /// **'Midfielder'**
+  String get positionMidfielder;
+
+  /// No description provided for @positionForward.
+  ///
+  /// In en, this message translates to:
+  /// **'Forward'**
+  String get positionForward;
+
+  /// No description provided for @preferredFoot.
+  ///
+  /// In en, this message translates to:
+  /// **'Preferred foot'**
+  String get preferredFoot;
+
+  /// No description provided for @footRight.
+  ///
+  /// In en, this message translates to:
+  /// **'Right'**
+  String get footRight;
+
+  /// No description provided for @footLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'Left'**
+  String get footLeft;
+
+  /// No description provided for @footBoth.
+  ///
+  /// In en, this message translates to:
+  /// **'Both'**
+  String get footBoth;
+
+  /// No description provided for @traitsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Other players see this on your profile and when picking a team.'**
+  String get traitsHint;
+
+  /// No description provided for @searchClubsTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Clubs'**
+  String get searchClubsTab;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

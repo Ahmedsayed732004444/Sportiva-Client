@@ -1,3 +1,4 @@
+import 'player_traits.dart';
 import '../../catalog/data/catalog_models.dart';
 import '../../catalog/data/sport_type.dart';
 
@@ -220,6 +221,9 @@ class UserProfile {
     required this.followsYou,
     required this.isBlockedByMe,
     required this.preferredSports,
+    this.position,
+    this.foot,
+    this.governorateId,
     this.bio,
     this.city,
     this.governorateName,
@@ -242,6 +246,9 @@ class UserProfile {
   final bool followsYou;
   final bool isBlockedByMe;
   final List<SportType> preferredSports;
+  final PlayerPosition? position;
+  final PreferredFoot? foot;
+  final int? governorateId;
   final String? bio;
   final String? city;
   final String? governorateName;
@@ -265,6 +272,9 @@ class UserProfile {
     followsYou: json['followsYou'] as bool? ?? false,
     isBlockedByMe: json['isBlockedByMe'] as bool? ?? false,
     preferredSports: (json['preferredSports'] as List? ?? const []).map(SportType.fromApi).toList(),
+    position: PlayerPosition.fromApi(json['position']),
+    foot: PreferredFoot.fromApi(json['preferredFoot']),
+    governorateId: json['governorateId'] as int?,
     bio: json['bio'] as String?,
     city: json['city'] as String?,
     governorateName: json['governorateName'] as String?,

@@ -1,3 +1,4 @@
+import 'player_traits.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -96,6 +97,8 @@ class SocialRepository {
     String? bio,
     String? city,
     int? governorateId,
+    PlayerPosition? position,
+    PreferredFoot? foot,
   }) => _call(
     () => _dio.put<void>(
       '/profiles/me',
@@ -106,6 +109,8 @@ class SocialRepository {
         'city': city,
         'governorateId': governorateId,
         'preferredSports': [for (final sport in preferredSports) sport.apiName],
+        'position': position?.apiName,
+        'preferredFoot': foot?.apiName,
       },
     ),
   );

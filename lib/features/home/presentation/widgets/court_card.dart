@@ -1,3 +1,4 @@
+import '../../../../core/widgets/distance_badge.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/localization/l10n_extension.dart';
@@ -48,6 +49,7 @@ class CourtCard extends StatelessWidget {
                   children: [
                     ImageCarousel(urls: court.gallery, icon: court.sport.icon),
                     PositionedDirectional(start: 8, bottom: 8, child: ClubLogo(url: court.club.logoUrl, radius: 14)),
+                    PositionedDirectional(end: 8, top: 8, child: DistanceBadge(km: court.distanceKm)),
                   ],
                 ),
               ),

@@ -1,3 +1,4 @@
+import 'search_filters.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -37,6 +38,46 @@ class CatalogRepository {
         'pageNumber': page,
         'pageSize': pageSize,
         if (topRated) 'topRated': true,
+        ..._location(at),
+      });
+
+  // The player's search over courts: the filters become API filters (price in piasters) plus the sort.
+  Future<PagedResult<CourtListItem>> searchCourts(
+    SearchFilters f, {
+    Coordinates? at,
+    int page = 1,
+    int pageSize = 10,
+  }) => _list('/courts', CourtListItem.fromJson, {
+    'pageNumber': page,
+    'pageSize': pageSize,
+    if (f.query.trim().isNotEmpty) 'searchValue': f.query.trim(),
+    'Filter': [
+      if (f.sport != null) 'sportType:eq:${f.sport!.apiName}',
+      if (f.governorateId != null) 'governorateId:eq:${f.governorateId}',
+      if (f.city?.trim().isNotEmpty ?? false) 'city:contains:${f.city!.trim()}',
+      if (f.minPrice != null) 'price:gte:${f.minPrice! * 100}',
+      if (f.maxPrice != null) 'price:lte:${f.maxPrice! * 100}',
+    ],
+    if (f.minRating != null) 'minRating': f.minRating,
+    if (f.maxKm != null && at != null) 'maxKm': f.maxKm,
+    if (f.sort != SearchSort.nearest || at == null) 'sort': f.sort == SearchSort.nearest ? 'price' : f.sort.apiName,
+    ..._location(at),
+  });
+
+  Future<PagedResult<ClubListItem>> searchClubs(SearchFilters f, {Coordinates? at, int page = 1, int pageSize = 10}) =>
+      _list('/clubs', ClubListItem.fromJson, {
+        'pageNumber': page,
+        'pageSize': pageSize,
+        if (f.query.trim().isNotEmpty) 'searchValue': f.query.trim(),
+        'Filter': [
+          if (f.governorateId != null) 'governorateId:eq:${f.governorateId}',
+          if (f.city?.trim().isNotEmpty ?? false) 'city:contains:${f.city!.trim()}',
+        ],
+        if (f.sport != null) 'sport': f.sport!.apiName,
+        if (f.minRating != null) 'minRating': f.minRating,
+        if (f.maxPrice != null) 'maxPricePiasters': f.maxPrice! * 100,
+        if (f.maxKm != null && at != null) 'maxKm': f.maxKm,
+        if (f.sort == SearchSort.rating) 'topRated': true,
         ..._location(at),
       });
 

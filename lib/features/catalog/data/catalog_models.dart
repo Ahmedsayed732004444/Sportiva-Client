@@ -40,6 +40,7 @@ class CourtListItem {
     required this.club,
     this.coverImageUrl,
     this.imageUrls = const [],
+    this.distanceKm,
     this.distanceText,
     this.averageRating,
     this.reviewsCount = 0,
@@ -53,6 +54,7 @@ class CourtListItem {
   final String? coverImageUrl;
   // The court's own pictures, cover first.
   final List<String> imageUrls;
+  final double? distanceKm;
   final String? distanceText;
   final double? averageRating;
   final int reviewsCount;
@@ -68,6 +70,7 @@ class CourtListItem {
     club: ClubRef.fromJson(json['club'] as Map<String, dynamic>),
     coverImageUrl: json['coverImageUrl'] as String?,
     imageUrls: (json['imageUrls'] as List? ?? const []).cast<String>(),
+    distanceKm: (json['distanceKm'] as num?)?.toDouble(),
     distanceText: json['distanceText'] as String?,
     averageRating: (json['averageRating'] as num?)?.toDouble(),
     reviewsCount: json['reviewsCount'] as int? ?? 0,
@@ -84,7 +87,10 @@ class ClubListItem {
     this.coverUrl,
     this.city,
     this.governorateName,
+    this.distanceKm,
     this.distanceText,
+    this.imageUrls = const [],
+    this.minPricePiasters,
     this.averageRating,
     this.reviewsCount = 0,
   });
@@ -97,11 +103,17 @@ class ClubListItem {
   final String? coverUrl;
   final String? city;
   final String? governorateName;
+  final double? distanceKm;
   final String? distanceText;
+  final List<String> imageUrls;
+  final int? minPricePiasters;
   final double? averageRating;
   final int reviewsCount;
 
   String? get imageUrl => coverUrl ?? logoUrl;
+
+  // What the card swipes through: the cover first, then the gallery (the logo is its own badge).
+  List<String> get gallery => imageUrls.isNotEmpty ? imageUrls : [?(coverUrl ?? logoUrl)];
 
   factory ClubListItem.fromJson(Map<String, dynamic> json) => ClubListItem(
     id: json['id'] as String,
@@ -112,7 +124,10 @@ class ClubListItem {
     coverUrl: json['coverUrl'] as String?,
     city: json['city'] as String?,
     governorateName: json['governorateName'] as String?,
+    distanceKm: (json['distanceKm'] as num?)?.toDouble(),
     distanceText: json['distanceText'] as String?,
+    imageUrls: (json['imageUrls'] as List? ?? const []).cast<String>(),
+    minPricePiasters: (json['minPricePiasters'] as num?)?.toInt(),
     averageRating: (json['averageRating'] as num?)?.toDouble(),
     reviewsCount: json['reviewsCount'] as int? ?? 0,
   );

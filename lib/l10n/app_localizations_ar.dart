@@ -653,7 +653,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get reels => 'ريلز';
 
   @override
-  String get searchHint => 'دوّر على ناس وأندية وبوستات';
+  String get searchHint => 'ابحث عن نادي أو ملعب';
 
   @override
   String get noPosts => 'مفيش بوستات لسه';
@@ -2105,4 +2105,139 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get themeDark => 'داكن';
+
+  @override
+  String get searchTitle => 'بحث';
+
+  @override
+  String get searchFilters => 'الفلاتر';
+
+  @override
+  String get filterSport => 'الرياضة';
+
+  @override
+  String get filterGovernorate => 'المحافظة';
+
+  @override
+  String get filterAnyGovernorate => 'أي مكان';
+
+  @override
+  String get filterCityHint => 'المدينة مثل طنطا';
+
+  @override
+  String get filterPrice => 'السعر في الساعة';
+
+  @override
+  String get filterPriceAny => 'أي سعر';
+
+  @override
+  String filterPriceFrom(String min) {
+    return 'من $min ج.م';
+  }
+
+  @override
+  String filterPriceUpTo(String max) {
+    return 'حتى $max ج.م';
+  }
+
+  @override
+  String filterPriceBetween(String min, String max) {
+    return '$min - $max ج.م';
+  }
+
+  @override
+  String get filterRating => 'التقييم';
+
+  @override
+  String get filterRatingAny => 'الكل';
+
+  @override
+  String filterRatingFrom(String rating) {
+    return '$rating+ نجوم';
+  }
+
+  @override
+  String get filterDistance => 'المسافة منك';
+
+  @override
+  String get filterDistanceAny => 'أي مسافة';
+
+  @override
+  String get filterDistanceNeedsLocation => 'فعّل الموقع عشان تفلتر بالمسافة';
+
+  @override
+  String get filterSort => 'ترتيب حسب';
+
+  @override
+  String get sortNearest => 'الأقرب';
+
+  @override
+  String get sortPriceLow => 'السعر: الأقل أولًا';
+
+  @override
+  String get sortPriceHigh => 'السعر: الأعلى أولًا';
+
+  @override
+  String get sortRating => 'الأعلى تقييمًا';
+
+  @override
+  String get filtersApply => 'عرض النتائج';
+
+  @override
+  String get filtersReset => 'إعادة ضبط';
+
+  @override
+  String get searchNoResults => 'مفيش نتائج مطابقة';
+
+  @override
+  String get searchNoResultsHint => 'جرّب تشيل فلتر أو تبحث عن حاجة تانية.';
+
+  @override
+  String get searchClearFilters => 'مسح الفلاتر';
+
+  @override
+  String kmShort(String km) {
+    return '$km كم';
+  }
+
+  @override
+  String fromPrice(String price) {
+    return 'من $price ج.م / ساعة';
+  }
+
+  @override
+  String get nearbyBadge => 'قريب منك';
+
+  @override
+  String get playerPosition => 'المركز';
+
+  @override
+  String get positionGoalkeeper => 'حارس مرمى';
+
+  @override
+  String get positionDefender => 'مدافع';
+
+  @override
+  String get positionMidfielder => 'لاعب وسط';
+
+  @override
+  String get positionForward => 'مهاجم';
+
+  @override
+  String get preferredFoot => 'القدم المفضلة';
+
+  @override
+  String get footRight => 'اليمين';
+
+  @override
+  String get footLeft => 'الشمال';
+
+  @override
+  String get footBoth => 'الاتنين';
+
+  @override
+  String get traitsHint => 'اللاعبين التانيين بيشوفوا ده في بروفايلك.';
+
+  @override
+  String get searchClubsTab => 'الأندية';
 }

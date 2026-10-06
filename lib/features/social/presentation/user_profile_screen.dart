@@ -182,6 +182,31 @@ class _HeaderState extends ConsumerState<_Header> {
                   padding: const EdgeInsets.fromLTRB(AppSpacing.l, AppSpacing.xs, AppSpacing.l, 0),
                   child: Text(profile.bio!, textAlign: TextAlign.center, style: AppTextStyles.body1),
                 ),
+              if (profile.position != null || profile.foot != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: AppSpacing.xs),
+                  child: Wrap(
+                    spacing: 8,
+                    alignment: WrapAlignment.center,
+                    children: [
+                      if (profile.position != null)
+                        Chip(
+                          avatar: Icon(profile.position!.icon, size: 18, color: AppColors.primary),
+                          label: Text(profile.position!.label(l10n), style: AppTextStyles.caption),
+                          visualDensity: VisualDensity.compact,
+                        ),
+                      if (profile.foot != null)
+                        Chip(
+                          avatar: Icon(Icons.directions_walk, size: 18, color: AppColors.primary),
+                          label: Text(
+                            '${l10n.preferredFoot}: ${profile.foot!.label(l10n)}',
+                            style: AppTextStyles.caption,
+                          ),
+                          visualDensity: VisualDensity.compact,
+                        ),
+                    ],
+                  ),
+                ),
               if (profile.city != null || profile.governorateName != null)
                 Padding(
                   padding: const EdgeInsets.only(top: 4),

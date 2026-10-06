@@ -1,3 +1,4 @@
+import '../data/player_traits.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -61,7 +62,9 @@ class _FormState extends ConsumerState<_Form> with SubmitMixin {
   late final _bio = TextEditingController(text: widget.profile.bio);
   late final _city = TextEditingController(text: widget.profile.city);
   late final Set<SportType> _sports = {...widget.profile.preferredSports};
-  int? _governorateId;
+  late int? _governorateId = widget.profile.governorateId;
+  late PlayerPosition? _position = widget.profile.position;
+  late PreferredFoot? _foot = widget.profile.foot;
 
   @override
   void dispose() {
@@ -92,6 +95,8 @@ class _FormState extends ConsumerState<_Form> with SubmitMixin {
             bio: _bio.text.trim().isEmpty ? null : _bio.text.trim(),
             city: _city.text.trim().isEmpty ? null : _city.text.trim(),
             governorateId: _governorateId,
+            position: _position,
+            foot: _foot,
           ),
     );
 
@@ -138,6 +143,39 @@ class _FormState extends ConsumerState<_Form> with SubmitMixin {
                   label: Text(sport.label(l10n)),
                   selected: _sports.contains(sport),
                   onSelected: (on) => setState(() => on ? _sports.add(sport) : _sports.remove(sport)),
+                ),
+            ],
+          ),
+          const SizedBox(height: AppSpacing.m),
+          Text(l10n.playerPosition, style: AppTextStyles.title),
+          Text(l10n.traitsHint, style: AppTextStyles.caption.copyWith(color: AppColors.black600)),
+          const SizedBox(height: AppSpacing.xs),
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: [
+              for (final position in PlayerPosition.values)
+                ChoiceChip(
+                  avatar: Icon(position.icon, size: 18),
+                  label: Text(position.label(l10n)),
+                  selected: _position == position,
+                  // Tapping the chosen one again clears it.
+                  onSelected: (on) => setState(() => _position = on ? position : null),
+                ),
+            ],
+          ),
+          const SizedBox(height: AppSpacing.m),
+          Text(l10n.preferredFoot, style: AppTextStyles.title),
+          const SizedBox(height: AppSpacing.xs),
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: [
+              for (final foot in PreferredFoot.values)
+                ChoiceChip(
+                  label: Text(foot.label(l10n)),
+                  selected: _foot == foot,
+                  onSelected: (on) => setState(() => _foot = on ? foot : null),
                 ),
             ],
           ),

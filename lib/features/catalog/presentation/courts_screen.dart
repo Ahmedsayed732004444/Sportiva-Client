@@ -31,7 +31,17 @@ class _CourtsScreenState extends ConsumerState<CourtsScreen> {
     final provider = courtsListProvider(_sport);
 
     return Scaffold(
-      appBar: AppBar(title: Text(widget.matchMode ? l10n.pickCourtTitle : l10n.courtsOfSport(_sport.label(l10n)))),
+      appBar: AppBar(
+        title: Text(widget.matchMode ? l10n.pickCourtTitle : l10n.courtsOfSport(_sport.label(l10n))),
+        actions: [
+          if (!widget.matchMode)
+            IconButton(
+              tooltip: l10n.searchFilters,
+              icon: const Icon(Icons.tune),
+              onPressed: () => context.push('/find?sport=${_sport.apiName}'),
+            ),
+        ],
+      ),
       body: Column(
         children: [
           Padding(

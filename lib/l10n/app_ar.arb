@@ -322,7 +322,7 @@
   "feed": "بتتابعهم",
   "explore": "استكشف",
   "reels": "ريلز",
-  "searchHint": "دوّر على ناس وأندية وبوستات",
+  "searchHint": "ابحث عن نادي أو ملعب",
   "noPosts": "مفيش بوستات لسه",
   "newPostsAvailable": "فيه بوستات جديدة",
   "newPost": "بوست جديد",
@@ -991,5 +991,91 @@
   "appearance": "المظهر",
   "themeSystem": "حسب الهاتف",
   "themeLight": "فاتح",
-  "themeDark": "داكن"
+  "themeDark": "داكن",
+  "searchTitle": "بحث",
+  "searchFilters": "الفلاتر",
+  "filterSport": "الرياضة",
+  "filterGovernorate": "المحافظة",
+  "filterAnyGovernorate": "أي مكان",
+  "filterCityHint": "المدينة مثل طنطا",
+  "filterPrice": "السعر في الساعة",
+  "filterPriceAny": "أي سعر",
+  "filterPriceFrom": "من {min} ج.م",
+  "filterPriceUpTo": "حتى {max} ج.م",
+  "filterPriceBetween": "{min} - {max} ج.م",
+  "filterRating": "التقييم",
+  "filterRatingAny": "الكل",
+  "filterRatingFrom": "{rating}+ نجوم",
+  "filterDistance": "المسافة منك",
+  "filterDistanceAny": "أي مسافة",
+  "filterDistanceNeedsLocation": "فعّل الموقع عشان تفلتر بالمسافة",
+  "filterSort": "ترتيب حسب",
+  "sortNearest": "الأقرب",
+  "sortPriceLow": "السعر: الأقل أولًا",
+  "sortPriceHigh": "السعر: الأعلى أولًا",
+  "sortRating": "الأعلى تقييمًا",
+  "filtersApply": "عرض النتائج",
+  "filtersReset": "إعادة ضبط",
+  "searchNoResults": "مفيش نتائج مطابقة",
+  "searchNoResultsHint": "جرّب تشيل فلتر أو تبحث عن حاجة تانية.",
+  "searchClearFilters": "مسح الفلاتر",
+  "kmShort": "{km} كم",
+  "fromPrice": "من {price} ج.م / ساعة",
+  "nearbyBadge": "قريب منك",
+  "playerPosition": "المركز",
+  "positionGoalkeeper": "حارس مرمى",
+  "positionDefender": "مدافع",
+  "positionMidfielder": "لاعب وسط",
+  "positionForward": "مهاجم",
+  "preferredFoot": "القدم المفضلة",
+  "footRight": "اليمين",
+  "footLeft": "الشمال",
+  "footBoth": "الاتنين",
+  "traitsHint": "اللاعبين التانيين بيشوفوا ده في بروفايلك.",
+  "@filterPriceFrom": {
+    "placeholders": {
+      "min": {
+        "type": "String"
+      }
+    }
+  },
+  "@filterPriceUpTo": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filterPriceBetween": {
+    "placeholders": {
+      "min": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filterRatingFrom": {
+    "placeholders": {
+      "rating": {
+        "type": "String"
+      }
+    }
+  },
+  "@kmShort": {
+    "placeholders": {
+      "km": {
+        "type": "String"
+      }
+    }
+  },
+  "@fromPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "searchClubsTab": "الأندية"
 }

@@ -1,3 +1,4 @@
+import '../../features/catalog/presentation/search_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -116,6 +117,15 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/booking/:id',
         builder: (_, state) => BookingDetailsScreen(bookingId: state.pathParameters['id']!),
+      ),
+      GoRoute(
+        path: '/find',
+        builder: (_, state) => CatalogSearchScreen(
+          sport: state.uri.queryParameters['sport'] == null
+              ? null
+              : SportType.fromApi(state.uri.queryParameters['sport']),
+          clubsFirst: state.uri.queryParameters['tab'] == 'clubs',
+        ),
       ),
       GoRoute(
         path: '/courts',

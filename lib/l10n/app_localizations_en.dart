@@ -654,7 +654,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reels => 'Reels';
 
   @override
-  String get searchHint => 'Search people, clubs and posts';
+  String get searchHint => 'Search clubs and courts';
 
   @override
   String get noPosts => 'No posts yet';
@@ -2108,4 +2108,139 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get themeDark => 'Dark';
+
+  @override
+  String get searchTitle => 'Search';
+
+  @override
+  String get searchFilters => 'Filters';
+
+  @override
+  String get filterSport => 'Sport';
+
+  @override
+  String get filterGovernorate => 'Governorate';
+
+  @override
+  String get filterAnyGovernorate => 'Anywhere';
+
+  @override
+  String get filterCityHint => 'City, e.g. Tanta';
+
+  @override
+  String get filterPrice => 'Price per hour';
+
+  @override
+  String get filterPriceAny => 'Any price';
+
+  @override
+  String filterPriceFrom(String min) {
+    return 'From $min EGP';
+  }
+
+  @override
+  String filterPriceUpTo(String max) {
+    return 'Up to $max EGP';
+  }
+
+  @override
+  String filterPriceBetween(String min, String max) {
+    return '$min - $max EGP';
+  }
+
+  @override
+  String get filterRating => 'Rating';
+
+  @override
+  String get filterRatingAny => 'Any';
+
+  @override
+  String filterRatingFrom(String rating) {
+    return '$rating+ stars';
+  }
+
+  @override
+  String get filterDistance => 'Distance from you';
+
+  @override
+  String get filterDistanceAny => 'Any distance';
+
+  @override
+  String get filterDistanceNeedsLocation => 'Turn on your location to filter by distance';
+
+  @override
+  String get filterSort => 'Sort by';
+
+  @override
+  String get sortNearest => 'Nearest';
+
+  @override
+  String get sortPriceLow => 'Price: low to high';
+
+  @override
+  String get sortPriceHigh => 'Price: high to low';
+
+  @override
+  String get sortRating => 'Best rated';
+
+  @override
+  String get filtersApply => 'Show results';
+
+  @override
+  String get filtersReset => 'Reset';
+
+  @override
+  String get searchNoResults => 'Nothing matches your search';
+
+  @override
+  String get searchNoResultsHint => 'Try removing a filter or searching for something else.';
+
+  @override
+  String get searchClearFilters => 'Clear filters';
+
+  @override
+  String kmShort(String km) {
+    return '$km km';
+  }
+
+  @override
+  String fromPrice(String price) {
+    return 'from $price EGP / hr';
+  }
+
+  @override
+  String get nearbyBadge => 'Nearby';
+
+  @override
+  String get playerPosition => 'Position';
+
+  @override
+  String get positionGoalkeeper => 'Goalkeeper';
+
+  @override
+  String get positionDefender => 'Defender';
+
+  @override
+  String get positionMidfielder => 'Midfielder';
+
+  @override
+  String get positionForward => 'Forward';
+
+  @override
+  String get preferredFoot => 'Preferred foot';
+
+  @override
+  String get footRight => 'Right';
+
+  @override
+  String get footLeft => 'Left';
+
+  @override
+  String get footBoth => 'Both';
+
+  @override
+  String get traitsHint => 'Other players see this on your profile and when picking a team.';
+
+  @override
+  String get searchClubsTab => 'Clubs';
 }

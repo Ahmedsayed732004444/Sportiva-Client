@@ -48,6 +48,7 @@ class HomeScreen extends ConsumerWidget {
             physics: const AlwaysScrollableScrollPhysics(),
             slivers: [
               const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.xs)),
+              const SliverToBoxAdapter(child: _SearchBar()),
               const SliverToBoxAdapter(child: SportsRow()),
               const SliverToBoxAdapter(child: _TournamentsEntry()),
               const SliverToBoxAdapter(child: _BecomeOwnerEntry()),
@@ -145,6 +146,37 @@ class _BecomeOwnerEntry extends ConsumerWidget {
             style: AppTextStyles.body2,
           ),
           trailing: const Icon(Icons.chevron_right),
+        ),
+      ),
+    );
+  }
+}
+
+// The way into the search: looks like a field, opens the search page.
+class _SearchBar extends StatelessWidget {
+  const _SearchBar();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(AppSpacing.screenPadding, 0, AppSpacing.screenPadding, AppSpacing.s),
+      child: AppCard(
+        onTap: () => context.push('/find'),
+        radius: 28,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.m, vertical: 14),
+          child: Row(
+            children: [
+              Icon(Icons.search, color: AppColors.primary),
+              const SizedBox(width: AppSpacing.s),
+              Expanded(
+                child: Text(l10n.searchHint, style: AppTextStyles.body1.copyWith(color: AppColors.black600)),
+              ),
+              Icon(Icons.tune, color: AppColors.primary),
+            ],
+          ),
         ),
       ),
     );

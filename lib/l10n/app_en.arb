@@ -322,7 +322,7 @@
   "feed": "Following",
   "explore": "Explore",
   "reels": "Reels",
-  "searchHint": "Search people, clubs and posts",
+  "searchHint": "Search clubs and courts",
   "noPosts": "No posts yet",
   "newPostsAvailable": "New posts",
   "newPost": "New post",
@@ -991,5 +991,91 @@
   "appearance": "Appearance",
   "themeSystem": "Follow the phone",
   "themeLight": "Light",
-  "themeDark": "Dark"
+  "themeDark": "Dark",
+  "searchTitle": "Search",
+  "searchFilters": "Filters",
+  "filterSport": "Sport",
+  "filterGovernorate": "Governorate",
+  "filterAnyGovernorate": "Anywhere",
+  "filterCityHint": "City, e.g. Tanta",
+  "filterPrice": "Price per hour",
+  "filterPriceAny": "Any price",
+  "filterPriceFrom": "From {min} EGP",
+  "filterPriceUpTo": "Up to {max} EGP",
+  "filterPriceBetween": "{min} - {max} EGP",
+  "filterRating": "Rating",
+  "filterRatingAny": "Any",
+  "filterRatingFrom": "{rating}+ stars",
+  "filterDistance": "Distance from you",
+  "filterDistanceAny": "Any distance",
+  "filterDistanceNeedsLocation": "Turn on your location to filter by distance",
+  "filterSort": "Sort by",
+  "sortNearest": "Nearest",
+  "sortPriceLow": "Price: low to high",
+  "sortPriceHigh": "Price: high to low",
+  "sortRating": "Best rated",
+  "filtersApply": "Show results",
+  "filtersReset": "Reset",
+  "searchNoResults": "Nothing matches your search",
+  "searchNoResultsHint": "Try removing a filter or searching for something else.",
+  "searchClearFilters": "Clear filters",
+  "kmShort": "{km} km",
+  "fromPrice": "from {price} EGP / hr",
+  "nearbyBadge": "Nearby",
+  "playerPosition": "Position",
+  "positionGoalkeeper": "Goalkeeper",
+  "positionDefender": "Defender",
+  "positionMidfielder": "Midfielder",
+  "positionForward": "Forward",
+  "preferredFoot": "Preferred foot",
+  "footRight": "Right",
+  "footLeft": "Left",
+  "footBoth": "Both",
+  "traitsHint": "Other players see this on your profile and when picking a team.",
+  "@filterPriceFrom": {
+    "placeholders": {
+      "min": {
+        "type": "String"
+      }
+    }
+  },
+  "@filterPriceUpTo": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filterPriceBetween": {
+    "placeholders": {
+      "min": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filterRatingFrom": {
+    "placeholders": {
+      "rating": {
+        "type": "String"
+      }
+    }
+  },
+  "@kmShort": {
+    "placeholders": {
+      "km": {
+        "type": "String"
+      }
+    }
+  },
+  "@fromPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "searchClubsTab": "Clubs"
 }
