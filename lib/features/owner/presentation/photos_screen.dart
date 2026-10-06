@@ -85,6 +85,7 @@ class _PhotosScreenState extends ConsumerState<PhotosScreen> {
     return Scaffold(
       appBar: AppBar(title: Text(_isCourt ? l10n.courtPhotos : l10n.clubPhotos)),
       floatingActionButton: FloatingActionButton.extended(
+        heroTag: null,
         onPressed: _busy ? null : _add,
         backgroundColor: AppColors.primary,
         foregroundColor: AppColors.onBrand,

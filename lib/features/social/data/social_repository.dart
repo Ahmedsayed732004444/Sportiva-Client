@@ -17,8 +17,11 @@ class SocialRepository {
 
   // ---- posts
   Future<PagedResult<Post>> feed(int page) => _page('/posts/feed', Post.fromJson, page);
-  Future<PagedResult<Post>> explore(int page) => _page('/posts/explore', Post.fromJson, page, auth: false);
-  Future<PagedResult<Post>> reels(int page) => _page('/posts/reels', Post.fromJson, page, size: 6, auth: false);
+  Future<PagedResult<Post>> explore(int page) => _page('/posts/explore', Post.fromJson, page);
+  Future<PagedResult<Post>> reels(int page) => _page('/posts/reels', Post.fromJson, page, size: 6);
+  Future<PagedResult<Post>> exploreSized(int page, int size) =>
+      _page('/posts/explore', Post.fromJson, page, size: size);
+  Future<PagedResult<Post>> saved(int page) => _page('/posts/saved', Post.fromJson, page);
   Future<PagedResult<Post>> userPosts(String userId, int page) => _page('/profiles/$userId/posts', Post.fromJson, page);
 
   Future<Post> post(String id) =>
@@ -47,6 +50,11 @@ class SocialRepository {
     return (isLiked: data['isLiked'] as bool, likesCount: data['likesCount'] as int);
   });
 
+  Future<({bool isSaved, int savesCount})> toggleSave(String postId) => _call(() async {
+    final data = (await _dio.post<Map<String, dynamic>>('/posts/$postId/save')).data!;
+    return (isSaved: data['isSaved'] as bool, savesCount: data['savesCount'] as int);
+  });
+
   Future<void> recordView(String postId, {required int watchedSeconds, required bool completed}) => _call(
     () => _dio.post<void>(
       '/posts/$postId/views',
@@ -66,9 +74,9 @@ class SocialRepository {
 
   // ---- comments
   Future<PagedResult<Comment>> comments(String postId, int page) =>
-      _page('/posts/$postId/comments', Comment.fromJson, page, size: 15, auth: false);
+      _page('/posts/$postId/comments', Comment.fromJson, page, size: 15);
   Future<PagedResult<Comment>> replies(String commentId, int page) =>
-      _page('/comments/$commentId/replies', Comment.fromJson, page, size: 15, auth: false);
+      _page('/comments/$commentId/replies', Comment.fromJson, page, size: 15);
 
   Future<Comment> addComment(String postId, String text, {String? replyToCommentId}) => _call(
     () async => Comment.fromJson(

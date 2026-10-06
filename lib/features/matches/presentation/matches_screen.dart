@@ -41,6 +41,7 @@ class MatchesScreen extends ConsumerWidget {
           ),
         ),
         floatingActionButton: FloatingActionButton.extended(
+          heroTag: null,
           onPressed: () => context.push('/matches/create'),
           backgroundColor: AppColors.primary,
           foregroundColor: AppColors.onBrand,

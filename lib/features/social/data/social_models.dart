@@ -55,6 +55,8 @@ class PostPatch {
     this.isLiked,
     this.isDeleted = false,
     this.text,
+    this.isSaved,
+    this.savesCount,
   });
 
   final int? likesCount;
@@ -63,6 +65,8 @@ class PostPatch {
   final bool? isLiked;
   final bool isDeleted;
   final String? text;
+  final bool? isSaved;
+  final int? savesCount;
 
   PostPatch merge(PostPatch other) => PostPatch(
     likesCount: other.likesCount ?? likesCount,
@@ -71,6 +75,8 @@ class PostPatch {
     isLiked: other.isLiked ?? isLiked,
     isDeleted: other.isDeleted || isDeleted,
     text: other.text ?? text,
+    isSaved: other.isSaved ?? isSaved,
+    savesCount: other.savesCount ?? savesCount,
   );
 }
 
@@ -89,6 +95,9 @@ class Post {
     required this.createdAt,
     this.text,
     this.failureReason,
+    this.savesCount = 0,
+    this.isSaved = false,
+    this.isFollowingAuthor = false,
   });
 
   final String id;
@@ -104,6 +113,12 @@ class Post {
   final DateTime createdAt;
   final String? text;
   final String? failureReason;
+  final int savesCount;
+  final bool isSaved;
+  final bool isFollowingAuthor;
+
+  // A picture or a video that is ready to be shown.
+  bool get hasVisualMedia => video != null || images.isNotEmpty;
 
   List<PostMedia> get images => media.where((m) => !m.isVideo && m.isReady).toList();
   PostMedia? get video => media.where((m) => m.isVideo && m.isReady).firstOrNull;
@@ -124,6 +139,9 @@ class Post {
           createdAt: createdAt,
           text: patch.text ?? text,
           failureReason: failureReason,
+          savesCount: patch.savesCount ?? savesCount,
+          isSaved: patch.isSaved ?? isSaved,
+          isFollowingAuthor: isFollowingAuthor,
         );
 
   factory Post.fromJson(Map<String, dynamic> json) => Post(
@@ -144,6 +162,9 @@ class Post {
     createdAt: DateTime.tryParse(json['createdAt']?.toString() ?? '') ?? DateTime.now().toUtc(),
     text: json['text'] as String?,
     failureReason: json['failureReason'] as String?,
+    savesCount: json['savesCount'] as int? ?? 0,
+    isSaved: json['isSaved'] as bool? ?? false,
+    isFollowingAuthor: json['isFollowingAuthor'] as bool? ?? false,
   );
 }
 

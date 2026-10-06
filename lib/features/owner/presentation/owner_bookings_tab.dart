@@ -36,6 +36,7 @@ class OwnerBookingsTab extends StatelessWidget {
       length: 4,
       child: Scaffold(
         floatingActionButton: FloatingActionButton.extended(
+          heroTag: null,
           onPressed: () => context.push('/owner/bookings/new'),
           backgroundColor: AppColors.primary,
           foregroundColor: AppColors.onBrand,

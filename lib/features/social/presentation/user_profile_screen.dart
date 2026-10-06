@@ -234,10 +234,24 @@ class _HeaderState extends ConsumerState<_Header> {
               Padding(
                 padding: const EdgeInsets.all(AppSpacing.s),
                 child: profile.isMe
-                    ? AppButton(
-                        label: l10n.editProfile,
-                        style: AppButtonStyle.outlined,
-                        onPressed: () => context.push('/profile/edit'),
+                    ? Row(
+                        children: [
+                          Expanded(
+                            child: AppButton(
+                              label: l10n.editProfile,
+                              style: AppButtonStyle.outlined,
+                              onPressed: () => context.push('/profile/edit'),
+                            ),
+                          ),
+                          const SizedBox(width: AppSpacing.s),
+                          Expanded(
+                            child: AppButton(
+                              label: l10n.myPostsNew,
+                              icon: Icons.add,
+                              onPressed: () => context.push('/post/create'),
+                            ),
+                          ),
+                        ],
                       )
                     : profile.isBlockedByMe
                     ? Text(l10n.blockedProfile, style: AppTextStyles.body2.copyWith(color: AppColors.error))

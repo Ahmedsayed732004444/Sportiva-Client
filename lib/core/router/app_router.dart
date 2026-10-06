@@ -1,3 +1,4 @@
+import '../../features/social/presentation/saved_posts_screen.dart';
 import '../../features/catalog/presentation/search_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
@@ -218,6 +219,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (_, state) => DirectChatScreen(userId: state.pathParameters['id']!),
       ),
       GoRoute(path: '/search', builder: (_, _) => const SearchScreen()),
+      GoRoute(path: '/saved', builder: (_, _) => const SavedPostsScreen()),
       GoRoute(path: AppRoutes.notifications, builder: (_, _) => const NotificationsScreen()),
       StatefulShellRoute.indexedStack(
         builder: (_, _, shell) => MainShell(navigationShell: shell),

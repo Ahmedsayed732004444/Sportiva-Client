@@ -650,7 +650,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get explore => 'استكشف';
 
   @override
-  String get reels => 'ريلز';
+  String get reels => 'لك';
 
   @override
   String get searchHint => 'ابحث عن نادي أو ملعب';
@@ -2240,4 +2240,43 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get searchClubsTab => 'الأندية';
+
+  @override
+  String get forYou => 'لك';
+
+  @override
+  String get savePost => 'حفظ';
+
+  @override
+  String get sharePost => 'مشاركة';
+
+  @override
+  String get savedPosts => 'المحفوظات';
+
+  @override
+  String get noSavedPosts => 'لسه مفيش حاجة محفوظة';
+
+  @override
+  String get postSaved => 'اتضاف للمفضلة';
+
+  @override
+  String get postUnsaved => 'اتشال من المفضلة';
+
+  @override
+  String get showMore => 'المزيد';
+
+  @override
+  String get showLess => 'أقل';
+
+  @override
+  String get followAuthor => 'متابعة';
+
+  @override
+  String get replyToLabel => 'رد';
+
+  @override
+  String get myPostsNew => 'منشور جديد';
+
+  @override
+  String get shareFailed => 'مقدرناش نشارك';
 }

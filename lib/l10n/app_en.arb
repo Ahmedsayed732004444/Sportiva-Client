@@ -321,7 +321,7 @@
   "wholeDayHint": "Times are on the hour or half hour",
   "feed": "Following",
   "explore": "Explore",
-  "reels": "Reels",
+  "reels": "For you",
   "searchHint": "Search clubs and courts",
   "noPosts": "No posts yet",
   "newPostsAvailable": "New posts",
@@ -1077,5 +1077,18 @@
       }
     }
   },
-  "searchClubsTab": "Clubs"
+  "searchClubsTab": "Clubs",
+  "forYou": "For you",
+  "savePost": "Save",
+  "sharePost": "Share",
+  "savedPosts": "Saved",
+  "noSavedPosts": "Nothing saved yet",
+  "postSaved": "Saved to your favourites",
+  "postUnsaved": "Removed from your favourites",
+  "showMore": "more",
+  "showLess": "less",
+  "followAuthor": "Follow",
+  "replyToLabel": "Reply",
+  "myPostsNew": "New post",
+  "shareFailed": "Could not share"
 }

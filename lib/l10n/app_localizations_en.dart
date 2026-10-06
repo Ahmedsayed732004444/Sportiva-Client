@@ -651,7 +651,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get explore => 'Explore';
 
   @override
-  String get reels => 'Reels';
+  String get reels => 'For you';
 
   @override
   String get searchHint => 'Search clubs and courts';
@@ -2243,4 +2243,43 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get searchClubsTab => 'Clubs';
+
+  @override
+  String get forYou => 'For you';
+
+  @override
+  String get savePost => 'Save';
+
+  @override
+  String get sharePost => 'Share';
+
+  @override
+  String get savedPosts => 'Saved';
+
+  @override
+  String get noSavedPosts => 'Nothing saved yet';
+
+  @override
+  String get postSaved => 'Saved to your favourites';
+
+  @override
+  String get postUnsaved => 'Removed from your favourites';
+
+  @override
+  String get showMore => 'more';
+
+  @override
+  String get showLess => 'less';
+
+  @override
+  String get followAuthor => 'Follow';
+
+  @override
+  String get replyToLabel => 'Reply';
+
+  @override
+  String get myPostsNew => 'New post';
+
+  @override
+  String get shareFailed => 'Could not share';
 }

@@ -47,6 +47,7 @@ class ProfileScreen extends ConsumerWidget {
           const SizedBox(height: AppSpacing.l),
           if (managesClub) tile(Icons.storefront_outlined, l10n.manageClub, '/owner'),
           if (session != null) tile(Icons.person_outline, l10n.viewProfile, '/user/${session.userId}'),
+          tile(Icons.bookmark_border, l10n.savedPosts, '/saved'),
           tile(Icons.emoji_events_outlined, l10n.teamsAndInvitations, '/tournaments/mine'),
           tile(Icons.star_border_rounded, l10n.myReviews, '/reviews'),
           tile(Icons.chat_bubble_outline, l10n.messages, '/messages'),

@@ -30,3 +30,13 @@ class PostPatches extends Notifier<Map<String, PostPatch>> {
 }
 
 final postPatchesProvider = NotifierProvider<PostPatches, Map<String, PostPatch>>(PostPatches.new);
+
+// People followed from a post (the "+" on a reel): every post of theirs shows it at once.
+class AuthorFollows extends Notifier<Map<String, bool>> {
+  @override
+  Map<String, bool> build() => const {};
+
+  void set(String userId, bool following) => state = {...state, userId: following};
+}
+
+final authorFollowsProvider = NotifierProvider<AuthorFollows, Map<String, bool>>(AuthorFollows.new);

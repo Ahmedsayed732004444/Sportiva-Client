@@ -28,6 +28,7 @@ class OwnerCourtsTab extends ConsumerWidget {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
+        heroTag: null,
         onPressed: () => context.push('/owner/courts/new'),
         backgroundColor: AppColors.primary,
         foregroundColor: AppColors.onBrand,

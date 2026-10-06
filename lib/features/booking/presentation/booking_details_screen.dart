@@ -1,3 +1,4 @@
+import '../../../core/widgets/dispose_soon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -86,7 +87,7 @@ class _DetailsState extends ConsumerState<_Details> with SubmitMixin {
       ),
     );
     final text = reason.text.trim();
-    reason.dispose();
+    disposeSoon(reason);
     if (confirmed != true || !mounted) return;
 
     final done = await submit(() => ref.read(bookingRepositoryProvider).cancel(booking.id, text.isEmpty ? null : text));
@@ -127,7 +128,7 @@ class _DetailsState extends ConsumerState<_Details> with SubmitMixin {
       ),
     );
     final text = note.text.trim();
-    note.dispose();
+    disposeSoon(note);
     if (confirmed != true || !mounted) return;
 
     String? matchId;

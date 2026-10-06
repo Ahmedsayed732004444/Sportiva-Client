@@ -12,6 +12,10 @@ import '../../../../core/widgets/app_card.dart';
 import '../../../../core/widgets/app_network_image.dart';
 import '../../../../core/widgets/snack.dart';
 import '../../../../core/widgets/user_avatar.dart';
+import '../../../../core/widgets/dispose_soon.dart';
+import '../../../../core/widgets/image_carousel.dart';
+import '../../application/post_actions.dart';
+import 'comments_panel.dart';
 import '../../application/post_patches.dart';
 import '../../data/social_models.dart';
 import '../../data/social_repository.dart';
@@ -37,18 +41,16 @@ class PostCard extends ConsumerWidget {
     final shown = post.apply(patch);
     final repository = ref.read(socialRepositoryProvider);
 
-    Future<void> like() async {
-      final patches = ref.read(postPatchesProvider.notifier);
-      patches.patch(
-        shown.id,
-        PostPatch(isLiked: !shown.isLiked, likesCount: shown.likesCount + (shown.isLiked ? -1 : 1)),
-      );
-      try {
-        final result = await repository.toggleLike(shown.id);
-        patches.patch(shown.id, PostPatch(isLiked: result.isLiked, likesCount: result.likesCount));
-      } on ApiException {
-        patches.patch(shown.id, PostPatch(isLiked: shown.isLiked, likesCount: shown.likesCount));
-      }
+    final actions = PostActions(ref);
+    Future<void> like() => actions.toggleLike(shown);
+
+    Future<void> save() async {
+      final saved = await actions.toggleSave(shown);
+      if (saved != null && context.mounted) showSnack(context, saved ? l10n.postSaved : l10n.postUnsaved);
+    }
+
+    Future<void> share() async {
+      if (!await actions.share(shown, l10n.appName) && context.mounted) showSnack(context, l10n.shareFailed);
     }
 
     Future<void> onAction(_PostAction action) async {
@@ -158,16 +160,29 @@ class PostCard extends ConsumerWidget {
                 Text('${shown.likesCount}', style: AppTextStyles.body2),
                 const SizedBox(width: AppSpacing.xs),
                 IconButton(
-                  onPressed: detailed ? null : () => context.push('/post/${shown.id}'),
+                  onPressed: () => showCommentsSheet(context, shown.id),
                   icon: Icon(Icons.mode_comment_outlined, color: AppColors.black600),
                 ),
                 Text('${shown.commentsCount}', style: AppTextStyles.body2),
+                const SizedBox(width: AppSpacing.xs),
+                IconButton(
+                  onPressed: share,
+                  icon: Icon(Icons.share_outlined, color: AppColors.black600),
+                ),
                 const Spacer(),
                 if (shown.hasVideo) ...[
                   Icon(Icons.visibility_outlined, size: 18, color: AppColors.black600),
                   const SizedBox(width: 4),
                   Text('${shown.viewsCount}', style: AppTextStyles.body2),
+                  const SizedBox(width: AppSpacing.xs),
                 ],
+                IconButton(
+                  onPressed: save,
+                  icon: Icon(
+                    shown.isSaved ? Icons.bookmark : Icons.bookmark_border,
+                    color: shown.isSaved ? AppColors.primary : AppColors.black600,
+                  ),
+                ),
               ],
             ),
           ),
@@ -191,7 +206,7 @@ class PostCard extends ConsumerWidget {
       ),
     );
     final value = text.text.trim();
-    text.dispose();
+    disposeSoon(text);
     if (saved != true) return;
 
     try {
@@ -214,7 +229,6 @@ class _Media extends StatefulWidget {
 }
 
 class _MediaState extends State<_Media> {
-  int _page = 0;
   bool _playing = false;
 
   @override
@@ -251,34 +265,7 @@ class _MediaState extends State<_Media> {
 
     return Padding(
       padding: const EdgeInsets.only(top: AppSpacing.xs),
-      child: SizedBox(
-        height: 300,
-        child: Stack(
-          children: [
-            PageView.builder(
-              itemCount: images.length,
-              onPageChanged: (page) => setState(() => _page = page),
-              itemBuilder: (_, index) => AppNetworkImage(url: images[index].url),
-            ),
-            if (images.length > 1)
-              PositionedDirectional(
-                top: 8,
-                end: 8,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                  decoration: BoxDecoration(
-                    color: AppColors.scrim.withValues(alpha: 0.55),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    '${_page + 1}/${images.length}',
-                    style: AppTextStyles.caption.copyWith(color: AppColors.onBrand),
-                  ),
-                ),
-              ),
-          ],
-        ),
-      ),
+      child: SizedBox(height: 340, child: ImageCarousel(urls: [for (final image in images) image.url!])),
     );
   }
 }

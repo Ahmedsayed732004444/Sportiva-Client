@@ -18,6 +18,7 @@ class OwnerTournamentsTab extends StatelessWidget {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
+        heroTag: null,
         onPressed: () => context.push('/owner/tournaments/new'),
         backgroundColor: AppColors.primary,
         foregroundColor: AppColors.onBrand,

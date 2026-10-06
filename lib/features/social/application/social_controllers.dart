@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/paging/paged_controller.dart';
@@ -63,6 +64,48 @@ class ExploreController extends PagedController<Post> with _RefreshOnReconnect {
 class ReelsController extends PagedController<Post> {
   @override
   Future<PagedResult<Post>> fetch(int page) => ref.read(socialRepositoryProvider).reels(page);
+}
+
+// The "for you" pager: the platform's most engaging posts that have a picture or a video. What was loaded is kept for
+// a few minutes, so passing through the tab by chance and coming back does not download everything again.
+class ForYouController extends PagedController<Post> {
+  static const _keepFor = Duration(minutes: 3);
+  static const _pageSize = 6;
+  int _cursor = 0;
+
+  @override
+  PagedState<Post> build() {
+    _cursor = 0;
+    final link = ref.keepAlive();
+    Timer? timer;
+    ref.onCancel(() => timer = Timer(_keepFor, link.close));
+    ref.onResume(() => timer?.cancel());
+    ref.onDispose(() => timer?.cancel());
+    return super.build();
+  }
+
+  @override
+  Future<void> refresh() {
+    _cursor = 0;
+    return super.refresh();
+  }
+
+  // Pages of posts that have nothing to show (text only) are skipped, up to a few, so the pager never stalls empty.
+  @override
+  Future<PagedResult<Post>> fetch(int page) async {
+    final repository = ref.read(socialRepositoryProvider);
+    for (var attempt = 0; attempt < 4; attempt++) {
+      final result = await repository.exploreSized(++_cursor, _pageSize);
+      final shown = result.items.where((p) => p.hasVisualMedia).toList();
+      if (shown.isNotEmpty || !result.hasMore) return PagedResult(items: shown, hasMore: result.hasMore);
+    }
+    return const PagedResult(items: [], hasMore: true);
+  }
+}
+
+class SavedPostsController extends PagedController<Post> {
+  @override
+  Future<PagedResult<Post>> fetch(int page) => ref.read(socialRepositoryProvider).saved(page);
 }
 
 class UserPostsController extends PagedFamilyController<Post, String> {
@@ -137,6 +180,10 @@ class ConversationsController extends PagedController<Conversation> {
 
 final feedProvider = AutoDisposeNotifierProvider<FeedController, PagedState<Post>>(FeedController.new);
 final exploreProvider = AutoDisposeNotifierProvider<ExploreController, PagedState<Post>>(ExploreController.new);
+final forYouProvider = AutoDisposeNotifierProvider<ForYouController, PagedState<Post>>(ForYouController.new);
+final savedPostsProvider = AutoDisposeNotifierProvider<SavedPostsController, PagedState<Post>>(
+  SavedPostsController.new,
+);
 final reelsProvider = AutoDisposeNotifierProvider<ReelsController, PagedState<Post>>(ReelsController.new);
 final userPostsProvider = AutoDisposeNotifierProviderFamily<UserPostsController, PagedState<Post>, String>(
   UserPostsController.new,

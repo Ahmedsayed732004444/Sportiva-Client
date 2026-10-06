@@ -40,11 +40,12 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> with Submit
   Future<void> _pickImages() async {
     final picked = await _picker.pickMultiImage(limit: _maxImages);
     if (picked.isEmpty) return;
+    final all = [..._images, ...picked];
     setState(() {
-      _images = picked.take(_maxImages).toList();
+      _images = all.take(_maxImages).toList();
       _video = null;
     });
-    if (picked.length > _maxImages && mounted) showMessage(context.l10n.maxPhotos(_maxImages));
+    if (all.length > _maxImages && mounted) showMessage(context.l10n.maxPhotos(_maxImages));
   }
 
   Future<void> _pickVideo() async {

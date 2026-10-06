@@ -1313,7 +1313,7 @@ abstract class AppLocalizations {
   /// No description provided for @reels.
   ///
   /// In en, this message translates to:
-  /// **'Reels'**
+  /// **'For you'**
   String get reels;
 
   /// No description provided for @searchHint.
@@ -4369,6 +4369,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Clubs'**
   String get searchClubsTab;
+
+  /// No description provided for @forYou.
+  ///
+  /// In en, this message translates to:
+  /// **'For you'**
+  String get forYou;
+
+  /// No description provided for @savePost.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get savePost;
+
+  /// No description provided for @sharePost.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get sharePost;
+
+  /// No description provided for @savedPosts.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get savedPosts;
+
+  /// No description provided for @noSavedPosts.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing saved yet'**
+  String get noSavedPosts;
+
+  /// No description provided for @postSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved to your favourites'**
+  String get postSaved;
+
+  /// No description provided for @postUnsaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Removed from your favourites'**
+  String get postUnsaved;
+
+  /// No description provided for @showMore.
+  ///
+  /// In en, this message translates to:
+  /// **'more'**
+  String get showMore;
+
+  /// No description provided for @showLess.
+  ///
+  /// In en, this message translates to:
+  /// **'less'**
+  String get showLess;
+
+  /// No description provided for @followAuthor.
+  ///
+  /// In en, this message translates to:
+  /// **'Follow'**
+  String get followAuthor;
+
+  /// No description provided for @replyToLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Reply'**
+  String get replyToLabel;
+
+  /// No description provided for @myPostsNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New post'**
+  String get myPostsNew;
+
+  /// No description provided for @shareFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not share'**
+  String get shareFailed;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

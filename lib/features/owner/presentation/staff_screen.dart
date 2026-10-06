@@ -87,6 +87,7 @@ class StaffScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: Text(l10n.staff)),
       floatingActionButton: FloatingActionButton.extended(
+        heroTag: null,
         onPressed: () async {
           await context.push('/owner/staff/new');
           ref.invalidate(staffProvider);

@@ -321,7 +321,7 @@
   "wholeDayHint": "الميعاد على الساعة أو النص",
   "feed": "بتتابعهم",
   "explore": "استكشف",
-  "reels": "ريلز",
+  "reels": "لك",
   "searchHint": "ابحث عن نادي أو ملعب",
   "noPosts": "مفيش بوستات لسه",
   "newPostsAvailable": "فيه بوستات جديدة",
@@ -1077,5 +1077,18 @@
       }
     }
   },
-  "searchClubsTab": "الأندية"
+  "searchClubsTab": "الأندية",
+  "forYou": "لك",
+  "savePost": "حفظ",
+  "sharePost": "مشاركة",
+  "savedPosts": "المحفوظات",
+  "noSavedPosts": "لسه مفيش حاجة محفوظة",
+  "postSaved": "اتضاف للمفضلة",
+  "postUnsaved": "اتشال من المفضلة",
+  "showMore": "المزيد",
+  "showLess": "أقل",
+  "followAuthor": "متابعة",
+  "replyToLabel": "رد",
+  "myPostsNew": "منشور جديد",
+  "shareFailed": "مقدرناش نشارك"
 }
