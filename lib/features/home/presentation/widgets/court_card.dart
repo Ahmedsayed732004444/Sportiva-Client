@@ -6,7 +6,8 @@ import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/widgets/app_card.dart';
-import '../../../../core/widgets/app_network_image.dart';
+import '../../../../core/widgets/club_logo.dart';
+import '../../../../core/widgets/image_carousel.dart';
 import '../../../../core/widgets/star_rating.dart';
 import '../../../catalog/data/catalog_models.dart';
 
@@ -42,7 +43,13 @@ class CourtCard extends StatelessWidget {
               borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
               child: AspectRatio(
                 aspectRatio: 16 / 9,
-                child: AppNetworkImage(url: court.imageUrl, icon: court.sport.icon),
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    ImageCarousel(urls: court.gallery, icon: court.sport.icon),
+                    PositionedDirectional(start: 8, bottom: 8, child: ClubLogo(url: court.club.logoUrl, radius: 14)),
+                  ],
+                ),
               ),
             ),
             Padding(

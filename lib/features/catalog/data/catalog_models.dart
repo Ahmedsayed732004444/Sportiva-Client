@@ -39,6 +39,7 @@ class CourtListItem {
     required this.pricePerHourPiasters,
     required this.club,
     this.coverImageUrl,
+    this.imageUrls = const [],
     this.distanceText,
     this.averageRating,
     this.reviewsCount = 0,
@@ -50,12 +51,14 @@ class CourtListItem {
   final int pricePerHourPiasters;
   final ClubRef club;
   final String? coverImageUrl;
+  // The court's own pictures, cover first.
+  final List<String> imageUrls;
   final String? distanceText;
   final double? averageRating;
   final int reviewsCount;
 
-  // A court shows its club's picture (courts of one club share it); its own cover is only the fallback.
-  String? get imageUrl => club.logoUrl ?? coverImageUrl;
+  // What the card swipes through: the court's pictures (never the club logo, that has its own badge).
+  List<String> get gallery => imageUrls.isNotEmpty ? imageUrls : [?coverImageUrl];
 
   factory CourtListItem.fromJson(Map<String, dynamic> json) => CourtListItem(
     id: json['id'] as String,
@@ -64,6 +67,7 @@ class CourtListItem {
     pricePerHourPiasters: (json['pricePerHourPiasters'] as num).toInt(),
     club: ClubRef.fromJson(json['club'] as Map<String, dynamic>),
     coverImageUrl: json['coverImageUrl'] as String?,
+    imageUrls: (json['imageUrls'] as List? ?? const []).cast<String>(),
     distanceText: json['distanceText'] as String?,
     averageRating: (json['averageRating'] as num?)?.toDouble(),
     reviewsCount: json['reviewsCount'] as int? ?? 0,
@@ -182,6 +186,12 @@ class ClubDetails {
 
   String? get imageUrl => coverUrl ?? logoUrl;
 
+  // The pictures at the top of the page: the cover, then the club's gallery (the logo is its own badge).
+  List<String> get gallery {
+    final urls = <String>[?coverUrl, ...images.map((i) => i.url)];
+    return urls.toSet().toList();
+  }
+
   factory ClubDetails.fromJson(Map<String, dynamic> json) => ClubDetails(
     id: json['id'] as String,
     name: json['name'] as String,
@@ -222,6 +232,7 @@ class CourtDetails {
     this.description,
     this.halfCourtPricePerHourPiasters,
     this.coverImageUrl,
+    this.images = const [],
     this.averageRating,
     this.reviewsCount = 0,
   });
@@ -241,10 +252,15 @@ class CourtDetails {
   final String? description;
   final int? halfCourtPricePerHourPiasters;
   final String? coverImageUrl;
+  final List<ImageItem> images;
   final double? averageRating;
   final int reviewsCount;
 
-  String? get imageUrl => club.logoUrl ?? coverImageUrl;
+  // The pictures at the top of the page, the cover first.
+  List<String> get gallery {
+    final urls = [...images.where((i) => i.isCover), ...images.where((i) => !i.isCover)].map((i) => i.url).toList();
+    return urls.isNotEmpty ? urls : [?coverImageUrl];
+  }
 
   factory CourtDetails.fromJson(Map<String, dynamic> json) => CourtDetails(
     id: json['id'] as String,
@@ -261,6 +277,7 @@ class CourtDetails {
     description: json['description'] as String?,
     halfCourtPricePerHourPiasters: (json['halfCourtPricePerHourPiasters'] as num?)?.toInt(),
     coverImageUrl: json['coverImageUrl'] as String?,
+    images: (json['images'] as List? ?? const []).cast<Map<String, dynamic>>().map(ImageItem.fromJson).toList(),
     averageRating: (json['averageRating'] as num?)?.toDouble(),
     reviewsCount: json['reviewsCount'] as int? ?? 0,
   );

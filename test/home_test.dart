@@ -144,19 +144,18 @@ void main() {
       'reviewsCount': 2,
     });
     expect(court.sport, SportType.padel);
-    expect(court.imageUrl, 'https://x/club.png', reason: 'a court shows its club picture');
+    expect(court.gallery, ['https://x/court.png'], reason: 'a court shows its own pictures; the club logo is a badge');
+    expect(court.club.logoUrl, 'https://x/club.png');
     expect(
       CourtListItem.fromJson({
-        ...{
-          'id': 'c',
-          'name': 'P',
-          'sportType': 'Football',
-          'pricePerHourPiasters': 1,
-          'club': {'id': 'k', 'name': 'C'},
-        },
-        'coverImageUrl': 'https://x/court.png',
-      }).imageUrl,
-      'https://x/court.png',
+        'id': 'c',
+        'name': 'P',
+        'sportType': 'Football',
+        'pricePerHourPiasters': 1,
+        'club': {'id': 'k', 'name': 'C'},
+        'imageUrls': ['https://x/1.png', 'https://x/2.png'],
+      }).gallery,
+      ['https://x/1.png', 'https://x/2.png'],
     );
 
     final club = ClubListItem.fromJson({

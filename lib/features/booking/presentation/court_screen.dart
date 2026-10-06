@@ -11,8 +11,9 @@ import '../../../core/theme/app_shadows.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/widgets/app_button.dart';
-import '../../../core/widgets/app_network_image.dart';
 import '../../../core/widgets/choice_chips.dart';
+import '../../../core/widgets/club_logo.dart';
+import '../../../core/widgets/image_carousel.dart';
 import '../../../core/widgets/star_rating.dart';
 import '../../../core/widgets/state_views.dart';
 import '../../../core/widgets/submit_mixin.dart';
@@ -140,7 +141,7 @@ class _CourtBodyState extends ConsumerState<_CourtBody> with SubmitMixin {
             pinned: true,
             expandedHeight: 220,
             flexibleSpace: FlexibleSpaceBar(
-              background: AppNetworkImage(url: court.imageUrl, icon: court.sport.icon),
+              background: ImageCarousel(urls: court.gallery, icon: court.sport.icon),
             ),
           ),
           SliverToBoxAdapter(
@@ -157,9 +158,18 @@ class _CourtBodyState extends ConsumerState<_CourtBody> with SubmitMixin {
                   ),
                   const SizedBox(height: 4),
                   DistanceLabel(latitude: court.club.latitude, longitude: court.club.longitude),
-                  Text(
-                    '${court.club.name} · ${court.sport.label(l10n)}',
-                    style: AppTextStyles.body1.copyWith(color: AppColors.black600),
+                  const SizedBox(height: 4),
+                  Row(
+                    children: [
+                      ClubLogo(url: court.club.logoUrl, radius: 16),
+                      const SizedBox(width: AppSpacing.xs),
+                      Expanded(
+                        child: Text(
+                          '${court.club.name} · ${court.sport.label(l10n)}',
+                          style: AppTextStyles.body1.copyWith(color: AppColors.black600),
+                        ),
+                      ),
+                    ],
                   ),
                   if (court.description?.isNotEmpty ?? false) ...[
                     const SizedBox(height: AppSpacing.xs),

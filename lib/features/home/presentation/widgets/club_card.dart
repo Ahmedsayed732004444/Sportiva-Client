@@ -6,6 +6,7 @@ import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/widgets/app_card.dart';
 import '../../../../core/widgets/app_network_image.dart';
+import '../../../../core/widgets/club_logo.dart';
 import '../../../../core/widgets/star_rating.dart';
 import '../../../catalog/data/catalog_models.dart';
 
@@ -29,7 +30,13 @@ class ClubCard extends StatelessWidget {
             borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
             child: AspectRatio(
               aspectRatio: 16 / 7,
-              child: AppNetworkImage(url: club.imageUrl, icon: Icons.storefront_outlined),
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  AppNetworkImage(url: club.coverUrl ?? club.logoUrl, icon: Icons.storefront_outlined),
+                  PositionedDirectional(start: 8, bottom: 8, child: ClubLogo(url: club.logoUrl, radius: 16)),
+                ],
+              ),
             ),
           ),
           Padding(

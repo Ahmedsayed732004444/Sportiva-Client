@@ -12,8 +12,9 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/widgets/app_button.dart';
-import '../../../core/widgets/app_network_image.dart';
 import '../../../core/widgets/rating_badge.dart';
+import '../../../core/widgets/club_logo.dart';
+import '../../../core/widgets/image_carousel.dart';
 import '../../../core/widgets/star_rating.dart';
 import '../../../core/widgets/state_views.dart';
 import '../../home/presentation/widgets/court_card.dart';
@@ -72,7 +73,10 @@ class _ClubBody extends ConsumerWidget {
             pinned: true,
             expandedHeight: 220,
             flexibleSpace: FlexibleSpaceBar(
-              background: AppNetworkImage(url: club.imageUrl, icon: Icons.storefront_outlined),
+              background: ImageCarousel(
+                urls: club.gallery.isEmpty ? [?club.logoUrl] : club.gallery,
+                icon: Icons.storefront_outlined,
+              ),
             ),
           ),
           SliverToBoxAdapter(
@@ -83,6 +87,8 @@ class _ClubBody extends ConsumerWidget {
                 children: [
                   Row(
                     children: [
+                      ClubLogo(url: club.logoUrl, radius: 24),
+                      const SizedBox(width: AppSpacing.s),
                       Expanded(child: Text(club.name, style: AppTextStyles.header)),
                       StarRating(rating: club.averageRating, count: club.reviewsCount, size: 20),
                     ],
