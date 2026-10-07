@@ -42,6 +42,15 @@ class ChatController extends AutoDisposeFamilyNotifier<ChatState, ChatTarget> {
           _add(message);
           if (!target.isMatch && !message.isMine) _markRead();
         }
+      } else if (event.name == RealtimeEvents.messagesRead && !target.isMatch && event.json?['readerId'] == target.id) {
+        // The other person opened the chat: my messages turn blue.
+        final at = DateTime.tryParse(event.json?['readAt']?.toString() ?? '') ?? DateTime.now().toUtc();
+        _updateMine((m) => m.readAt == null ? m.copyWith(readAt: at, deliveredAt: m.deliveredAt ?? at) : m);
+      } else if (event.name == RealtimeEvents.messagesDelivered &&
+          !target.isMatch &&
+          event.json?['receiverId'] == target.id) {
+        final at = DateTime.tryParse(event.json?['deliveredAt']?.toString() ?? '') ?? DateTime.now().toUtc();
+        _updateMine((m) => m.deliveredAt == null ? m.copyWith(deliveredAt: at) : m);
       } else if (event.name == RealtimeEvents.reconnected) {
         _reload();
       }
@@ -76,6 +85,12 @@ class ChatController extends AutoDisposeFamilyNotifier<ChatState, ChatTarget> {
 
   Future<void> send(String text) async => _add(await ref.read(chatRepositoryProvider).send(arg, text));
 
+  Future<void> sendVoice(String path, int seconds) async =>
+      _add(await ref.read(chatRepositoryProvider).sendVoice(arg, path, seconds));
+
+  void _updateMine(ChatMessage Function(ChatMessage) change) =>
+      state = state.copyWith(messages: [for (final m in state.messages) m.isMine ? change(m) : m]);
+
   void _add(ChatMessage message) {
     if (state.messages.any((m) => m.id == message.id)) return;
     state = state.copyWith(messages: [message, ...state.messages]);
@@ -98,6 +113,9 @@ class ChatController extends AutoDisposeFamilyNotifier<ChatState, ChatTarget> {
 final chatProvider = AutoDisposeNotifierProviderFamily<ChatController, ChatState, ChatTarget>(ChatController.new);
 
 // The unread direct messages, for the badge on the messages button.
+// The person whose chat is open on screen: their messages don't ring as phone notifications.
+final openChatUserProvider = StateProvider<String?>((ref) => null);
+
 final unreadMessagesProvider = FutureProvider.autoDispose<int>((ref) {
   final subscription = ref.read(realtimeServiceProvider).events.listen((event) {
     const names = {RealtimeEvents.messageReceived, RealtimeEvents.messagesRead, RealtimeEvents.reconnected};

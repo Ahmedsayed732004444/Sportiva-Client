@@ -613,7 +613,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get openMatchFromBooking => 'Open this booking for players';
 
   @override
-  String get openMatch => 'Open match';
+  String get openMatch => 'Open the match';
 
   @override
   String get playersToFind => 'How many players do you need?';
@@ -2282,4 +2282,126 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get shareFailed => 'Could not share';
+
+  @override
+  String get voiceRecording => 'Recording';
+
+  @override
+  String get voiceCancel => 'Cancel';
+
+  @override
+  String get voiceSend => 'Send voice note';
+
+  @override
+  String get voiceMaxReached => '30 seconds is the maximum';
+
+  @override
+  String get micPermission => 'Allow the microphone to record voice notes';
+
+  @override
+  String get voiceMessage => 'Voice message';
+
+  @override
+  String get recordVoice => 'Record a voice note';
+
+  @override
+  String get repost => 'Repost';
+
+  @override
+  String get reposted => 'Reposted';
+
+  @override
+  String repostedBy(String name) {
+    return '$name reposted';
+  }
+
+  @override
+  String get youReposted => 'You reposted';
+
+  @override
+  String get repostDone => 'Shared with your followers';
+
+  @override
+  String get repostUndone => 'Repost removed';
+
+  @override
+  String get suggestedPeople => 'People you may know';
+
+  @override
+  String followedByMutual(int count) {
+    return '$count people you follow follow them';
+  }
+
+  @override
+  String get sameGovernorateHint => 'From your governorate';
+
+  @override
+  String popularHint(int count) {
+    return '$count followers';
+  }
+
+  @override
+  String get searchAll => 'All';
+
+  @override
+  String get coverChanged => 'Cover updated';
+
+  @override
+  String get searchTournaments => 'Search tournaments';
+
+  @override
+  String get searchMatches => 'Search by place, club or organizer';
+
+  @override
+  String get shareMatch => 'Share';
+
+  @override
+  String get shareToFriend => 'Send to a friend';
+
+  @override
+  String get shareOutside => 'Share outside the app';
+
+  @override
+  String matchShareText(String title, String when, String id) {
+    return 'Friendly match: $title\n$when\nOpen it in Sportiva: /match/$id';
+  }
+
+  @override
+  String get sentToFriend => 'Sent';
+
+  @override
+  String get phoneNeededTitle => 'Your phone number';
+
+  @override
+  String get phoneNeededBody => 'The club needs your phone number to reach you about the booking.';
+
+  @override
+  String get pickOnMap => 'Pick on the map';
+
+  @override
+  String get changeOnMap => 'Change on the map';
+
+  @override
+  String get mapSearchHint => 'Search for a place';
+
+  @override
+  String get useThisLocation => 'Use this location';
+
+  @override
+  String get locationPicked => 'Location picked';
+
+  @override
+  String get mapSearchFailed => 'Search is not available right now';
+
+  @override
+  String get noPlaceFound => 'No place found';
+
+  @override
+  String get dragMapHint => 'Move the map to put the pin on the place';
+
+  @override
+  String get posterOptional => 'Poster (optional)';
+
+  @override
+  String get pickPosterNow => 'Pick a poster';
 }

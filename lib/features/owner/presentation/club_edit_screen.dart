@@ -1,3 +1,4 @@
+import '../../../core/maps/location_picker_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -133,12 +134,12 @@ class _FormState extends ConsumerState<_Form> with SubmitMixin {
             validator: (value) => (value ?? '').trim().isEmpty ? null : validators.email(value),
           ),
           const SizedBox(height: AppSpacing.m),
-          AppTextField(
+          LocationPickerField(
             label: l10n.mapUrl,
-            hint: l10n.mapUrl,
             controller: _map,
-            keyboardType: TextInputType.url,
-            textInputAction: TextInputAction.done,
+            onAddress: (address) {
+              if (_address.text.trim().isEmpty) _address.text = address;
+            },
           ),
           const SizedBox(height: AppSpacing.l),
           AppButton(label: l10n.save, onPressed: _save, isLoading: isSubmitting),

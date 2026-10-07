@@ -106,6 +106,7 @@ class _ReelState extends ConsumerState<_Reel> {
         ref.watch(authorFollowsProvider.select((follows) => follows[post.author.userId])) ?? post.isFollowingAuthor;
     final actions = PostActions(ref);
     final video = shown.video;
+    if (widget.active) actions.recordSeen(shown);
 
     Future<void> save() async {
       final saved = await actions.toggleSave(shown);
@@ -215,6 +216,16 @@ class _ReelState extends ConsumerState<_Reel> {
                 label: _compact(shown.commentsCount),
                 onTap: () => showCommentsSheet(context, shown.id),
               ),
+              if (!shown.isMine)
+                _RailButton(
+                  icon: Icons.repeat,
+                  color: shown.isReposted ? const Color(0xFF25F4EE) : AppColors.onBrand,
+                  label: _compact(shown.repostsCount),
+                  onTap: () async {
+                    final done = await actions.toggleRepost(shown);
+                    if (done != null && context.mounted) showSnack(context, done ? l10n.repostDone : l10n.repostUndone);
+                  },
+                ),
               _RailButton(
                 icon: Icons.bookmark,
                 color: shown.isSaved ? const Color(0xFFFFC107) : AppColors.onBrand,

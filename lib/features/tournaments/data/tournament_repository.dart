@@ -20,6 +20,7 @@ class TournamentRepository {
   Future<PagedResult<TournamentListItem>> list({
     SportType? sport,
     bool openOnly = false,
+    String? search,
     required int page,
     int pageSize = 10,
   }) => _call(() async {
@@ -29,6 +30,7 @@ class TournamentRepository {
         'Filter': [if (sport != null) 'sportType:eq:${sport.apiName}', if (openOnly) 'status:eq:RegistrationOpen'],
         'pageNumber': page,
         'pageSize': pageSize,
+        if (search != null && search.trim().isNotEmpty) 'searchValue': search.trim(),
       },
       options: Options(extra: noAuth),
     );

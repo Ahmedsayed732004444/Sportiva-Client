@@ -30,6 +30,14 @@ class ChatRepository {
         ChatMessage.fromJson((await _dio.post<Map<String, dynamic>>(_path(target), data: {'text': text})).data!),
   );
 
+  Future<ChatMessage> sendVoice(ChatTarget target, String path, int seconds) => _call(() async {
+    final form = FormData.fromMap({
+      'File': await MultipartFile.fromFile(path, filename: 'voice.m4a'),
+      'Seconds': seconds,
+    });
+    return ChatMessage.fromJson((await _dio.post<Map<String, dynamic>>('${_path(target)}/voice', data: form)).data!);
+  });
+
   Future<void> markRead(String userId) => _call(() => _dio.post<void>('/messages/with/$userId/read'));
 
   Future<int> unreadCount() => _call(

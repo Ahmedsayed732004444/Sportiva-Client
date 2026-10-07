@@ -1,3 +1,4 @@
+import '../../../core/widgets/app_network_image.dart';
 import '../data/player_traits.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -82,6 +83,17 @@ class _FormState extends ConsumerState<_Form> with SubmitMixin {
     if (done) ref.invalidate(profileProvider(widget.profile.userId));
   }
 
+  Future<void> _changeCover() async {
+    final picked = await ImagePicker().pickImage(source: ImageSource.gallery, imageQuality: 85, maxWidth: 2000);
+    if (picked == null) return;
+
+    final done = await submit(() => ref.read(socialRepositoryProvider).setCover(picked.path));
+    if (done && mounted) {
+      ref.invalidate(profileProvider(widget.profile.userId));
+      showMessage(context.l10n.coverChanged);
+    }
+  }
+
   Future<void> _save() async {
     if (!_formKey.currentState!.validate()) return;
 
@@ -119,8 +131,35 @@ class _FormState extends ConsumerState<_Form> with SubmitMixin {
       child: ListView(
         padding: const EdgeInsets.all(AppSpacing.screenPadding),
         children: [
-          Center(
-            child: UserAvatar(name: widget.profile.fullName, url: widget.profile.avatarUrl, radius: 48),
+          // The cover across the top, the profile picture over its bottom edge.
+          SizedBox(
+            height: 190,
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: SizedBox(
+                    height: 140,
+                    width: double.infinity,
+                    child: AppNetworkImage(url: widget.profile.coverUrl, icon: Icons.landscape_outlined),
+                  ),
+                ),
+                PositionedDirectional(
+                  top: 8,
+                  end: 8,
+                  child: FilledButton.tonalIcon(
+                    onPressed: isSubmitting ? null : _changeCover,
+                    icon: const Icon(Icons.photo_camera_outlined, size: 18),
+                    label: Text(context.l10n.changeCover),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: UserAvatar(name: widget.profile.fullName, url: widget.profile.avatarUrl, radius: 48),
+                ),
+              ],
+            ),
           ),
           TextButton(onPressed: isSubmitting ? null : _changePhoto, child: Text(l10n.changePhoto)),
           const SizedBox(height: AppSpacing.s),

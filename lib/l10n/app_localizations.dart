@@ -1241,7 +1241,7 @@ abstract class AppLocalizations {
   /// No description provided for @openMatch.
   ///
   /// In en, this message translates to:
-  /// **'Open match'**
+  /// **'Open the match'**
   String get openMatch;
 
   /// No description provided for @playersToFind.
@@ -4447,6 +4447,234 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Could not share'**
   String get shareFailed;
+
+  /// No description provided for @voiceRecording.
+  ///
+  /// In en, this message translates to:
+  /// **'Recording'**
+  String get voiceRecording;
+
+  /// No description provided for @voiceCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get voiceCancel;
+
+  /// No description provided for @voiceSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send voice note'**
+  String get voiceSend;
+
+  /// No description provided for @voiceMaxReached.
+  ///
+  /// In en, this message translates to:
+  /// **'30 seconds is the maximum'**
+  String get voiceMaxReached;
+
+  /// No description provided for @micPermission.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow the microphone to record voice notes'**
+  String get micPermission;
+
+  /// No description provided for @voiceMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Voice message'**
+  String get voiceMessage;
+
+  /// No description provided for @recordVoice.
+  ///
+  /// In en, this message translates to:
+  /// **'Record a voice note'**
+  String get recordVoice;
+
+  /// No description provided for @repost.
+  ///
+  /// In en, this message translates to:
+  /// **'Repost'**
+  String get repost;
+
+  /// No description provided for @reposted.
+  ///
+  /// In en, this message translates to:
+  /// **'Reposted'**
+  String get reposted;
+
+  /// No description provided for @repostedBy.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} reposted'**
+  String repostedBy(String name);
+
+  /// No description provided for @youReposted.
+  ///
+  /// In en, this message translates to:
+  /// **'You reposted'**
+  String get youReposted;
+
+  /// No description provided for @repostDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Shared with your followers'**
+  String get repostDone;
+
+  /// No description provided for @repostUndone.
+  ///
+  /// In en, this message translates to:
+  /// **'Repost removed'**
+  String get repostUndone;
+
+  /// No description provided for @suggestedPeople.
+  ///
+  /// In en, this message translates to:
+  /// **'People you may know'**
+  String get suggestedPeople;
+
+  /// No description provided for @followedByMutual.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} people you follow follow them'**
+  String followedByMutual(int count);
+
+  /// No description provided for @sameGovernorateHint.
+  ///
+  /// In en, this message translates to:
+  /// **'From your governorate'**
+  String get sameGovernorateHint;
+
+  /// No description provided for @popularHint.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} followers'**
+  String popularHint(int count);
+
+  /// No description provided for @searchAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get searchAll;
+
+  /// No description provided for @coverChanged.
+  ///
+  /// In en, this message translates to:
+  /// **'Cover updated'**
+  String get coverChanged;
+
+  /// No description provided for @searchTournaments.
+  ///
+  /// In en, this message translates to:
+  /// **'Search tournaments'**
+  String get searchTournaments;
+
+  /// No description provided for @searchMatches.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by place, club or organizer'**
+  String get searchMatches;
+
+  /// No description provided for @shareMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get shareMatch;
+
+  /// No description provided for @shareToFriend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send to a friend'**
+  String get shareToFriend;
+
+  /// No description provided for @shareOutside.
+  ///
+  /// In en, this message translates to:
+  /// **'Share outside the app'**
+  String get shareOutside;
+
+  /// No description provided for @matchShareText.
+  ///
+  /// In en, this message translates to:
+  /// **'Friendly match: {title}\n{when}\nOpen it in Sportiva: /match/{id}'**
+  String matchShareText(String title, String when, String id);
+
+  /// No description provided for @sentToFriend.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent'**
+  String get sentToFriend;
+
+  /// No description provided for @phoneNeededTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your phone number'**
+  String get phoneNeededTitle;
+
+  /// No description provided for @phoneNeededBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The club needs your phone number to reach you about the booking.'**
+  String get phoneNeededBody;
+
+  /// No description provided for @pickOnMap.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick on the map'**
+  String get pickOnMap;
+
+  /// No description provided for @changeOnMap.
+  ///
+  /// In en, this message translates to:
+  /// **'Change on the map'**
+  String get changeOnMap;
+
+  /// No description provided for @mapSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search for a place'**
+  String get mapSearchHint;
+
+  /// No description provided for @useThisLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Use this location'**
+  String get useThisLocation;
+
+  /// No description provided for @locationPicked.
+  ///
+  /// In en, this message translates to:
+  /// **'Location picked'**
+  String get locationPicked;
+
+  /// No description provided for @mapSearchFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Search is not available right now'**
+  String get mapSearchFailed;
+
+  /// No description provided for @noPlaceFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No place found'**
+  String get noPlaceFound;
+
+  /// No description provided for @dragMapHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Move the map to put the pin on the place'**
+  String get dragMapHint;
+
+  /// No description provided for @posterOptional.
+  ///
+  /// In en, this message translates to:
+  /// **'Poster (optional)'**
+  String get posterOptional;
+
+  /// No description provided for @pickPosterNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a poster'**
+  String get pickPosterNow;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

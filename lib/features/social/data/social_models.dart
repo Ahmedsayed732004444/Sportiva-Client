@@ -57,6 +57,8 @@ class PostPatch {
     this.text,
     this.isSaved,
     this.savesCount,
+    this.isReposted,
+    this.repostsCount,
   });
 
   final int? likesCount;
@@ -67,6 +69,8 @@ class PostPatch {
   final String? text;
   final bool? isSaved;
   final int? savesCount;
+  final bool? isReposted;
+  final int? repostsCount;
 
   PostPatch merge(PostPatch other) => PostPatch(
     likesCount: other.likesCount ?? likesCount,
@@ -77,6 +81,8 @@ class PostPatch {
     text: other.text ?? text,
     isSaved: other.isSaved ?? isSaved,
     savesCount: other.savesCount ?? savesCount,
+    isReposted: other.isReposted ?? isReposted,
+    repostsCount: other.repostsCount ?? repostsCount,
   );
 }
 
@@ -98,6 +104,9 @@ class Post {
     this.savesCount = 0,
     this.isSaved = false,
     this.isFollowingAuthor = false,
+    this.repostsCount = 0,
+    this.isReposted = false,
+    this.repostedBy,
   });
 
   final String id;
@@ -116,6 +125,10 @@ class Post {
   final int savesCount;
   final bool isSaved;
   final bool isFollowingAuthor;
+  final int repostsCount;
+  final bool isReposted;
+  // Someone (I follow, or me) who shared it again: why it is in my feed.
+  final Person? repostedBy;
 
   // A picture or a video that is ready to be shown.
   bool get hasVisualMedia => video != null || images.isNotEmpty;
@@ -142,6 +155,9 @@ class Post {
           savesCount: patch.savesCount ?? savesCount,
           isSaved: patch.isSaved ?? isSaved,
           isFollowingAuthor: isFollowingAuthor,
+          repostsCount: patch.repostsCount ?? repostsCount,
+          isReposted: patch.isReposted ?? isReposted,
+          repostedBy: repostedBy,
         );
 
   factory Post.fromJson(Map<String, dynamic> json) => Post(
@@ -165,6 +181,9 @@ class Post {
     savesCount: json['savesCount'] as int? ?? 0,
     isSaved: json['isSaved'] as bool? ?? false,
     isFollowingAuthor: json['isFollowingAuthor'] as bool? ?? false,
+    repostsCount: json['repostsCount'] as int? ?? 0,
+    isReposted: json['isReposted'] as bool? ?? false,
+    repostedBy: json['repostedBy'] == null ? null : Person.fromJson(json['repostedBy'] as Map<String, dynamic>),
   );
 }
 
@@ -372,5 +391,26 @@ class SearchResults {
     users: (json['users'] as List).cast<Map<String, dynamic>>().map(Person.fromJson).toList(),
     clubs: (json['clubs'] as List).cast<Map<String, dynamic>>().map(ClubRef.fromJson).toList(),
     posts: (json['posts'] as List).cast<Map<String, dynamic>>().map(Post.fromJson).toList(),
+  );
+}
+
+class SuggestedPerson {
+  const SuggestedPerson({
+    required this.person,
+    required this.mutualFollowers,
+    required this.sameGovernorate,
+    required this.followersCount,
+  });
+
+  final Person person;
+  final int mutualFollowers;
+  final bool sameGovernorate;
+  final int followersCount;
+
+  factory SuggestedPerson.fromJson(Map<String, dynamic> json) => SuggestedPerson(
+    person: Person.fromJson(json['person'] as Map<String, dynamic>),
+    mutualFollowers: json['mutualFollowers'] as int? ?? 0,
+    sameGovernorate: json['sameGovernorate'] as bool? ?? false,
+    followersCount: json['followersCount'] as int? ?? 0,
   );
 }

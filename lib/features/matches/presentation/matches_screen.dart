@@ -1,3 +1,4 @@
+import '../../../core/widgets/search_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -52,6 +53,14 @@ class MatchesScreen extends ConsumerWidget {
           children: [
             Column(
               children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(AppSpacing.s, AppSpacing.s, AppSpacing.s, 0),
+                  child: SearchBox(
+                    hint: l10n.searchMatches,
+                    initial: ref.read(matchSearchProvider),
+                    onChanged: (text) => ref.read(matchSearchProvider.notifier).state = text,
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(AppSpacing.s, AppSpacing.s, AppSpacing.s, 0),
                   child: Align(

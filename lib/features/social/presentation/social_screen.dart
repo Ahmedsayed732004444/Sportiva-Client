@@ -1,3 +1,4 @@
+import 'widgets/suggested_people.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -119,6 +120,7 @@ class _SocialScreenState extends ConsumerState<SocialScreen> with SingleTickerPr
                 child: PagedListView<Post>(
                   state: feedProvider,
                   actions: feedProvider.notifier,
+                  header: const SuggestedPeople(),
                   emptyMessage: l10n.noPosts,
                   emptyIcon: Icons.dynamic_feed_outlined,
                   separator: const SizedBox(height: AppSpacing.s),

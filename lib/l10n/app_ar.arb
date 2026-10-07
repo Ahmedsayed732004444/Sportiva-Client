@@ -302,7 +302,7 @@
   "pickTime": "اختار الميعاد",
   "matchCreated": "الماتش اتعمل",
   "openMatchFromBooking": "افتح الحجز ده للاعيبة",
-  "openMatch": "افتح ماتش",
+  "openMatch": "افتح الماتش",
   "playersToFind": "محتاج كام لاعب؟",
   "typeMessage": "اكتب رسالة",
   "noMessages": "مفيش رسايل لسه",
@@ -1090,5 +1090,77 @@
   "followAuthor": "متابعة",
   "replyToLabel": "رد",
   "myPostsNew": "منشور جديد",
-  "shareFailed": "مقدرناش نشارك"
+  "shareFailed": "مقدرناش نشارك",
+  "voiceRecording": "بيسجّل",
+  "voiceCancel": "إلغاء",
+  "voiceSend": "ابعت الرسالة الصوتية",
+  "voiceMaxReached": "أقصى مدة 30 ثانية",
+  "micPermission": "اسمح بالميكروفون عشان تسجّل رسالة صوتية",
+  "voiceMessage": "رسالة صوتية",
+  "recordVoice": "سجّل رسالة صوتية",
+  "repost": "ريبوست",
+  "reposted": "اتعمل ريبوست",
+  "repostedBy": "{name} عمل ريبوست",
+  "youReposted": "انت عملت ريبوست",
+  "repostDone": "اتشاركت مع متابعينك",
+  "repostUndone": "اتشال الريبوست",
+  "suggestedPeople": "ناس ممكن تعرفهم",
+  "followedByMutual": "{count} من اللي بتتابعهم متابعينه",
+  "sameGovernorateHint": "من محافظتك",
+  "popularHint": "{count} متابع",
+  "searchAll": "الكل",
+  "coverChanged": "اتغيّر الغلاف",
+  "searchTournaments": "ابحث عن بطولة",
+  "searchMatches": "ابحث بالمكان أو النادي أو المنظّم",
+  "shareMatch": "مشاركة",
+  "shareToFriend": "ابعت لصاحبك",
+  "shareOutside": "مشاركة برا التطبيق",
+  "matchShareText": "ماتش ودي: {title}\n{when}\nافتحه في سبورتيفا: /match/{id}",
+  "sentToFriend": "اتبعتت",
+  "phoneNeededTitle": "رقم موبايلك",
+  "phoneNeededBody": "النادي محتاج رقمك عشان يتواصل معاك بخصوص الحجز.",
+  "pickOnMap": "اختار من الخريطة",
+  "changeOnMap": "غيّر من الخريطة",
+  "mapSearchHint": "ابحث عن مكان",
+  "useThisLocation": "استخدم المكان ده",
+  "locationPicked": "اتحدد المكان",
+  "mapSearchFailed": "البحث مش متاح دلوقتي",
+  "noPlaceFound": "ملقيناش مكان بالاسم ده",
+  "dragMapHint": "حرّك الخريطة لحد ما الدبوس ييجي على المكان",
+  "posterOptional": "صورة البطولة (اختياري)",
+  "pickPosterNow": "اختار صورة",
+  "@repostedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@followedByMutual": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@popularHint": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@matchShareText": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "when": {
+        "type": "String"
+      },
+      "id": {
+        "type": "String"
+      }
+    }
+  }
 }

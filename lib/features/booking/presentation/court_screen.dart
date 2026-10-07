@@ -1,3 +1,4 @@
+import '../../settings/presentation/phone_prompt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -66,6 +67,7 @@ class _CourtBodyState extends ConsumerState<_CourtBody> with SubmitMixin {
   CourtDetails get court => widget.court;
 
   Future<void> _book(CourtSelection selection, BookableStart start) async {
+    if (!await ensurePhone(context, ref) || !mounted) return;
     final confirmed = await showModalBottomSheet<_Confirmed>(
       context: context,
       isScrollControlled: true,

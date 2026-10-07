@@ -44,6 +44,32 @@ class PostActions {
     }
   }
 
+  Future<bool?> toggleRepost(Post shown) async {
+    final patches = _ref.read(postPatchesProvider.notifier);
+    patches.patch(
+      shown.id,
+      PostPatch(isReposted: !shown.isReposted, repostsCount: shown.repostsCount + (shown.isReposted ? -1 : 1)),
+    );
+    try {
+      final result = await _ref.read(socialRepositoryProvider).toggleRepost(shown.id);
+      patches.patch(shown.id, PostPatch(isReposted: result.isReposted, repostsCount: result.repostsCount));
+      return result.isReposted;
+    } on Object {
+      patches.patch(shown.id, PostPatch(isReposted: shown.isReposted, repostsCount: shown.repostsCount));
+      return null;
+    }
+  }
+
+  // A post with no video counts as seen once it stayed on screen a moment (a video reports when it stops playing).
+  static final _seen = <String>{};
+  void recordSeen(Post shown) {
+    if (shown.hasVideo || shown.isMine || !_seen.add(shown.id)) return;
+    _ref
+        .read(socialRepositoryProvider)
+        .recordView(shown.id, watchedSeconds: 0, completed: false)
+        .catchError((Object _) {});
+  }
+
   Future<void> follow(Post shown) async {
     final follows = _ref.read(authorFollowsProvider.notifier);
     follows.set(shown.author.userId, true);

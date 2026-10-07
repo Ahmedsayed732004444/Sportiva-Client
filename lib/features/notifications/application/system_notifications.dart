@@ -1,3 +1,4 @@
+import '../../chat/application/chat_controller.dart';
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
@@ -72,6 +73,10 @@ class SystemNotifications {
 
   Future<void> show(AppNotification notification) async {
     if (!_ready) return;
+    // A message from the person whose chat is open is already on screen.
+    if (notification.entityType == 'ApplicationUser' && notification.entityId == _ref.read(openChatUserProvider)) {
+      return;
+    }
 
     final l10n = lookupAppLocalizations(_ref.read(localeProvider));
     final route = notificationRoute(notification);

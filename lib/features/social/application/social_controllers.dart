@@ -237,3 +237,9 @@ final searchProvider = FutureProvider.autoDispose<SearchResults?>((ref) async {
 
   return ref.read(socialRepositoryProvider).search(text);
 });
+
+// People to follow, for the feed and the empty search. Following one hides them from the list at once.
+final suggestionsProvider = FutureProvider.autoDispose<List<SuggestedPerson>>(
+  (ref) => ref.read(socialRepositoryProvider).suggestions(),
+);
+final hiddenSuggestionsProvider = StateProvider.autoDispose<Set<String>>((ref) => const {});

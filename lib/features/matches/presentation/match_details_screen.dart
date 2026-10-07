@@ -1,3 +1,8 @@
+import '../../social/presentation/person_picker_sheet.dart';
+import '../../chat/data/chat_repository.dart';
+import '../../chat/data/chat_models.dart';
+import '../../../core/widgets/snack.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -32,7 +37,13 @@ class MatchDetailsScreen extends ConsumerWidget {
     final match = ref.watch(matchProvider(matchId));
 
     return Scaffold(
-      appBar: AppBar(title: Text(context.l10n.matchDetails)),
+      appBar: AppBar(
+        title: Text(context.l10n.matchDetails),
+        actions: [
+          if (match.valueOrNull case final loaded? when loaded.isMember && loaded.status != MatchStatus.cancelled)
+            _ShareMatchButton(match: loaded),
+        ],
+      ),
       body: match.when(
         loading: () => const LoadingView(),
         error: (error, _) => ErrorView(
@@ -272,6 +283,49 @@ class _JoinRequests extends ConsumerWidget {
               ],
             ),
           ),
+      ],
+    );
+  }
+}
+
+// Members can bring people in: send the match to a friend in a chat, or share it outside the app.
+class _ShareMatchButton extends ConsumerWidget {
+  const _ShareMatchButton({required this.match});
+
+  final FriendlyMatch match;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = context.l10n;
+    final locale = Localizations.localeOf(context).languageCode;
+    final when =
+        '${formatDay(locale, parseApiDay(match.day))} · ${l10n.timeRange(formatTime(locale, match.startTime), formatTime(locale, match.endTime))}';
+    final text = l10n.matchShareText(match.title, when, match.id);
+
+    Future<void> toFriend() async {
+      final picked = await showPersonPicker(context);
+      if (picked == null) return;
+      try {
+        await ref.read(chatRepositoryProvider).send(ChatTarget.person(picked.person.userId), text);
+        if (context.mounted) showSnack(context, l10n.sentToFriend);
+      } on ApiException catch (e) {
+        if (context.mounted) showApiError(context, e);
+      }
+    }
+
+    return PopupMenuButton<int>(
+      icon: const Icon(Icons.share_outlined),
+      tooltip: l10n.shareMatch,
+      onSelected: (choice) => choice == 0 ? toFriend() : SharePlus.instance.share(ShareParams(text: text)),
+      itemBuilder: (_) => [
+        PopupMenuItem(
+          value: 0,
+          child: ListTile(leading: const Icon(Icons.send_outlined), title: Text(l10n.shareToFriend)),
+        ),
+        PopupMenuItem(
+          value: 1,
+          child: ListTile(leading: const Icon(Icons.ios_share), title: Text(l10n.shareOutside)),
+        ),
       ],
     );
   }

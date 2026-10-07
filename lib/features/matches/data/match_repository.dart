@@ -17,9 +17,10 @@ class MatchRepository {
 
   final Dio _dio;
 
-  Future<PagedResult<FriendlyMatch>> open({SportType? sport, required int page, int pageSize = 10}) =>
+  Future<PagedResult<FriendlyMatch>> open({SportType? sport, String? search, required int page, int pageSize = 10}) =>
       _list('/matches', {
         if (sport != null) 'Filter': ['sportType:eq:${sport.apiName}'],
+        if (search != null && search.trim().isNotEmpty) 'searchValue': search.trim(),
         'pageNumber': page,
         'pageSize': pageSize,
       });

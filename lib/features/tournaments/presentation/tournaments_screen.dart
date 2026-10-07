@@ -1,3 +1,4 @@
+import '../../../core/widgets/search_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -23,6 +24,14 @@ class TournamentsScreen extends ConsumerWidget {
       appBar: AppBar(title: Text(l10n.tournaments)),
       body: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(AppSpacing.s, AppSpacing.s, AppSpacing.s, 0),
+            child: SearchBox(
+              hint: l10n.searchTournaments,
+              initial: ref.read(tournamentSearchProvider),
+              onChanged: (text) => ref.read(tournamentSearchProvider.notifier).state = text,
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.fromLTRB(AppSpacing.s, AppSpacing.s, AppSpacing.s, 0),
             child: Align(

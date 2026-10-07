@@ -23,6 +23,10 @@ class ChatMessage {
     required this.isMine,
     this.receiverId,
     this.matchId,
+    this.deliveredAt,
+    this.readAt,
+    this.audioUrl,
+    this.audioSeconds,
   });
 
   final int id;
@@ -33,6 +37,28 @@ class ChatMessage {
   final bool isMine;
   final String? receiverId;
   final String? matchId;
+  final DateTime? deliveredAt;
+  final DateTime? readAt;
+  // A voice note: the audio file and its length (the text is empty).
+  final String? audioUrl;
+  final int? audioSeconds;
+
+  bool get isVoice => audioUrl != null;
+
+  ChatMessage copyWith({DateTime? deliveredAt, DateTime? readAt}) => ChatMessage(
+    id: id,
+    senderId: senderId,
+    senderName: senderName,
+    text: text,
+    sentAt: sentAt,
+    isMine: isMine,
+    receiverId: receiverId,
+    matchId: matchId,
+    deliveredAt: deliveredAt ?? this.deliveredAt,
+    readAt: readAt ?? this.readAt,
+    audioUrl: audioUrl,
+    audioSeconds: audioSeconds,
+  );
 
   // Does a message (pushed live) belong to this chat?
   bool belongsTo(ChatTarget target) =>
@@ -49,6 +75,10 @@ class ChatMessage {
       isMine: json['isMine'] as bool? ?? false,
       receiverId: json['receiverId'] as String?,
       matchId: json['matchId'] as String?,
+      deliveredAt: DateTime.tryParse(json['deliveredAt']?.toString() ?? ''),
+      readAt: DateTime.tryParse(json['readAt']?.toString() ?? ''),
+      audioUrl: json['audioUrl'] as String?,
+      audioSeconds: (json['audioSeconds'] as num?)?.toInt(),
     );
   }
 }

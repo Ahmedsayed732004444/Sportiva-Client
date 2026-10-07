@@ -302,7 +302,7 @@
   "pickTime": "Pick a time",
   "matchCreated": "Match created",
   "openMatchFromBooking": "Open this booking for players",
-  "openMatch": "Open match",
+  "openMatch": "Open the match",
   "playersToFind": "How many players do you need?",
   "typeMessage": "Type a message",
   "noMessages": "No messages yet",
@@ -1090,5 +1090,77 @@
   "followAuthor": "Follow",
   "replyToLabel": "Reply",
   "myPostsNew": "New post",
-  "shareFailed": "Could not share"
+  "shareFailed": "Could not share",
+  "voiceRecording": "Recording",
+  "voiceCancel": "Cancel",
+  "voiceSend": "Send voice note",
+  "voiceMaxReached": "30 seconds is the maximum",
+  "micPermission": "Allow the microphone to record voice notes",
+  "voiceMessage": "Voice message",
+  "recordVoice": "Record a voice note",
+  "repost": "Repost",
+  "reposted": "Reposted",
+  "repostedBy": "{name} reposted",
+  "youReposted": "You reposted",
+  "repostDone": "Shared with your followers",
+  "repostUndone": "Repost removed",
+  "suggestedPeople": "People you may know",
+  "followedByMutual": "{count} people you follow follow them",
+  "sameGovernorateHint": "From your governorate",
+  "popularHint": "{count} followers",
+  "searchAll": "All",
+  "coverChanged": "Cover updated",
+  "searchTournaments": "Search tournaments",
+  "searchMatches": "Search by place, club or organizer",
+  "shareMatch": "Share",
+  "shareToFriend": "Send to a friend",
+  "shareOutside": "Share outside the app",
+  "matchShareText": "Friendly match: {title}\n{when}\nOpen it in Sportiva: /match/{id}",
+  "sentToFriend": "Sent",
+  "phoneNeededTitle": "Your phone number",
+  "phoneNeededBody": "The club needs your phone number to reach you about the booking.",
+  "pickOnMap": "Pick on the map",
+  "changeOnMap": "Change on the map",
+  "mapSearchHint": "Search for a place",
+  "useThisLocation": "Use this location",
+  "locationPicked": "Location picked",
+  "mapSearchFailed": "Search is not available right now",
+  "noPlaceFound": "No place found",
+  "dragMapHint": "Move the map to put the pin on the place",
+  "posterOptional": "Poster (optional)",
+  "pickPosterNow": "Pick a poster",
+  "@repostedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@followedByMutual": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@popularHint": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@matchShareText": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "when": {
+        "type": "String"
+      },
+      "id": {
+        "type": "String"
+      }
+    }
+  }
 }

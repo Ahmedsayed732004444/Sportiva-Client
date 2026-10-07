@@ -1,3 +1,4 @@
+import '../../../core/maps/location_picker_field.dart';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -188,11 +189,12 @@ class _FormState extends ConsumerState<_Form> with SubmitMixin {
             validator: validators.required,
           ),
           const SizedBox(height: AppSpacing.m),
-          AppTextField(
+          LocationPickerField(
             label: l10n.locationUrl,
-            hint: 'https://maps.google.com/...',
             controller: _location,
-            keyboardType: TextInputType.url,
+            onAddress: (address) {
+              if (_address.text.trim().isEmpty) _address.text = address;
+            },
           ),
           const SizedBox(height: AppSpacing.m),
           AppTextField(

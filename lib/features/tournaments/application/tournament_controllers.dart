@@ -9,6 +9,7 @@ import '../data/tournament_repository.dart';
 
 final tournamentSportFilterProvider = StateProvider<SportType?>((ref) => null);
 final tournamentOpenOnlyProvider = StateProvider<bool>((ref) => false);
+final tournamentSearchProvider = StateProvider<String>((ref) => '');
 
 class TournamentsController extends PagedController<TournamentListItem> {
   @override
@@ -16,6 +17,7 @@ class TournamentsController extends PagedController<TournamentListItem> {
     // Another filter rebuilds the list from the first page.
     ref.watch(tournamentSportFilterProvider);
     ref.watch(tournamentOpenOnlyProvider);
+    ref.watch(tournamentSearchProvider);
 
     final subscription = ref.read(realtimeServiceProvider).events.listen((event) {
       if (event.name == RealtimeEvents.tournamentChanged || event.name == RealtimeEvents.reconnected) refresh();
@@ -27,7 +29,12 @@ class TournamentsController extends PagedController<TournamentListItem> {
   @override
   Future<PagedResult<TournamentListItem>> fetch(int page) => ref
       .read(tournamentRepositoryProvider)
-      .list(sport: ref.read(tournamentSportFilterProvider), openOnly: ref.read(tournamentOpenOnlyProvider), page: page);
+      .list(
+        sport: ref.read(tournamentSportFilterProvider),
+        openOnly: ref.read(tournamentOpenOnlyProvider),
+        search: ref.read(tournamentSearchProvider),
+        page: page,
+      );
 }
 
 final tournamentsProvider = AutoDisposeNotifierProvider<TournamentsController, PagedState<TournamentListItem>>(

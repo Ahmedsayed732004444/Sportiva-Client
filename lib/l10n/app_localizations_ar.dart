@@ -612,7 +612,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get openMatchFromBooking => 'افتح الحجز ده للاعيبة';
 
   @override
-  String get openMatch => 'افتح ماتش';
+  String get openMatch => 'افتح الماتش';
 
   @override
   String get playersToFind => 'محتاج كام لاعب؟';
@@ -2279,4 +2279,126 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get shareFailed => 'مقدرناش نشارك';
+
+  @override
+  String get voiceRecording => 'بيسجّل';
+
+  @override
+  String get voiceCancel => 'إلغاء';
+
+  @override
+  String get voiceSend => 'ابعت الرسالة الصوتية';
+
+  @override
+  String get voiceMaxReached => 'أقصى مدة 30 ثانية';
+
+  @override
+  String get micPermission => 'اسمح بالميكروفون عشان تسجّل رسالة صوتية';
+
+  @override
+  String get voiceMessage => 'رسالة صوتية';
+
+  @override
+  String get recordVoice => 'سجّل رسالة صوتية';
+
+  @override
+  String get repost => 'ريبوست';
+
+  @override
+  String get reposted => 'اتعمل ريبوست';
+
+  @override
+  String repostedBy(String name) {
+    return '$name عمل ريبوست';
+  }
+
+  @override
+  String get youReposted => 'انت عملت ريبوست';
+
+  @override
+  String get repostDone => 'اتشاركت مع متابعينك';
+
+  @override
+  String get repostUndone => 'اتشال الريبوست';
+
+  @override
+  String get suggestedPeople => 'ناس ممكن تعرفهم';
+
+  @override
+  String followedByMutual(int count) {
+    return '$count من اللي بتتابعهم متابعينه';
+  }
+
+  @override
+  String get sameGovernorateHint => 'من محافظتك';
+
+  @override
+  String popularHint(int count) {
+    return '$count متابع';
+  }
+
+  @override
+  String get searchAll => 'الكل';
+
+  @override
+  String get coverChanged => 'اتغيّر الغلاف';
+
+  @override
+  String get searchTournaments => 'ابحث عن بطولة';
+
+  @override
+  String get searchMatches => 'ابحث بالمكان أو النادي أو المنظّم';
+
+  @override
+  String get shareMatch => 'مشاركة';
+
+  @override
+  String get shareToFriend => 'ابعت لصاحبك';
+
+  @override
+  String get shareOutside => 'مشاركة برا التطبيق';
+
+  @override
+  String matchShareText(String title, String when, String id) {
+    return 'ماتش ودي: $title\n$when\nافتحه في سبورتيفا: /match/$id';
+  }
+
+  @override
+  String get sentToFriend => 'اتبعتت';
+
+  @override
+  String get phoneNeededTitle => 'رقم موبايلك';
+
+  @override
+  String get phoneNeededBody => 'النادي محتاج رقمك عشان يتواصل معاك بخصوص الحجز.';
+
+  @override
+  String get pickOnMap => 'اختار من الخريطة';
+
+  @override
+  String get changeOnMap => 'غيّر من الخريطة';
+
+  @override
+  String get mapSearchHint => 'ابحث عن مكان';
+
+  @override
+  String get useThisLocation => 'استخدم المكان ده';
+
+  @override
+  String get locationPicked => 'اتحدد المكان';
+
+  @override
+  String get mapSearchFailed => 'البحث مش متاح دلوقتي';
+
+  @override
+  String get noPlaceFound => 'ملقيناش مكان بالاسم ده';
+
+  @override
+  String get dragMapHint => 'حرّك الخريطة لحد ما الدبوس ييجي على المكان';
+
+  @override
+  String get posterOptional => 'صورة البطولة (اختياري)';
+
+  @override
+  String get pickPosterNow => 'اختار صورة';
 }

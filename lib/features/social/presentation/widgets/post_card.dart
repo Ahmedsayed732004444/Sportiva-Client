@@ -14,6 +14,7 @@ import '../../../../core/widgets/snack.dart';
 import '../../../../core/widgets/user_avatar.dart';
 import '../../../../core/widgets/dispose_soon.dart';
 import '../../../../core/widgets/image_carousel.dart';
+import '../../../auth/application/auth_controller.dart';
 import '../../application/post_actions.dart';
 import 'comments_panel.dart';
 import '../../application/post_patches.dart';
@@ -47,6 +48,11 @@ class PostCard extends ConsumerWidget {
     Future<void> save() async {
       final saved = await actions.toggleSave(shown);
       if (saved != null && context.mounted) showSnack(context, saved ? l10n.postSaved : l10n.postUnsaved);
+    }
+
+    Future<void> repost() async {
+      final done = await actions.toggleRepost(shown);
+      if (done != null && context.mounted) showSnack(context, done ? l10n.repostDone : l10n.repostUndone);
     }
 
     Future<void> share() async {
@@ -85,11 +91,32 @@ class PostCard extends ConsumerWidget {
       }
     }
 
+    final me = ref.watch(authControllerProvider).valueOrNull?.userId;
+    actions.recordSeen(shown);
+
     return AppCard(
       onTap: detailed ? null : () => context.push('/post/${shown.id}'),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          if (shown.repostedBy != null)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(AppSpacing.s, AppSpacing.xs, AppSpacing.s, 0),
+              child: Row(
+                children: [
+                  Icon(Icons.repeat, size: 16, color: AppColors.black600),
+                  const SizedBox(width: 6),
+                  Expanded(
+                    child: Text(
+                      shown.repostedBy!.userId == me ? l10n.youReposted : l10n.repostedBy(shown.repostedBy!.fullName),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppTextStyles.caption.copyWith(color: AppColors.black600, fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           Padding(
             padding: const EdgeInsets.fromLTRB(AppSpacing.s, AppSpacing.s, AppSpacing.xs, 0),
             child: Row(
@@ -165,12 +192,20 @@ class PostCard extends ConsumerWidget {
                 ),
                 Text('${shown.commentsCount}', style: AppTextStyles.body2),
                 const SizedBox(width: AppSpacing.xs),
+                if (!shown.isMine) ...[
+                  IconButton(
+                    onPressed: repost,
+                    tooltip: l10n.repost,
+                    icon: Icon(Icons.repeat, color: shown.isReposted ? AppColors.primary : AppColors.black600),
+                  ),
+                  Text('${shown.repostsCount}', style: AppTextStyles.body2),
+                ],
                 IconButton(
                   onPressed: share,
                   icon: Icon(Icons.share_outlined, color: AppColors.black600),
                 ),
                 const Spacer(),
-                if (shown.hasVideo) ...[
+                if (shown.viewsCount > 0 || shown.hasVideo) ...[
                   Icon(Icons.visibility_outlined, size: 18, color: AppColors.black600),
                   const SizedBox(width: 4),
                   Text('${shown.viewsCount}', style: AppTextStyles.body2),

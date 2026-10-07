@@ -10,6 +10,7 @@ import '../data/match_repository.dart';
 
 // The sport filter of the open matches list (null = all).
 final matchSportFilterProvider = StateProvider<SportType?>((ref) => null);
+final matchSearchProvider = StateProvider<String>((ref) => '');
 
 // Refreshes a list when a match changes or the connection came back.
 mixin _FollowsMatchChanges on PagedController<FriendlyMatch> {
@@ -27,13 +28,15 @@ class OpenMatchesController extends PagedController<FriendlyMatch> with _Follows
   PagedState<FriendlyMatch> build() {
     // Picking another sport rebuilds the list from the first page.
     ref.watch(matchSportFilterProvider);
+    ref.watch(matchSearchProvider);
     followMatchChanges();
     return super.build();
   }
 
   @override
-  Future<PagedResult<FriendlyMatch>> fetch(int page) =>
-      ref.read(matchRepositoryProvider).open(sport: ref.read(matchSportFilterProvider), page: page);
+  Future<PagedResult<FriendlyMatch>> fetch(int page) => ref
+      .read(matchRepositoryProvider)
+      .open(sport: ref.read(matchSportFilterProvider), search: ref.read(matchSearchProvider), page: page);
 }
 
 class MyMatchesController extends PagedController<FriendlyMatch> with _FollowsMatchChanges {

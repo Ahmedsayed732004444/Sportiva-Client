@@ -27,6 +27,7 @@ abstract final class RealtimeEvents {
   static const profileChanged = 'ProfileChanged';
   static const messageReceived = 'MessageReceived';
   static const messagesRead = 'MessagesRead';
+  static const messagesDelivered = 'MessagesDelivered';
   static const typing = 'Typing';
   static const presenceChanged = 'PresenceChanged';
   static const tournamentChanged = 'TournamentChanged';
@@ -39,7 +40,15 @@ abstract final class RealtimeEvents {
   static const all = [
     receiveNotification, unreadCountUpdated, bookingChanged, recurringBookingChanged, slotsChanged, matchChanged,
     joinRequestChanged, paymentChanged, membershipChanged, clubChanged, reviewChanged, postChanged, commentChanged,
-    newPost, profileChanged, messageReceived, messagesRead, typing, presenceChanged, tournamentChanged, sessionEnded,
+    newPost,
+    profileChanged,
+    messageReceived,
+    messagesRead,
+    messagesDelivered,
+    typing,
+    presenceChanged,
+    tournamentChanged,
+    sessionEnded,
     plansChanged, //
   ];
 }

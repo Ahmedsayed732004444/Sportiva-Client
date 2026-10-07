@@ -50,6 +50,21 @@ class SocialRepository {
     return (isLiked: data['isLiked'] as bool, likesCount: data['likesCount'] as int);
   });
 
+  Future<({bool isReposted, int repostsCount})> toggleRepost(String postId) => _call(() async {
+    final data = (await _dio.post<Map<String, dynamic>>('/posts/$postId/repost')).data!;
+    return (isReposted: data['isReposted'] as bool, repostsCount: data['repostsCount'] as int);
+  });
+
+  Future<List<SuggestedPerson>> suggestions({int count = 15}) => _call(() async {
+    final response = await _dio.get<List<dynamic>>('/profiles/suggestions', queryParameters: {'count': count});
+    return response.data!.cast<Map<String, dynamic>>().map(SuggestedPerson.fromJson).toList();
+  });
+
+  Future<void> setCover(String path) => _call(
+    () async =>
+        _dio.put<void>('/profiles/me/cover', data: FormData.fromMap({'file': await MultipartFile.fromFile(path)})),
+  );
+
   Future<({bool isSaved, int savesCount})> toggleSave(String postId) => _call(() async {
     final data = (await _dio.post<Map<String, dynamic>>('/posts/$postId/save')).data!;
     return (isSaved: data['isSaved'] as bool, savesCount: data['savesCount'] as int);
