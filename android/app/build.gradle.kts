@@ -1,5 +1,3 @@
-import java.util.Properties
-
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -32,13 +30,6 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
-
-        // The Google Maps key lives in android/local.properties (not in git): MAPS_API_KEY=...
-        val local = Properties().apply {
-            val file = rootProject.file("local.properties")
-            if (file.exists()) file.inputStream().use { load(it) }
-        }
-        manifestPlaceholders["MAPS_API_KEY"] = local.getProperty("MAPS_API_KEY") ?: ""
     }
 
     buildTypes {
